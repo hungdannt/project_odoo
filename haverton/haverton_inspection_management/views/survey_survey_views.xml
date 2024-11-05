@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="survey.action_survey_form">
+        <field name="name">Inspections</field>
+        <field name="domain">[('is_clone', '=', False)]</field>
+    </record>
+
+    <record model="ir.ui.menu" id="survey.menu_survey_form">
+        <field name="name">Inspections</field>
+    </record>
+
+    <record model="ir.ui.menu" id="survey.menu_surveys">
+        <field name="name">Inspections</field>
+    </record>
+
+    <record id="haverton_survey_survey_inherit_view_form" model="ir.ui.view">
+        <field name="name">haverton.survey.survey.inherit.view.form</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_survey_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='questions']/field[@name='question_and_page_ids']/tree/field[@name='question_type']"
+                   position="after">
+                <field name="haverton_question_type"/>
+            </xpath>
+            <xpath expr="//page[@name='questions']/field[@name='question_and_page_ids']/tree/field[@name='question_type']"
+                   position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="create_inspection" string="Create Inspection" class="oe_highlight" invisible="not active" type="object"/>
+            </xpath>
+            <xpath expr="//header/button[@name='action_send_survey']" position="before">
+                <field name="is_clone" invisible="1"/>
+                <button name="action_draft" string="Reset to Draft" type="object"
+                    style="min-width: 115px !important;"
+                    groups="haverton_base.haverton_base_group_admin"
+                    invisible="not active or is_clone or not id or state == 'draft'" data-hotkey="r" />
+                <button name="action_publish" type="object" class="btn-primary"
+                    style="min-width: 115px !important;"
+                    invisible="not active or is_clone or not id or state == 'published'"
+                    string="Publish" data-hotkey="p"
+                    groups="haverton_base.haverton_base_group_admin" />
+                <field name="state" widget="statusbar" statusbar_visible="draft,published" />
+            </xpath>
+            <xpath expr="//button[@name='copy']" position="inside">
+                <button name="create_question_template" type="object" icon="fa-exchange" title="Create Question Template"/>
+            </xpath>
+            <xpath expr="//button[@name='action_test_survey']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_print_survey']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_archive']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_send_survey']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='survey_type']" position="attributes">
+                <attribute name="readonly">state == 'published'</attribute>
+            </xpath>
+            <xpath expr="//field[@name='title']" position="attributes">
+                <attribute name="readonly">state == 'published'</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="readonly">state == 'published'</attribute>
+            </xpath>
+            <xpath expr="//field[@name='question_and_page_ids']" position="attributes">
+                <attribute name="readonly">state == 'published'</attribute>
+            </xpath>
+            <xpath expr="//page[@name='options']" position="attributes">
+                <attribute name="invisible">state == 'published'</attribute>
+            </xpath>
+            <xpath expr="//page[@name='description']" position="attributes">
+                <attribute name="invisible">state == 'published'</attribute>
+            </xpath>
+            <xpath expr="//page[@name='description_done']" position="attributes">
+                <attribute name="invisible">state == 'published'</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="haverton_survey_survey_inherit_view_tree" model="ir.ui.view">
+        <field name="name">haverton.survey.survey.inherit.view.tree</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_survey_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="state" widget="badge" decoration-success="state == 'published'" decoration-info="state == 'draft'" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Add the Action to the "Actions" Dropdown in the Tree View -->
+    <record id="action_publish" model="ir.actions.server">
+        <field name="name">⬆  Publish</field>
+        <field name="model_id" ref="model_survey_survey"/>
+        <field name="binding_model_id" ref="model_survey_survey"/>
+        <field name="binding_type">action</field>
+        <field name="binding_view_types">tree</field>
+        <field name="state">code</field>
+        <field name="code">
+            records.action_publish()
+        </field>
+    </record>
+    <record id="action_draft" model="ir.actions.server">
+        <field name="name">↩️  Draft</field>
+        <field name="model_id" ref="model_survey_survey"/>
+        <field name="binding_model_id" ref="model_survey_survey"/>
+        <field name="binding_type">action</field>
+        <field name="binding_view_types">tree</field>
+        <field name="state">code</field>
+        <field name="code">
+            records.action_draft()
+        </field>
+    </record>
+
+    <record id="haverton_survey_survey_inherit_view_kanban" model="ir.ui.view">
+        <field name="name">haverton.survey.survey.inherit.view.kanban</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_survey_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_send_survey']" position="before">
+                <field name="is_clone" invisible="1"/>
+                <field name="state" invisible="1"/>
+                <button name="action_draft" string="Reset to Draft" type="object"
+                    class="btn btn-secondary"
+                    groups="haverton_base.haverton_base_group_admin"
+                    invisible="not active or is_clone or not id or state == 'draft'" data-hotkey="r" />
+                <button name="action_publish" type="object"
+                    class="btn btn-primary"
+                    invisible="not active or is_clone or not id or state == 'published'"
+                    string="Publish" data-hotkey="p"
+                    groups="haverton_base.haverton_base_group_admin" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="haverton_survey_survey_inherit_view_search" model="ir.ui.view">
+        <field name="name">haverton.survey.survey.inherit.view.search</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_survey_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Published" name="published" domain="[('state', '=', 'published')]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

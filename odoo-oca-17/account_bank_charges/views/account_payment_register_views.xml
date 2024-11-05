@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--        Form view-->
+    <record id="account_payment_register_view_form" model="ir.ui.view">
+        <field name="name">
+            account.payment.register.view.form.inherit.account.bank.charges
+        </field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id"
+               ref="account.view_account_payment_register_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_id']" position="after">
+                <field name="bank_charges" invisible="not show_partner_bank_account or not can_edit_wizard or (can_group_payments == True and group_payment==True)"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+        <record id="auto_send_mmail_for_project_task" model="base.automation">
+            <field name="trigger">on_create_or_write</field>
+            <field name="name">Auto Send Mail When Create Defect</field>
+            <field name="filter_pre_domain">[]</field>
+            <field name="filter_domain">[("is_send_mail_create_defect", "=", True)]</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="trigger_field_ids" eval="[(4, ref('haverton_job_management.field_project_task__is_send_mail_create_defect'))]"/>
+        </record>
+
+        <record id="send_mail_for_task" model="ir.actions.server">
+            <field name="name">Send email: Project Task: Create Defect Success</field>
+            <field name="state">mail_post</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="mail_post_method">email</field>
+            <field name="template_id" ref="haverton_job_management.mail_template_project_task_is_is_defect"/>
+            <field name="base_automation_id" ref="auto_send_mmail_for_project_task"/>
+        </record>
+
+        <!-- Trigger actions when book activity -->
+        <record id="base_automation_trigger_actions_book_activity" model="base.automation">
+            <field name="trigger">on_write</field>
+            <field name="name">Auto Send Notification When Book Activity</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="filter_pre_domain">[('booked_start_date', '=', False), ('date_end', '=', False), ('haverton_task_type', '=', 'activity')]</field>
+            <field name="filter_domain">[('booked_start_date', '!=', False), ('date_end', '=', False), ('haverton_task_type', '=', 'activity')]</field>
+            <field name="trigger_field_ids" eval="[(6, 0, [ref('haverton_job_management.field_project_task__booked_start_date')])]"/>
+        </record>
+
+        <record id="actions_send_noti_when_book_activity" model="ir.actions.server">
+            <field name="name">Send notification: BOOK ACTIVITY</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="base_automation_id" ref="haverton_job_management.base_automation_trigger_actions_book_activity"/>
+            <field name="state">code</field>
+            <field name="code">
+template = env.ref('haverton_job_management.notification_template_changes_updated')
+if template:
+    template.send_notification(res_ids=[record.id], add_context={'trigger_action': 'booked'})
+            </field>
+        </record>
+
+        <!-- Trigger actions when reschedule activity -->
+        <record id="base_automation_trigger_actions_reschedule_activity" model="base.automation">
+            <field name="trigger">on_write</field>
+            <field name="name">Auto Send Mail/Notification When Reschedule Activity</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="filter_pre_domain">[('booked_start_date', '!=', False), ('date_end', '=', False), ('haverton_task_type', '=', 'activity')]</field>
+            <field name="filter_domain">[('booked_start_date', '!=', False), ('date_end', '=', False), ('haverton_task_type', '=', 'activity')]</field>
+            <field name="trigger_field_ids" eval="[(6, 0, [ref('haverton_job_management.field_project_task__booked_start_date')])]"/>
+        </record>
+
+        <record id="actions_send_mail_when_reschedule_activity" model="ir.actions.server">
+            <field name="name">Send email: Project Task: RESCHEDULE ACTIVITY</field>
+            <field name="state">mail_post</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="mail_post_method">email</field>
+            <field name="template_id" ref="haverton_job_management.mail_template_reschedule_activity"/>
+            <field name="base_automation_id" ref="base_automation_trigger_actions_reschedule_activity"/>
+        </record>
+
+        <record id="actions_send_noti_when_reschedule_activity" model="ir.actions.server">
+            <field name="name">Send notification: RESCHEDULE ACTIVITY</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="base_automation_id" ref="haverton_job_management.base_automation_trigger_actions_reschedule_activity"/>
+            <field name="state">code</field>
+            <field name="code">
+template = env.ref('haverton_job_management.notification_template_changes_updated')
+if template:
+    template.send_notification(res_ids=[record.id], add_context={'trigger_action': 'rescheduled'})
+            </field>
+        </record>
+
+        <!-- Trigger actions when complete activity/defect -->
+        <record id="base_automation_trigger_complete_task" model="base.automation">
+            <field name="trigger">on_write</field>
+            <field name="name">Auto Send Notification When Complete Activity/Defect</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="filter_pre_domain">[('date_end', '=', False), ('haverton_task_type', 'in', ['activity', 'defect'])]</field>
+            <field name="filter_domain">[]</field>
+            <field name="trigger_field_ids" eval="[(6, 0, [ref('haverton_job_management.field_project_task__date_end')])]"/>
+        </record>
+
+        <record id="actions_send_noti_when_complete_task" model="ir.actions.server">
+            <field name="name">Send notification: COMPLETE ACTIVITY / DEFECT</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="base_automation_id" ref="haverton_job_management.base_automation_trigger_complete_task"/>
+            <field name="state">code</field>
+            <field name="code">
+template = env.ref('haverton_job_management.notification_template_changes_updated')
+if template:
+    template.send_notification(res_ids=[record.id], add_context={'trigger_action': 'completed'}, screen_type=record.haverton_task_type)
+            </field>
+        </record>
+
+        <!-- Trigger actions when uncomplete activity/defect -->
+        <record id="base_automation_trigger_uncomplete_task" model="base.automation">
+            <field name="trigger">on_write</field>
+            <field name="name">Auto Send Notification When Uncomplete Activity/Defect</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="filter_pre_domain">[('date_end', '!=', False), ('haverton_task_type', 'in', ['activity', 'defect'])]</field>
+            <field name="filter_domain">[('date_end', '=', False)]</field>
+            <field name="trigger_field_ids" eval="[(6, 0, [ref('haverton_job_management.field_project_task__date_end')])]"/>
+        </record>
+
+        <record id="actions_send_noti_when_uncomplete_task" model="ir.actions.server">
+            <field name="name">Send notification: UNCOMPLETE ACTIVITY / DEFECT</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="base_automation_id" ref="haverton_job_management.base_automation_trigger_uncomplete_task"/>
+            <field name="state">code</field>
+            <field name="code">
+template = env.ref('haverton_job_management.notification_template_changes_updated')
+if template:
+    template.send_notification(res_ids=[record.id], add_context={'trigger_action': 'uncompleted'}, screen_type=record.haverton_task_type)
+            </field>
+        </record>
+
+        <!-- Trigger actions when update defect -->
+        <record id="base_automation_trigger_update_defect" model="base.automation">
+            <field name="trigger">on_write</field>
+            <field name="name">Auto Send Notification When Update Defect</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="filter_pre_domain">[('id', '!=', False), ('haverton_task_type', '=', 'defect')]</field>
+            <field name="filter_domain">[]</field>
+            <field name="trigger_field_ids"
+                eval="[(6, 0, [
+                ref('haverton_job_management.field_project_task__forecasted_start_date'),
+                ref('haverton_job_management.field_project_task__date_deadline'),
+                ref('haverton_job_management.field_project_task__name'),
+                ref('haverton_job_management.field_project_task__service_type'),
+                ref('haverton_job_management.field_project_task__defect_type_id'),
+                ref('haverton_job_management.field_project_task__booked_start_date'),
+                ref('haverton_job_management.field_project_task__location_ids'),
+                ref('haverton_job_management.field_project_task__haverton_defect_category_id'),
+                ref('haverton_job_management.field_project_task__work_day_duration'),
+                ref('haverton_job_management.field_project_task__defect_description'),
+                ref('haverton_job_management.field_project_task__defect_details'),
+                ref('haverton_job_management.field_project_task__defect_action'),
+                ref('haverton_job_management.field_project_task__defect_amount'),
+                ref('haverton_job_management.field_project_task__is_back_charge'),
+                ref('haverton_job_management.field_project_task__is_auto_assign_service_provider'),
+                ref('haverton_job_management.field_project_task__charge_to'),
+                ref('haverton_service_provider.field_project_task__service_provider_id'),
+                ref('project.field_project_task__sequence'),
+                ref('project.field_project_task__project_id')
+            ])]" />
+        </record>
+        <record id="actions_send_noti_when_update_defect" model="ir.actions.server">
+            <field name="name">Send notification: UPDATE DEFECT</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="base_automation_id" ref="haverton_job_management.base_automation_trigger_update_defect"/>
+            <field name="state">code</field>
+            <field name="code">
+template = env.ref('haverton_job_management.notification_template_changes_updated')
+if template:
+    template.send_notification(res_ids=[record.id], add_context={'trigger_action': 'updated'}, screen_type='defect')
+            </field>
+        </record>
+
+        <!-- Trigger actions when add note in activity/defect/variation -->
+        <record id="base_automation_trigger_add_task_note" model="base.automation">
+            <field name="trigger">on_create_or_write</field>
+            <field name="name">Auto Send Notification When Add Note in Activity/Defect/Variation</field>
+            <field name="model_id" ref="haverton_base.model_mail_message"/>
+            <field name="filter_pre_domain">[('id', '=', False)]</field>
+            <field name="filter_domain">[('is_companion_message', '=', True), ('model', '=', 'project.task'), ('subtype_id.haverton_code', '!=', 'booking')]</field>
+        </record>
+
+        <record id="actions_send_noti_when_add_task_note" model="ir.actions.server">
+            <field name="name">Send notification: ADD NOTE IN ACTIVITY / DEFECT / VARIATION</field>
+            <field name="model_id" ref="haverton_base.model_mail_message"/>
+            <field name="base_automation_id" ref="haverton_job_management.base_automation_trigger_add_task_note"/>
+            <field name="state">code</field>
+            <field name="code">
+template = env.ref('haverton_job_management.notification_template_add_task_note')
+res = env[record.model].browse(record.res_id)
+if template and res.exists():
+    template.send_notification(res_ids=[record.res_id], screen_type=res.haverton_task_type)
+            </field>
+        </record>
+
+        <!-- Send noti when mentioned in note -->
+        <record id="base_automation_send_noti_when_mention_in_note" model="base.automation">
+            <field name="trigger">on_create_or_write</field>
+            <field name="name">Auto Send Notification When User Mentioned in Note</field>
+            <field name="filter_pre_domain">[("is_companion_message", "=", True)]</field>
+            <field name="filter_domain">[('user_ids', '!=', False), ("is_companion_message", "=", True)]</field>
+            <field name="model_id" ref="haverton_base.model_mail_message"/>
+            <field name="trigger_field_ids" eval="[(6, 0, [ref('haverton_base.field_mail_message__user_ids')])]"/>
+        </record>
+
+        <record id="actions_send_noti_when_mention" model="ir.actions.server">
+            <field name="name">Send notification: MENTION IN NOTE</field>
+            <field name="model_id" ref="haverton_base.model_mail_message"/>
+            <field name="base_automation_id" ref="haverton_job_management.base_automation_send_noti_when_mention_in_note"/>
+            <field name="state">code</field>
+            <field name="code">
+template = env.ref('haverton_job_management.notification_template_mention')
+template_model = env['ir.model'].search([('model', '=', record.model)], limit=1)
+res = env[record.model].browse(record.res_id)
+screen_type = res.haverton_task_type if record.model == 'project.task' else 'job'
+if template and template_model:
+    for user in record.user_ids:
+        template.send_notification(res_ids=[record.res_id], add_context={'user_name_mentioned': user.name, 'message': record.get_body_plain_text()}, recipient_ids=[user.partner_id.id], model_id=template_model.id, screen_type=screen_type)
+            </field>
+        </record>
+    </data>
+</odoo>

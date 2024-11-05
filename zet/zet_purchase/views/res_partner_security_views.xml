@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_partner_security_form" model="ir.ui.view">
+            <field name="name">Contact Security</field>
+            <field name="model">res.partner.security</field>
+            <field name="arch" type="xml">
+                <form string="Contact Security">
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="color" widget="color_picker"/>
+                            <field name="parent_id"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_partner_security_list" model="ir.ui.view">
+            <field name="name">Contact Security</field>
+            <field name="model">res.partner.security</field>
+            <field eval="6" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Contact Security">
+                    <field name="display_name"/>
+                    <field name="color" widget="color_picker"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="res_partner_security_view_search" model="ir.ui.view">
+            <field name="name">res.partner.security.view.search</field>
+            <field name="model">res.partner.security</field>
+            <field name="arch" type="xml">
+                <search string="Search Partner Security">
+                    <field name="name"/>
+                    <field name="display_name"/>
+                    <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_partner_security" model="ir.actions.act_window">
+            <field name="name">Contact Security</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="res_model">res.partner.security</field>
+        </record>
+
+        <menuitem id="menu_partner_security"
+            action="action_partner_security"
+            name="Contact Security"
+            sequence="2" parent="contacts.res_partner_menu_config"/>
+
+        
+        <record id="view_res_partner_form_inherit_zet" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.zet</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="security_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+    
+</odoo>

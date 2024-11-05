@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_document_file_kanban_inherit" model="ir.ui.view">
+        <field name="name">ir.attachment.inherit.kanban</field>
+        <field name="model">ir.attachment</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="mail.view_document_file_kanban"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="sale_order_ids"></field>
+            </field>
+            <xpath expr="//templates//div[@class='o_kanban_record_title']" position="after">
+                <div t-att-title="record.sale_order_ids" class="o_kanban_record_title_sale_order">
+                    <field name="sale_order_ids" widget="many2many_tags"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_attachment_form" model="ir.ui.view">
+        <field name="name">ir.attachment.inherit.form</field>
+        <field name="model">ir.attachment</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="base.view_attachment_form"/>
+        <field name="arch" type="xml">
+            <field name="res_id" position="after">
+                <field name="sale_order_ids"  widget="many2many_tags"></field>
+            </field>
+          
+        </field>
+    </record>
+
+    <record id="view_attachment_search_inherit" model="ir.ui.view">
+        <field name="name">ir.attachment.inherit.search</field>
+        <field name="model">ir.attachment</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="base.view_attachment_search"/>
+        <field name="arch" type="xml">
+            <field name="create_date" position="after">
+                <field name="sale_order_ids" string="PDA/FDA number"></field>
+                <field name="sale_order_ids" filter_domain="[('sale_order_ids.partner_id','ilike',self)]" string="Customer"/>
+            </field>
+            <filter name="binary_filter" position="after">
+                <separator/>
+                <filter name="fda_pda_active"
+                    string="FDA/PDA Active"
+                    domain="[('sale_order_ids.state','!=','cancel')]"
+                />
+                <filter name="fda_pda_cancel"
+                    string="FDA/PDA Cancel"
+                    domain="[('sale_order_ids.state','=','cancel')]"
+                />
+                <separator/>
+            </filter>
+        </field>
+    </record>
+
+    <record id="action_attachment" model="ir.actions.act_window">
+        <field name="name">Attachments</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('zet_sale_management.view_document_file_kanban_inherit')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('zet_sale_management.view_attachment_form')})]"/>
+        <field name="search_view_id" ref="zet_sale_management.view_attachment_search_inherit"/>
+        <field name="domain">[('order_line_ids', '!=', False)]</field>
+        <field name="context">{'search_default_fda_pda_active':1}</field>
+    </record>
+
+    <menuitem action="action_attachment" id="menu_action_attachment" sequence="30"  parent="sale.sale_order_menu"/>
+
+</odoo>

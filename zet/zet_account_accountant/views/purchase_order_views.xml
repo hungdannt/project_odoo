@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_view_form_zet" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit.zet</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='date_planned_div']" position="after">
+                <field name="classification_type_id"/>
+            </xpath>
+
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="invoice_ref_date" />
+                <field name="invoice_ref" />
+                <field name="bank_transfers_date" />
+                <field name="remarks"/>
+            </xpath>
+
+            <xpath expr="//field[@name='date_order']" position="after">
+                <field name="vessel_name"/>
+            </xpath>   
+
+            <xpath expr="//field[@name='price_subtotal']" position="after">
+                <field name="job_number_ids" widget='many2many_tags' />
+            </xpath>
+
+            <xpath expr="//button[@name='action_view_invoice']" position="after">
+                <button name="action_analyze" string="Analyze" type="object" icon="fa-bar-chart" class="btn-primary"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']//tree//field[@name='analytic_distribution']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

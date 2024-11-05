@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_attachment_search_inherit" model="ir.ui.view">
+        <field name="name">ir.attachment.inherit.search</field>
+        <field name="model">ir.attachment</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="base.view_attachment_search"/>
+        <field name="arch" type="xml">
+            <field name="create_date" position="after">
+                <field name="account_move_ids" string="Invoice"></field>
+                <field name="account_move_ids" filter_domain="[('account_move_ids.partner_id','ilike',self)]" string="Customer"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

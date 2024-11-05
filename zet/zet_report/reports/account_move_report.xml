@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+        <div class="mt-5 clearfix" position="after">
+            <div style="display:flex; align-items:center; page-break-before: always; width: 100%">
+                <t t-if="o.attachment_ids" t-foreach="o.attachment_ids.filtered(lambda x: x.is_printed and 'image' in x.mimetype)" t-as="image">
+                    <img t-att-src="image_data_uri(image.datas)" style="margin-bottom: 16px; max-width:100%; max-height: 900px; object-fit: contain;"/>
+                </t>
+            </div>
+        </div>
+
+        <div class="mt-5 clearfix" position="attributes">
+            <attribute name="class"></attribute>
+            <attribute name="style">margin-top: 20px</attribute>
+
+        </div>
+
+        <xpath expr="//div[@id='payment_term' and contains(@class, 'clearfix')]//div[@name='comment']//span" position="replace">
+        </xpath>
+
+        <xpath expr="//div[@id='informations']" position="replace">
+        </xpath>
+
+        <xpath expr="//div[@class='page mb-4']//h2//span[last()]" position="replace">
+            <span t-if="o.name != '/'">
+                #<span t-field="o.name"/>
+            </span>    
+        </xpath>
+
+        <xpath expr="//div[@class='page mb-4']//h2" position="attributes">
+            <attribute name="style">font-size: 14px; font-weight: bold</attribute>
+        </xpath>
+
+        <xpath expr="//div[@name='address_not_same_as_shipping']/t/address" position="before">
+            Date: <span t-field="o.invoice_date" t-options='{"widget": "date"}'/>
+        </xpath>
+        <xpath expr="//div[@class='row']" position="after">
+            <div t-if="o.move_type == 'in_invoice'" class="row">
+                <div class="col-2">
+                    Bank Transfers Date
+                </div>
+                <div class="col-4">
+                    : <span t-field="o.bank_transfers_date" t-options='{"widget": "date"}'/>
+                </div>
+                
+                <div class="col-1">
+                </div>
+
+                <div class="col-2">
+                    Invoice Ref Date
+                </div>
+                <div class="col-1" style="margin-left: -17px">
+                    :
+                </div>
+                <div class="col-2 text-end">
+                     <span style="margin-right: -17px" t-field="o.invoice_ref_date" t-options='{"widget": "date"}'/>
+                </div>
+            </div>
+
+            <div t-if="o.move_type == 'in_invoice'" class="row">
+                <div class="col-2">
+                    Remarks
+                </div>
+                <div class="col-4">
+                    : <span t-field="o.remarks"/>
+                </div>
+
+                <div class="col-1">
+                </div>
+
+                <div class="col-2">
+                    Invoice Ref No.
+                </div>
+                <div class="col-1" style="margin-left: -17px">
+                    :
+                </div>
+                <div class="col-2 text-end">
+                    <span style="margin-right: -17px" t-field="o.invoice_ref" />
+                </div>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[@name='address_same_as_shipping']/t/address" position="before">
+            Date: <span t-field="o.invoice_date" t-options='{"widget": "date"}'/>
+        </xpath>
+
+        <xpath expr="////div[@name='no_shipping']/t/address" position="before">
+            Date: <span t-field="o.invoice_date" t-options='{"widget": "date"}'/>
+        </xpath>
+    </template>
+</odoo>

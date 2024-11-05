@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ir_model_fields_view_tree_profile" model="ir.ui.view">
+            <field name="name">ir.model.fields.tree.profile</field>
+            <field name="model">ir.model.fields</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" create="false" default_order="show_on_mobile_profile, field_description">
+                    <field name="field_description" />
+                    <field name="show_on_mobile_profile" string="Show On Mobile" />
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

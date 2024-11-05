@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_inspection_wizard_public,access.inspection.wizard.public,model_inspection_wizard,base.group_user,1,1,1,1
+access_survey_user_input_user_inherit_inspection,survey.user_input.user.inherit.inspection,model_survey_user_input,base.group_user,1,1,1,1
+access_survey_question_rule_public,survey.question.rule.public,model_survey_question_rule,base.group_user,1,1,1,1
+access_survey_question_rule_action_public,survey.question.rule.action.public,model_survey_question_rule_action,base.group_user,1,1,1,1
+access_survey_user_input_question_attribute_public,survey.user_input.question.attribute.public,model_survey_user_input_question_attribute,base.group_user,1,1,1,1

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document" >
+        <div class="page" position="after">
+            <div style="display:flex; align-items:center; page-break-before: always; width: 100%">
+                <t t-if="doc.attachment_ids" t-foreach="doc.attachment_ids.filtered(lambda x: x.is_printed and 'image' in x.mimetype)" t-as="image">
+                    <img t-att-src="image_data_uri(image.datas)" style="margin-bottom: 16px; max-width:100%; max-height: 900px; object-fit: contain;"/>
+                </t>
+            </div>
+        </div>
+
+        <xpath expr="//div[@class='page']/div[last()]" position="replace">
+        </xpath>
+
+        <xpath expr="//div[@t-field='doc.partner_id']" position="before">
+            <span>
+                Date: <span t-field="doc.date_order" t-options='{"widget": "date"}'/>
+            </span>
+        </xpath>
+
+        <xpath expr="//div[@id='informations']" position="replace">
+        </xpath>
+
+        <xpath expr="//div[@class='page']//h2[@class='mt-4']" position="replace">
+            <b>
+                <span t-field="doc.type_name"/>
+                <t t-out="doc.name"/>
+            </b>
+        </xpath>
+    </template>
+</odoo>

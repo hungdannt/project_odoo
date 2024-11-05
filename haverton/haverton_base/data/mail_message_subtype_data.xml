@@ -1,0 +1,25 @@
+<odoo>
+    <!-- Overwrite mail.message.subtype of Odoo base: Add haverton_code -->
+    <function name="write" model="ir.model.data">
+        <function name="search" model="ir.model.data">
+            <value eval="[('module', '=', 'mail'), ('name', '=', 'mt_note')]" />
+        </function>
+        <value eval="{'noupdate': False}" />
+    </function>
+
+    <record id="mail.mt_note" model="mail.message.subtype">
+        <field name="name">Note</field>
+        <field name="haverton_code">note</field>
+        <field name="default" eval="False" />
+        <field name="internal" eval="True" />
+        <field name="sequence" eval="1" />
+        <field name="track_recipients" eval="True" />
+    </record>
+
+    <function name="write" model="ir.model.data">
+        <function name="search" model="ir.model.data">
+            <value eval="[('module', '=', 'mail'), ('name', '=', 'mt_note')]" />
+        </function>
+        <value eval="{'noupdate': True}" />
+    </function>
+</odoo>

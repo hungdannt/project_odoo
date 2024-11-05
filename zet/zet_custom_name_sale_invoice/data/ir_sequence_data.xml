@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Find the corresponding "to be inherited record" with noupdate="1" -->
+    <function name="write" model="ir.model.data">
+        <function name="search" model="ir.model.data">
+            <value eval="[('module', '=', 'sale'), ('name', '=', 'seq_sale_order')]"/>
+        </function>
+        <value eval="{'noupdate': False}"/>
+    </function>
+
+        <!-- Finish the job, disabling the existing rule -->
+    <record model="ir.sequence" id="sale.seq_sale_order">
+        <field name="prefix">P%(year)s/%(month)s/</field>
+        <field name="padding">3</field>
+        <field name="use_date_range">True</field>
+        
+    </record>
+
+    <function name="write" model="ir.model.data">
+        <function name="search" model="ir.model.data">
+            <value eval="[('module', '=', 'sale'), ('name', '=', 'seq_sale_order')]"/>
+        </function>
+        <value eval="{'noupdate': True}"/>
+    </function>
+</odoo>

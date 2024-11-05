@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-inherit="mail.Chatter" t-inherit-mode="extension">
+        <xpath expr="//Thread" position="attributes">
+            <attribute name="messageToReplyTo">messageToReplyTo</attribute>
+        </xpath>
+        <xpath expr="//Composer" position="attributes">
+            <attribute name="threadSelect">threadSelect</attribute>
+            <attribute name="isReplyAll">state.isReplyAll</attribute>
+        </xpath>
+        <xpath expr="//button[hasclass('o-mail-Chatter-activity')]" position="after">
+            <button t-if="hasFetchEmail" class="o-mail-Chatter-Fetch-Now btn btn-secondary text-nowrap my-2 m-1"
+                    data-hotkey="shift+f"
+                    t-on-click="onFetchEmailIncomingMailServers">
+                    <span>Fetch Email</span>
+            </button>
+        </xpath>
+        <xpath expr="//SuggestedRecipientsList" position="before">
+            <div class="px-3" style="margin-left:48px;" t-if="state.showButtonsReplyAll">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" t-att-checked="state.isReplyAll" t-on-change="onChangeReplyAllInput"/>
+                    <label class="form-check-label">
+                            Reply All
+                    </label>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

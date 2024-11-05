@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <record id="mobile_filter_view_tree" model="ir.ui.view">
+            <field name="name">mobile.filter.tree</field>
+            <field name="model">mobile.filter</field>
+            <field name="arch" type="xml">
+                <tree editable="top" create="0">
+                    <field name="mobile_filter_category_name" string="Category"/>
+                    <field name="name" readonly="1" />
+                    <field name="code" column_invisible="1"/>
+                    <field name="show_on_mobile" />
+                    <field name="group_ids" widget="many2many_tags" />  
+                </tree>
+            </field>
+        </record>
+        <record id="mobile_filter_search_view" model="ir.ui.view">
+            <field name="name">mobile.filter.search</field>
+            <field name="model">mobile.filter</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="mobile_filter_category_name" string="Category"/>
+                    <filter name="group_by_category" string="Group by Category" context="{'group_by':'mobile_filter_category_name'}"/>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

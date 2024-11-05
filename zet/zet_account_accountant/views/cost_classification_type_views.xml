@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="cost_classification_type_view_tree" model="ir.ui.view">
+            <field name="name">cost.classification.type.tree</field>
+            <field name="model">cost.classification.type</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_configure_type" model="ir.actions.act_window">
+            <field name="name">Cost Classification Type</field>
+            <field name="res_model">cost.classification.type</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem
+            id="menu_configure_type"
+            action="action_configure_type"
+            parent="purchase.menu_purchase_config"
+            sequence="2"/>
+    </data>
+</odoo>

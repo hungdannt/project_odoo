@@ -1,0 +1,11 @@
+.is_sub_section {
+    font-weight: inherit !important;
+}
+
+.alert-dismissible .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 0.688rem 1rem;
+}

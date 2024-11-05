@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="survey.action_survey_question_form">
+            <field name="domain">[('is_page', '=', False), ('is_template', '=', False)]</field>
+        </record>
+
+        <record model="ir.ui.view" id="survey_question_template_view_tree">
+            <field name="name">Tree view for survey question</field>
+            <field name="model">survey.question</field>
+            <field name="arch" type="xml">
+                <tree string="Survey Question" create="true">
+                    <field name="title"/>
+                    <field name="haverton_question_type" />
+                    <field name="constr_mandatory" optional="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_survey_question_template">
+            <field name="name">Questions Template</field>
+            <field name="res_model">survey.question</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="survey_question_template_view_tree"/>
+            <field name="search_view_id" ref="survey.survey_question_search"/>
+            <field name="context">{'search_default_group_by_page': True, 'show_survey_field': True,
+                'default_is_template': True}
+            </field>
+            <field name="domain">[('is_page', '=', False), ('is_template', '=', True)]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_empty_folder">
+                    No Questions Template yet!
+                </p>
+            </field>
+        </record>
+
+        <record id="action_survey_question_template_view_tree" model="ir.actions.act_window.view">
+            <field eval="20" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="haverton_inspection_management.survey_question_template_view_tree"/>
+            <field name="act_window_id" ref="haverton_inspection_management.action_survey_question_template"/>
+        </record>
+        <record id="action_survey_question_template_view_form" model="ir.actions.act_window.view">
+            <field eval="20" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="haverton_inspection_management.haverton_survey_question_inherit_view_form"/>
+            <field name="act_window_id" ref="haverton_inspection_management.action_survey_question_template"/>
+        </record>
+
+         <record id="haverton_survey_question_search" model="ir.ui.view">
+            <field name="name">Search view for survey question</field>
+            <field name="model">survey.question</field>
+            <field name="inherit_id" ref="survey.survey_question_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/group/filter[@name='group_by_survey']" position="replace">
+                </xpath>
+                
+                <xpath expr="//search/group/filter[@name='group_by_type']" position="attributes">
+                    <attribute name="context">{'group_by': 'haverton_question_type'}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem name="Questions Template"
+                  id="menu_question_template_tree"
+                  action="haverton_inspection_management.action_survey_question_template"
+                  parent="survey.survey_menu_questions"
+                  sequence="0"/>
+    </data>
+</odoo>

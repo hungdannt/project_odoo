@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="sale_order_form_history" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.history</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="pricelist_id" position="attributes">
+                <attribute name="domain"> [ ('id', 'in', price_list_ids)] </attribute>
+            </field>
+            <field name="pricelist_id" position="after">
+                <field name="price_list_ids" widget="many2many_tags" invisible="1"/>
+            </field>
+            <field name="currency_id" position="after">
+                <label for="main_currency_id" invisible="not id"/>
+                <div class="o_row" invisible="not id">
+                    <field name="main_currency_id" force_save="True"/>
+                    <label for="rate"/>
+                    <field name="rate" force_save="True"/>
+                    <button name="change_main_currency" invisible="not rate" 
+                    confirm="Update New Unit price equal Current Unit Price * F(x) Rate - Main currency"
+                    type="object" context="{'currency': main_currency_id, 'rate': rate}" string="Change Main Currency" class="btn-link mb-1 px-0" icon="fa-refresh" />
+                </div>
+
+                <label for="tmp_foreign_currency_id" invisible="not id"/>
+                <div class="o_row" invisible="not id">
+                    <field name="tmp_foreign_currency_id"/>
+                    <label for="conversion_rate" string="F(x) rate"/>
+                    <field name="conversion_rate"/>
+                    <button name="update_all_conversion_rate"
+                    context="{ 'conversion_rate': conversion_rate, 'foreign_currency_id': tmp_foreign_currency_id}"
+                    type="object" string="Update Conversion Rate" class="btn-link mb-1 px-0" icon="fa-refresh" />
+                </div>
+            </field>
+            <xpath expr="//sheet//div[1]" position="before">
+                <div class="alert alert-warning text-center o_form_header alert-dismissible" invisible='not show_waring_convert_rate' role="status">
+                    <field name="show_waring_convert_rate" invisible="1"></field>
+                    <button type="button" name="close" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <div>
+                        <strong>
+                            There are differences between the exchange rates, so please double-check the exchange rates in the remarks section!
+                        </strong>
+                    </div>
+                </div>
+            </xpath>
+            
+            <button  id="create_invoice" position="before">
+                <field name="is_fda" invisible="1"/>
+                <button name="create_fda" type="object" string="Create FDA" invisible="is_fda" data-hotkey="f"/>
+            </button>
+
+             <group name="sale_info" position="before">
+                <group name="other_info" string="Other Info">
+                    <field name="principal"></field>
+                    <field name="pda" invisible="1"></field>
+                    <field name="purpose_of_call"></field>
+                    <field name="customs_declaration_ref"></field>
+                    <field name="postal_reference_sent_out_invoice" string="Postal Reference: Sent out Invoice"></field>
+                    <field name="postal_reference_others" string="Postal Reference Others"></field>
+                </group>
+            </group>
+            <xpath expr="//button[@name='action_view_invoice']" position="before">
+                    <button type="object" name="action_view_history" class="oe_stat_button" icon="fa-history" invisible="count_history == 0">
+                        <field name="count_history" widget="statinfo" string="History"/>
+                    </button>
+
+                    <button type="object" name="action_view_fda" class="oe_stat_button" icon="fa-pencil-square-o" invisible="count_fda == 0">
+                        <field name="count_fda" widget="statinfo" string="FDA"/>
+                    </button>
+
+                    <button type="object" name="action_view_pda" class="oe_stat_button" icon="fa-pencil-square-o" invisible="not is_fda or not pda">
+                       PDA
+                    </button>
+
+                    <button name="action_convert_to_template" string="Create template" type="object" icon="fa-clone" class="btn-primary"/>
+
+                    <button name="action_select_analytic_wizard" string="Analyze" type="object" icon="fa-bar-chart" class="btn-primary"/>
+            </xpath>
+            <field name="date_order" position="after">
+                <field name="count_history" invisible="1"></field>
+            </field>
+            <field name="validity_date" position="before">
+                <field name="vessel_name"></field>
+                <field name="port"></field>
+                <field name="date_of_arrival"></field>
+                <field name="date_of_departure"></field>
+                <field name="foreign_currency_id" invisible="1"></field>
+            </field>
+            <field name="payment_term_id" position="after">
+                <field name="foreign_currency_id" invisible="1"></field>
+                <field name="hide_exchange_price" invisible="1"></field>
+            </field>
+            <xpath expr="//field[@name='order_line']//tree" position="inside">
+                <button class="d-flex justify-content-end w-100" name="action_get_attachment_view" type="object" icon="fa-paperclip"/>
+                <field name="attachment_ids" widget="many2many_tag"  column_invisible="True"/>
+                <field name="total_file_size" column_invisible="True"></field>
+                <field name="is_sub_section" column_invisible="True"></field>
+                <field name="product_note" column_invisible="True"/>
+                <field name="tmp_sequence" column_invisible="True"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree//field[@name='price_unit']" position="after">
+                <field name="fixed_price" column_invisible="True" widget="monetary" options="{'currency_field': 'currency_id'}"></field>
+                <field name="foreign_currency_id" column_invisible="True"></field>
+                <field name="foreign_price" column_invisible='parent.hide_exchange_price'></field>
+                <field name="conversion_rate" column_invisible='parent.hide_exchange_price'></field>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree//field[@name='price_unit']" position="attributes">
+                <attribute name="options">{'currency_field': 'currency_id'}</attribute>
+                <attribute name="widget">monetary</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']//tree//control" position="replace">
+                <control>
+                    <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                    <create name="add_section_control" string="Add a sub-section" context="{'default_display_type': 'line_section', 'default_is_sub_section': True}"/>
+                    <create name="add_product_control" string="Add a product"/>
+                    <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                    <button name="action_add_from_catalog" string="Catalog" type="object" class="px-4 btn-link" context="{'order_id': parent.id}"/>
+                </control>
+            </xpath>
+            <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
+                <field name="voucher_reference"></field>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree//field[@name='price_subtotal']" position="after">
+                <field name="foreign_price_subtotal" column_invisible='parent.hide_exchange_price' optional="show"></field>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree//field[@name='price_total']" position="after">
+                <field name="foreign_price_total" column_invisible='parent.hide_exchange_price' optional="hide"></field>
+            </xpath>
+
+            <xpath expr="//tree/field[@name='price_subtotal']" position="attributes">
+                <attribute name="string">Amount</attribute>
+            </xpath>
+
+            <field name="payment_term_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <field name="validity_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <field name="sale_order_template_id" position="after">
+                <field name="validity_date"/>
+                <field name="payment_term_id"/>
+            </field>
+
+            <xpath expr="//tree/field[@name='analytic_distribution']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_job_book_view" model="ir.ui.view">
+            <field name="name">sale.order.tree.job.book</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Job Number"/>
+                    <field name="date_order" string="Date"/>
+                    <field name="vessel_name"/>
+                    <field name="principal" />
+                    <field name="purpose_of_call"/>
+                    <field name="customs_declaration_ref"/>
+                    <field name="postal_reference_sent_out_invoice" string="Sent Out Invoice"/>
+                    <field name="postal_reference_others" string="Others"/>
+                </tree>
+            </field>
+        </record>
+    
+    <!-- SEARCH -->
+    <record id="view_sales_order_filter" model="ir.ui.view">
+        <field name="name">sale.order.search.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <filter name="my_sale_orders_filter" position="after">
+                <filter string="PDA" domain="[('is_fda', '=', False)]" name="sale_order_pda"/>
+                <filter string="FDA" domain="[('is_fda', '=', True)]" name="sale_order_fda"/>
+                <separator/>
+                <filter name="fda_pda_active"
+                    string="FDA/PDA Active"
+                    domain="[('state','!=','cancel')]"
+                />
+                <filter name="fda_pda_cancel"
+                    string="FDA/PDA Cancel"
+                    domain="[('state','=','cancel')]"
+                />
+            </filter>
+        </field>
+    </record>
+
+    <!-- ACTIONS (WINDOW) -->
+
+    <record id="action_job_book" model="ir.actions.act_window">
+        <field name="name">Job Book</field>
+        <field name="res_model">sale.order</field>
+        <field name="search_view_id" ref="zet_sale_management.view_sales_order_filter"/>
+        <field name="view_id" eval="sale_order_job_book_view"/>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_sale_order_fda': 1, 'search_default_fda_pda_active': 1}</field>
+    </record>
+
+    <record id="action_orders_fda" model="ir.actions.act_window">
+        <field name="name">Final Disbursement Account</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+        <field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
+        <field name="context">{'default_is_fda': True}</field>
+        <field name="domain">[('is_fda', '=', True)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new quotation, the first step of a new sale!
+            </p><p>
+                Once the quotation is confirmed, it becomes a sales order.<br/> You will be able to create an invoice and collect the payment.
+            </p>
+        </field>
+    </record>
+
+        <record id="action_orders_pda" model="ir.actions.act_window">
+        <field name="name">Proforma Disbursement Account</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+        <field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
+        <field name="context">{}</field>
+        <field name="domain">[('is_fda', '=', False)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new quotation, the first step of a new sale!
+            </p><p>
+                Once the quotation is confirmed, it becomes a sales order.<br/> You will be able to create an invoice and collect the payment.
+            </p>
+        </field>
+    </record>
+
+    <!-- MENU -->
+    <record id="sale.menu_sale_quotations" model="ir.ui.menu"  >
+        <field name="action" ref="zet_sale_management.action_orders_pda"/>
+        <field name="name">Proforma Disbursement Account</field>
+    </record>
+
+    <record id="sale.menu_sale_order" model="ir.ui.menu"  >
+        <field name="action" ref="zet_sale_management.action_orders_fda"/>
+        <field name="name">Final Disbursement Account</field>
+    </record>
+
+    <record id="sale.menu_sale_report" model="ir.ui.menu"  >
+        <field name="groups_id" eval="False"/>
+    </record>
+
+    <menuitem action="action_job_book" id="menu_job_book" sequence="50"  parent="sale.menu_sale_report"/>
+
+    <record id="sale_management.sale_order_template_menu" model="ir.ui.menu">
+        <field name="parent_id" ref="sale.sale_order_menu"/>    
+        <field name="sequence">40</field>
+    </record>
+
+    <record id="sale_order_template_view_form_inherit_zet" model="ir.ui.view">
+        <field name="name">sale.order.template.form.inherit.zet</field>
+        <field name="model">sale.order.template</field>
+        <field name="inherit_id" ref="sale_management.sale_order_template_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='require_payment']" position="after">
+                <field name="user_id" widget="many2one_avatar_user" />
+                <field name="team_id" options="{'no_create': True}" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

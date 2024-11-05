@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="res_config_settings_inherit_limit" model="ir.ui.view">
+        <field name="name">res.config.settings.inherit.limit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app//block[@name='quotation_order_setting_container']" position="inside">
+                <setting id="limit_attrach" help="Limited quantity and capacity.">
+                        <field name="has_limit"/>
+                        <div invisible="not has_limit" >
+                            <label for="number_of_lines_limit"/>
+                            <field name="number_of_lines_limit"  class="text-center" style="width: 5rem;"  />
+                           
+                        </div>
+                        <div invisible="not has_limit" >
+                            <label for="capacity_limit" />
+                            <field name="capacity_limit" class="text-center" style="width: 5rem;"  />
+                            <span>MB</span>
+                        </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

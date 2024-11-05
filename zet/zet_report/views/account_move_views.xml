@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.view.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <button name="open_created_caba_entries" position="after">
+                <field name='attachment_ids' invisible="1"/>
+                <button name="action_select_attachments" type="object" class="oe_stat_button" icon="fa-paperclip" invisible="not attachment_ids">
+                    <field name="attachment_count" widget="statinfo" string="Select Attachment"/>
+                </button>
+            </button>
+
+            <xpath expr="//page[@id='other_tab']//group[@id='other_tab_group']//field[@name='ref']" position="after">
+                <field name="digital_ver"></field>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

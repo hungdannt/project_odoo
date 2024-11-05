@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+
+        <record id="mail_template_project_task_is_is_defect" model="mail.template">
+            <field name="name">Email: Return to Site Notice</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="subject">Defect Work Release for {{ object.project_id.address_id.subject_mail_address }}</field>
+            <field name="email_from">{{ user.email_formatted }}</field>
+            <field name="partner_to">{{ ','.join(map(str, object.service_provider_id.child_ids.filtered(lambda x: x.is_primary == True).ids)) }}</field>
+            <field name="description">Template for mail to Service Provider after creating new defect</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0 auto; text-align: center">
+                    <img style="max-width: 650px; max-height: 150px; " t-if="object.company_id.logo_image" t-att-src="object.company_id.logo_image.local_url"  alt="Logo Image"/>
+                </div>
+                   
+                <h1 align="center" style="text-align: center; font-size: 40px; font-family: Calibri, sans-serif;">
+                    <b>Return to Site Notice</b> 
+                </h1>
+
+                <div align="center" style="margin: 0 auto; max-width: 800px">
+                    <table cellspacing="0" cellpadding="0" style="width: 100%; border-collapse: collapse; border: none;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                    <b>Attention:</b> <t t-out="', '.join(object.service_provider_id.child_ids.filtered(lambda x: x.is_primary == True).mapped('name'))"/>
+                                </td>
+                                <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                    <b>Date:</b> <t t-out="object.get_current_date()"/>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                    <b>Company:</b> <t t-out="object.service_provider_id.name"></t>
+                                </td>
+                                <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                    <b>From:</b> <t t-out="user.name"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="border: none; border-bottom: solid windowtext 1px; padding: 0cm 0cm 1px 0; margin-bottom: 10px">
+                    <p style="border: none; padding: 0cm">
+                        <span style="font-size: 16px"></span>
+                    </p>
+                </div>
+
+                <div>
+                    <p><b>Job No: <t t-out="object.project_id.contract_no"/></b></p>
+                    <p><b>Site Address: <t t-out="object.project_id.address"/></b></p>
+                </div>
+                <div style="font-size: 13px; margin-top: 30px">
+                    <p><b>Defect: </b> <t t-out="object.name"/></p>
+                    <p><b>Location: </b> <t t-out="', '.join(object.location_ids.mapped('name'))"/></p>
+                    <p><b>Detailed Description:</b> <t t-out="object.defect_details"/></p>
+                    <p><b>Course of Action: </b> <t t-out="object.defect_action"/></p>
+                    <p><b>Notes:</b></p>
+                    <p>Please complete as soon as possible </p>
+                    <p><b>Images relating to this defect:</b></p>
+
+                    <t t-if="object.images_section" t-foreach="object.images_section" t-as="section">
+                        <div style="margin-bottom: 20px">
+                            <div style="font-size: 10px; font-weight: bold; margin-bottom: 10px"><t t-out="section.description"/></div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px">
+                                <t t-foreach="section.attach_images" t-as="image">
+                                    <div style="width: 200px; height: 150px; margin-bottom: 10px; margin-right: 10px; overflow: hidden; position: relative">
+                                        <img
+                                            t-att-src="image.local_url"
+                                            style="width: 100%; height: 100%; object-fit: cover"/>
+                                    </div>
+                                </t>
+                            </div>
+                        </div> 
+                    </t>
+                </div>
+            </field>
+                <field name="lang">{{ object.partner_id.lang }}</field>
+                <field name="auto_delete" eval="False"/>
+                <field name="allow_send_mail" eval="True"/>
+                <field name="report_template_ids" eval="[(4, ref('haverton_job_management.action_report_create_defect'))]"/>
+                <field name="save_attachment" eval="True"/>
+                
+        </record>
+
+        <record id="mail_template_reschedule_activity" model="mail.template">
+            <field name="name">Email: Reschedule activity</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="subject">Rescheduled Work for {{object.project_id.address_id.name}}</field>
+            <field name="email_from">{{ user.email_formatted }}</field>
+            <field name="partner_to">{{ ','.join(map(str, object.service_provider_id.child_ids.filtered(lambda x: x.is_primary == True).ids)) }}</field>
+            <field name="description">Set this template on a project's stage to automate email when tasks reach stages</field>
+            <field name="body_html" type="html">
+                <div>
+                    <div align="center" style="margin: 0 auto 10px; max-width: 800px">
+                        <table cellspacing="0" cellpadding="0" style="width: 100%; border-collapse: collapse; border: none;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                        <b>Attention:</b> <t t-out="', '.join(object.service_provider_id.child_ids.filtered(lambda x: x.is_primary == True).mapped('name'))"/>
+                                    </td>
+                                    <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                        <b>Date:</b> <t t-out="object.get_current_date()"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                        <b>Company:</b> <t t-out="object.service_provider_id.name"></t>
+                                    </td>
+                                    <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                        <b>From:</b> <t t-out="user.name"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    Dear <t t-out="object.service_provider_id.display_name or 'customer'">Brandon Freeman</t>,<br/>
+                    
+                    The following activity has been <b>rescheduled</b>:
+                    <br/>
+                    <table border="1" cellspacing="3" cellpadding="0">
+                        <tbody>
+                            <tr>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                    <h3 style="font-size:13.5pt;margin-right:0;margin-left:0;">Contract No</h3>
+                                </td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                    <h3 style="font-size:13.5pt;margin-right:0;margin-left:0;">Address</h3>
+                                </td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                    <h3 style="font-size:13.5pt;margin-right:0;margin-left:0;">Description</h3>
+                                </td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                    <h3 style="font-size:13.5pt;margin-right:0;margin-left:0;">Defect Detail</h3>
+                                </td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                    <h3 style="font-size:13.5pt;margin-right:0;margin-left:0;">Defect Location</h3>
+                                </td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                <h3 style="font-size:13.5pt;margin-right:0;margin-left:0;">Booked</h3></td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                <h3 style="font-size:13.5pt;margin-right:0;margin-left:0;">Forecasted Completion</h3></td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                <h3 style="font-size:13.5pt;margin-right:0;margin-left:0;">Contact Name</h3></td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                <h3 style="font-size:13.5pt;margin-right:0;margin-left:0;">Contact Info</h3></td></tr>
+                            <tr>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                <p style="font-size:11pt;margin:0;"><t t-out="object.project_id.contract_no or ''">N1-264</t></p></td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                <p style="font-size:11pt;margin:0;"><t t-out="object.project_id.address_id.name or ''">Lot 323, 19 Merion Circuit, Heddon Greta NSW 2321</t></p></td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                <p style="font-size:11pt;margin:0;"><t t-out="object.description or ''">Back Blade / Site Clean 2 </t></p></td>
+                                <td style="padding:0.75pt; border:1px solid black;"><t t-out="object.defect_details or ''">When users attempt to log in to the application using invalid credentials</t></td>
+                                <td style="padding:0.75pt; border:1px solid black;"><t t-out="', '.join([i.get('name') for i in object.location_ids.read(['name'])]) or ''">Back Blade / Site Clean 2 </t></td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                <p style="font-size:11pt;margin:0;"><t t-if="object.booked_start_date" t-out="object.get_current_date(object.booked_start_date) or ''">28/03/2024</t></p></td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                <p style="font-size:11pt;margin:0;"><t t-if="object.date_deadline" t-out="object.get_current_date(object.date_deadline) or ''">26/03/2024</t> </p></td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                <p style="font-size:11pt;margin:0;"><t t-out="user.name or ''">Troy Mcloughlin</t></p></td>
+                                <td style="padding:0.75pt; border:1px solid black;">
+                                <p style="font-size:11pt;margin:0;"><t t-out="user.email or ''">troy.m@havertonhomes.com.au</t></p></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <br/>
+                    <p style="font-size:11pt;font-family:Calibri,sans-serif;margin:0;"><span style="font-size:12pt;">Please reply to this email to confirm the new date. Please let me know if you have any issue with the above date.</span></p>
+                    <br/>
+                    <p style="font-size:11pt;font-family:Calibri,sans-serif;margin:0;"><b><span style="font-size:12pt;">Message from supervisor:</span></b></p>
+                    <br/><br/>
+                    <p style="font-size:11pt;font-family:Calibri,sans-serif;margin:0;"><span style="font-size:12pt;"><t t-out="user.name or ''">Troy Mcloughlin</t></span><span></span></p>
+                    <br/>
+                    <div>
+                        <p style="font-size:11pt;font-family:Calibri,sans-serif;margin:0;">
+                            <a href="https://calendly.com/haverton" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="1">
+                                <span style="text-decoration:none;">
+                                </span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </field>
+                <field name="lang">{{ object.partner_id.lang }}</field>
+                <field name="auto_delete" eval="False"/>
+                <field name="allow_send_mail" eval="True"/>
+                <field name="report_template_ids" eval="[(4, ref('haverton_job_management.action_report_reschedule_activity'))]"/>
+                <field name="save_attachment" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

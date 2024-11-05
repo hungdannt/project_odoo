@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="external_layout_zen_wood">
+        <div style="font-size:14px" t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+            <div class="row mb-4">
+                <div class="col-6">
+                    <img t-if="company.logo" style="height: 89px; width: 355px; margin-bottom:5px" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+                </div>
+                <div class="col-6 text-end" style="margin-top:22px;" t-if="company.report_header" t-field="company.report_header" name="moto">Company tagline</div>
+            </div>
+            <div class="row">
+                <div class="col-6" name="company_address">
+                </div>
+            </div>
+            <div t-if="o" class="row" style="font-size:14px">
+                <t t-if="'vessel_name' in o.fields_get() and o.vessel_name" t-set="vessel_name" t-value="o.vessel_name"/>
+                <t t-if="'port' in o.fields_get() and o.port" t-set="port" t-value="o.port"/>
+                <t t-if="'date_of_arrival' in o.fields_get() and o.date_of_arrival" t-set="date_of_arrival" t-value="o.date_of_arrival"/>
+                <t t-if="'date_of_departure' in o.fields_get() and o.date_of_departure" t-set="date_of_departure" t-value="o.date_of_departure"/>
+                <div class="col-6">
+                    <t t-call="web.address_layout"/>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-5">
+                    <table  class="table table-borderless table-sm" style="">
+                        <tbody>
+                            <tr>
+                                <td class="ps-0 pb-0 text-nowrap">Vessel Name</td>
+                                <td class="ps-0 pb-0">:</td>
+                                <td class="w-100 pb-0 text-end"><span t-out="vessel_name" t-options="{'widget': 'text'}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-0 pb-0 text-nowrap">Port</td>
+                                <td class="ps-0 pb-0">:</td>
+                                <td class="w-100 pb-0 text-wrap text-end"><span t-out="port"/></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-0 pb-0 text-nowrap">Date Of Arrival</td>
+                                <td class="ps-0 pb-0">:</td>
+                                <td class="w-100 pb-0 text-wrap text-end"><span t-out="date_of_arrival" t-options="{'widget': 'date'}" /></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-0 pb-0 text-nowrap">Date Of Departure</td>
+                                <td class="ps-0 pb-0">:</td>
+                                <td class="w-100 pb-0 text-wrap text-end"><span t-out="date_of_departure" t-options="{'widget': 'date'}"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout {{  'o_report_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}" t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' if company.layout_background == 'Geometric' else ''}});font-size:14px" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <!-- <div style="height:100px"> -->
+            <!-- </div> -->
+            <t t-out="0"/>
+        </div>
+
+        <div style="font-size:12px" t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div t-if="o" class="row m-0 p-0" style="height: 150px">
+                <div class="col-7 text-nowrap m-0 p-0">
+                    <span t-if="'note' in o.fields_get() and o.note" t-field="o.note"/>
+                    <span t-if="'narration' in o.fields_get() and o.narration" t-field="o.narration"/>
+                </div>
+                <div t-if="o.state == 'sale' or (o.state == 'posted' and o.move_type in ('out_invoice', 'out_refund'))" class="col-5 m-0 p-0" style="text-align: right">
+                    <div>
+                        <div style="font-size: 16px; font-weight: bold; font-style: italic;">for Tineken Shipping Ltd.</div>
+                        <div style="height: 100px;position: relative;">
+                            <div t-if="o.digital_ver" style="font-size: 14px; right: 0; font-weight: bold; top: 5%; position: absolute; transform: translateY(-50%)">Digital Copy No Signature Required</div>
+                        </div>
+                    </div>
+                    <div style="border-top: 2px solid black; margin-top: 20px"></div>
+                </div>
+            </div>
+           
+            <div class="text-end mt-4" style="border-top: 1px solid black;">
+                <ul class="list-inline mb4">
+                    <div t-field="company.report_footer"/>
+                </ul>
+
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+                <div t-if="report_type == 'pdf' and display_name_in_footer" class="text-muted">
+                    <span t-out="o.name">(document name)</span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <record id="report_layout_boxed" model="report.layout">
+        <field name="name">ZenWood</field>
+        <field name="sequence">15</field>
+        <field name="view_id" ref="zet_report.external_layout_zen_wood"/>
+    </record>
+</odoo>

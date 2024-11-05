@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="edit_project_task_inherit" model="ir.ui.view">
+            <field name="name">project.task.form.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="priority">24</field>
+            <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+                <xpath expr="//sheet/group" position="after">
+                    <group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="booking_status"/>
+                            <field name="total_defects" string="Defects"/>
+                            <field name="booked_start_date" string="Booked Start"/>
+                            <field name="old_booked_start_date" invisible="1"/>
+                            <field name="forecasted_start_date" string="Forecasted Start" />
+                            <field name="start_date" string="Start"/>
+                            <field name="date_deadline" string="Forecasted Completion"/>
+                            <field name="days_until_completion"/>
+                            <field name="days_remaining" />
+                           
+                           
+                        </group>
+                        <group >
+                             <field name="service_provider_id" />
+                            <field name="date_end" string="Completion"/>
+                            <field name="comp"/>
+                            <field name="predecessor_ids" widget="many2many_tags"/>
+                            <field name="successor_ids" widget="many2many_tags"/>
+                            <field name="user_id" widget="many2one_avatar_user"/>
+                            <field name="service_type" readonly="1"/>
+                            <field name="location_ids" widget="many2many_tags" readonly="1"/>
+                            <field name="job_status" string="Job Status"/>
+                        </group>
+                    </group>
+                </xpath>
+               
+            </field>
+        </record>
+
+        <record id="task_search_form_project_contact_type_inherit_view_search" model="ir.ui.view">
+            <field name="name">task.search.form.project.contact.type.inherit.view.search</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form_base"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/filter[@name='customer']" position="after">
+                    <filter string="Task Type" name="haverton_task_type" domain="[]" context="{'group_by':'haverton_task_type'}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="project.action_view_all_task" model="ir.actions.act_window">
+            <field name="context">{'search_default_haverton_task_type': 1}</field>
+        </record>
+
+        <record id="project.act_project_project_2_project_task_all" model="ir.actions.act_window">
+            <field name="context">{'search_default_haverton_task_type': 1}</field>
+        </record>
+        
+    </data>
+</odoo>

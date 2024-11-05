@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_jwt_refresh_token_readonly,access.jwt.refresh.token.readonly,model_jwt_refresh_token,base.group_public,1,0,0,0
+access_jwt_refresh_token_full_access,access.jwt.refresh.token.full.access,model_jwt_refresh_token,base.group_user,1,1,1,1
+access_haverton_region_public,access.haverton.region.public,model_haverton_region,base.group_user,1,1,1,1
+access_haverton_service_type_public,access.haverton.service.type.public,model_haverton_service_type,base.group_user,1,1,1,1
+access_haverton_work_category_public,access.haverton.work.category.public,model_haverton_work_category,base.group_user,1,1,1,1
+access_haverton_compliance_public,access.haverton.compliance.public,model_haverton_compliance,base.group_user,1,1,1,1
+access_haverton_wr_preference_public,access.haverton.wr.preference.public,model_haverton_wr_preference,base.group_user,1,1,1,1
+access_haverton_defect_category_public,access.haverton.defect.category.public,model_haverton_defect_category,base.group_user,1,1,1,1
+access_haverton_location_public,access.haverton.location.public,model_haverton_location,base.group_user,1,1,1,1
+access_haverton_address,access.haverton.address,model_haverton_address,base.group_user,1,1,1,1
+access_haverton_service_question_public,access.haverton.service.question.public,model_haverton_service_question,base.group_user,1,1,1,1
+access_haverton_code_full_access,access.haverton.code.full_access,model_haverton_code,base.group_user,1,1,1,1
+access_mobile_filter,access.mobile.filter,model_mobile_filter,base.group_user,1,1,1,1
+access_mobile_filter_category,access.mobile.filter.category,model_mobile_filter_category,base.group_user,1,1,1,1

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="haverton_survey_question_inherit_view_form" model="ir.ui.view">
+        <field name="name">haverton.survey.question.inherit.view.form</field>
+        <field name="model">survey.question</field>
+        <field name="inherit_id" ref="survey.survey_question_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group[@invisible='is_page']/group[2]" position="replace">
+                <group class="preview_haverton_question">
+                    <div class="mx-lg-auto w-lg-50 d-none d-sm-block o_preview_questions bg-light" colspan="2">
+                        <!-- Yes/No Question -->
+                        <div invisible="haverton_question_type != 'yes_no_question'" role="img" aria-label="Yes/No question"
+                            title="Yes/No question">
+                            <span>Which is yellow?</span><br/>
+                            <div class="o_preview_questions_choice mb-2"><i class="fa fa-circle-o  fa-lg me-2"/>Yes</div>
+                            <div class="o_preview_questions_choice mb-2"><i class="fa fa-dot-circle-o fa-lg me-2"/>No</div>
+                        </div>
+                        <!-- Multiple choice: only one answer -->
+                        <div invisible="haverton_question_type != 'simple_choice'" role="img" aria-label="Multiple choice with one answer"
+                            title="Multiple choice with one answer">
+                            <span>Which is yellow?</span><br/>
+                            <div class="o_preview_questions_choice mb-2"><i class="fa fa-circle-o  fa-lg me-2"/>answer</div>
+                            <div class="o_preview_questions_choice mb-2"><i class="fa fa-dot-circle-o fa-lg me-2"/>answer</div>
+                            <div class="o_preview_questions_choice"><i class="fa fa-circle-o  fa-lg me-2"/>answer</div>
+                        </div>
+                        <!-- Multiple choice: multiple answers allowed -->
+                        <div invisible="haverton_question_type != 'multiple_choice'" role="img" aria-label="Multiple choice with multiple answers"
+                            title="Multiple choice with multiple answers">
+                            <span>Which are yellow?</span><br/>
+                            <div class="o_preview_questions_choice mb-2"><i class="fa fa-square-o fa-lg me-2"/>answer</div>
+                            <div class="o_preview_questions_choice mb-2"><i class="fa fa-check-square-o fa-lg me-2"/>answer</div>
+                            <div class="o_preview_questions_choice"><i class="fa fa-check-square-o fa-lg me-2"/>answer</div>
+                        </div>
+                        <!-- Map & Location -->
+                        <div invisible="haverton_question_type != 'location'">
+                            <span>Choose your location?</span><br/>
+                            <img src="haverton_inspection_management/static/img/map_location_question.png" style="max-height: 158px;" alt="Map and Location"/>
+                        </div>
+                        <!-- Multiple Images -->
+                        <div invisible="haverton_question_type != 'multiple_image'">
+                            <span>Choose images</span><br/>
+                            <i class="fa fa-paperclip" role="img" aria-label="Multiple Images" title="Multiple Images"/>
+                            <i class="fa fa-picture-o fa-3x" role="img" style="margin: 0 5px"/>
+                            <i class="fa fa-picture-o fa-3x" role="img" style="margin: 0 5px"/>
+                            <i class="fa fa-plus-circle" role="img"/>
+                        </div>
+                        <!-- Multiple Videos -->
+                        <div invisible="haverton_question_type != 'multiple_video'">
+                            <span>Choose videos</span><br/>
+                            <i class="fa fa-paperclip" role="img" aria-label="Multiple Videos" title="Multiple Videos"/>
+                            <i class="fa fa-file-video-o fa-3x" role="img" style="margin: 0 5px"/>
+                            <i class="fa fa-file-video-o fa-3x" role="img" style="margin: 0 5px"/>
+                            <i class="fa fa-plus-circle" role="img"/>
+                        </div>
+                        <!-- Date -->
+                        <div invisible="haverton_question_type != 'date'">
+                            <span>When is Christmas?</span><br/>
+                            <p class="o_datetime border-0" >YYYY-MM-DD
+                                <i class="fa fa-calendar" role="img" aria-label="Calendar" title="Calendar"/>
+                            </p>
+                        </div>
+                        <!-- Date and Time -->
+                        <div invisible="haverton_question_type != 'datetime'">
+                            <span>When does ... start?</span><br/>
+                            <p class="o_datetime border-0">YYYY-MM-DD hh:mm:ss
+                                <i class="fa fa-calendar" role="img" aria-label="Calendar" title="Calendar"/>
+                            </p>
+                        </div>
+                        <!-- Signature -->
+                        <div invisible="haverton_question_type != 'signature'">
+                            <span>Signature?</span><br/>
+                            <img src="haverton_inspection_management/static/img/signature_question.svg" style="max-height: 158px;"  alt="Signature" aria-label="Sign here" title="Sign here"/>
+                        </div>
+                        <!-- Static Text -->
+                        <div invisible="haverton_question_type != 'static_text'">
+                            <span>Instructions</span><br/>
+                            <ul>
+                                <li>Step 1</li>
+                                <li>Step 2</li>
+                                <li>...</li>
+                            </ul>
+                        </div>
+                        <!-- Numerical Value -->
+                        <div invisible="haverton_question_type != 'numerical_box'">
+                            <span>How many ...?</span><br/>
+                            <i class="fa fa-2x" role="img" aria-label="Numeric" title="Numeric">123&#160;</i>
+                            <i class="fa fa-2x fa-sort" role="img" aria-label="Numeric"/>
+                        </div>
+                        <!-- Single Line Text Zone -->
+                        <div invisible="haverton_question_type != 'char_box'">
+                            <span>Name one animal</span><br/>
+                            <i class="fa fa-minus fa-4x" role="img" aria-label="Single Line" title="Single Line"/>
+                        </div>
+                        <!-- Multiple Lines Text Zone -->
+                        <div invisible="haverton_question_type != 'text_box'">
+                            <span>Name all the animals</span><br/>
+                            <i class="fa fa-align-justify fa-4x" role="img" aria-label="Multiple lines" title="Multiple Lines"/>
+                        </div>
+                        <!-- Acknowledgment Zone -->
+                        <div invisible="haverton_question_type != 'acknowledgment'">
+                            <span>Infomation or description of what the user is agreeing to</span><br/>
+                            <i class="fa fa-align-justify fa-4x" role="img" aria-label="Acknowledgment" title="Acknowledgment"/>
+
+                        </div>
+                    </div>
+                </group>
+            </xpath>
+            <field name="question_type" position="after">
+                <field name="haverton_question_type" widget="radio" required="not is_page"/>
+            </field>
+            <field name="question_type" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <xpath expr="//page[@name='answers']/field[@name='suggested_answer_ids']" position="attributes">
+                <attribute name="readonly">haverton_question_type == 'yes_no_question'</attribute>
+                <attribute name="force_save">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='answers']/field[@name='suggested_answer_ids']/tree/field[@name='value_image']" position="attributes">
+                <attribute name="column_invisible">parent.question_type == 'matrix' or parent.haverton_question_type == 'yes_no_question'</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/field[@name='survey_id']" position="after">
+                <group>
+                    <field name="is_template" invisible="1"/>
+                    <field name="survey_question_template_id" invisible="is_template == True"/>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='options']/group[1]" position="before">
+                <group string="Question Rules" invisible="question_type not in ['simple_choice', 'multiple_choice']">
+                    <field name="rule_ids" string="">
+                        <tree editable="bottom">
+                            <field name="survey_id" column_invisible="1" />
+                            <field name="operator" />
+                            <field name="values"
+                                column_invisible="parent.question_type in ['simple_choice', 'multiple_choice']" />
+                            <field name="choice_answer_ids" string="Values"
+                                column_invisible="parent.question_type not in ['simple_choice', 'multiple_choice']"
+                                widget="many2many_tags" domain="[('question_id', '=', parent.id)]" />
+                            <field name="action" options="{'no_create': True}" />
+                            <field name="otherwise_action" options="{'no_create': True}" />
+                            <field name="trigger_question_ids" widget="many2many_tags"
+                                domain="[('survey_id', '=', survey_id), ('id', '!=', parent.id), ('is_page', '=', False)]" />
+                        </tree>
+                    </field>
+                </group>
+                <group string="Question Options">
+                    <field name="autofill" string="Auto fill"
+                        invisible="haverton_question_type not in ['text_box', 'char_box', 'signature']"/>
+                </group>
+                <group>
+                    <field name="autofill_field" string="Auto fill field"
+                        invisible="haverton_question_type == 'signature' or not autofill"
+                        required="autofill"/>
+                    <field name="view_in_map" invisible="haverton_question_type != 'location'" />
+                    <field name="allow_no_answer" invisible="haverton_question_type != 'yes_no_question'"/>
+                    <field name="autofill_user" 
+                        invisible="not (haverton_question_type == 'signature' and autofill)"/>
+                    <field name="autofill_datetime" 
+                        invisible="not (haverton_question_type == 'signature' and autofill)"/>
+                    <field name="autofill_location" 
+                        invisible="not (haverton_question_type == 'signature' and autofill)"/>
+                    <field name="label_for_user_id" invisible="haverton_question_type != 'signature' or not autofill_user"/>
+                    <field name="value_static_text" invisible="haverton_question_type != 'static_text'"/>
+                    <field name="value_acknowledgment" required="haverton_question_type == 'acknowledgment'" invisible="haverton_question_type != 'acknowledgment'"/>
+                    <field name="text_before_click" required="haverton_question_type == 'acknowledgment'" invisible="haverton_question_type != 'acknowledgment'"/>
+                    <field name="text_after_click" required="haverton_question_type == 'acknowledgment'" invisible="haverton_question_type != 'acknowledgment'"/>
+                </group>
+            </xpath>
+            <field name="scoring_type" position="after">
+                <header invisible="is_template">
+                    <button name="create_question_template" type="object" icon="fa-exchange" class="oe_highlight" string="Create Question Template" title="Create Question Template"/>
+                </header>
+            </field>
+        </field>
+    </record>
+
+    <record id="haverton_survey_question_inherit_view_tree" model="ir.ui.view">
+        <field name="name">haverton.survey.question.inherit.view.tree</field>
+        <field name="model">survey.question</field>
+        <field name="inherit_id" ref="survey.survey_question_tree"/>
+        <field name="arch" type="xml">
+            <field name="question_type" position="after">
+                <field name="haverton_question_type"/>
+                <button name="create_question_template" type="object" icon="fa-exchange" title="Create Question Template"/>
+            </field>
+            <field name="question_type" position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="haverton_survey_survey_inherit_view_form" model="ir.ui.view">
+        <field name="name">haverton.survey.survey.inherit.view.form</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_survey_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='questions']/field[@name='question_and_page_ids']/tree/field[@name='question_type']" position="after">
+                <field name="haverton_question_type"/>
+            </xpath>
+            <xpath expr="//page[@name='questions']/field[@name='question_and_page_ids']/tree/field[@name='question_type']" position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="1">
+        <record id="survey_question_rule_action_visible_show" model="survey.question.rule.action">
+            <field name="name">Show</field>
+            <field name="code">show</field>
+            <field name="type">visible</field>
+            <field name="is_main_action" eval="True" />
+        </record>
+        <record id="survey_question_rule_action_visible_hide" model="survey.question.rule.action">
+            <field name="name">Hide</field>
+            <field name="code">hide</field>
+            <field name="type">visible</field>
+            <field name="is_main_action" eval="False" />
+        </record>
+    </data>
+</odoo>

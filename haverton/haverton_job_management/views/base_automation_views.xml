@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="automations_inherit" model="ir.ui.view">
+            <field name="name">Automations.inherit</field>
+            <field name="model">base.automation</field>
+            <field name="inherit_id" ref="base_automation.view_base_automation_form"/>
+            <field name="priority">24</field>
+            <field name="arch" type="xml">
+                <field name="trigger_field_ids" position="attributes">
+                    <attribute name='invisible'>trigger not in ['on_create_or_write', 'on_write']</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

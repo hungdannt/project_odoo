@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.config_parameter" id="base_url_freeze">
+            <field name="key">web.base.url.freeze</field>
+            <field name="value">1</field>
+        </record>
+    </data>
+
+    <data noupdate="1">
+</data>
+</odoo>

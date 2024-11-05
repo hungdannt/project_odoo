@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_haverton_activity_question_answer_public,access.haverton.activity.question.answer.public,model_haverton_activity_question_answer,base.group_user,1,1,1,1
+access_attachment_section_public,access.attachment.section.public,model_attachment_section,base.group_user,1,1,1,1

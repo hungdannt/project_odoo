@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="account.account_invoices_with_payments" model="ir.actions.report">
+		<field name="paperformat_id" ref="zet_report.zenwood_report_paperformat" />
+	</record>
+    
+	<record id="account.account_invoices" model="ir.actions.report">
+		<field name="paperformat_id" ref="zet_report.zenwood_report_paperformat" />
+	</record>
+
+	<record id="sale.report_saleorder" model="ir.actions.report">
+		<field name="paperformat_id" ref="zet_report.zenwood_report_paperformat" />
+	</record>
+
+	<record id="sale.report_saleorder_pro_forma" model="ir.actions.report">
+		<field name="paperformat_id" ref="zet_report.zenwood_report_paperformat" />
+	</record>
+
+	<record id="sale.report_saleorder_raw" model="ir.actions.report">
+		<field name="paperformat_id" ref="zet_report.zenwood_report_paperformat" />
+	</record>
+</odoo>

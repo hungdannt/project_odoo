@@ -1,0 +1,83 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* rope_contacts
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-31 06:51+0000\n"
+"PO-Revision-Date: 2023-03-31 06:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: rope_contacts
+#: model_terms:ir.ui.view,arch_db:rope_contacts.res_partner_view_form_address
+msgid "City"
+msgstr "市区町村"
+
+#. module: rope_contacts
+#: model:ir.model,name:rope_contacts.model_res_partner
+msgid "Contact"
+msgstr "連絡先"
+
+#. module: rope_contacts
+#: model:ir.model,name:rope_contacts.model_res_country
+#: model:ir.model.fields,field_description:rope_contacts.field_res_partner__country_id
+#: model:ir.model.fields,field_description:rope_contacts.field_res_users__country_id
+#: model_terms:ir.ui.view,arch_db:rope_contacts.res_partner_view_form_address
+msgid "Country"
+msgstr "国"
+
+#. module: rope_contacts
+#: model_terms:ir.ui.view,arch_db:rope_contacts.res_partner_view_form_address
+msgid "State"
+msgstr "都﻿道﻿府﻿県﻿/﻿州"
+
+#. module: rope_contacts
+#: model_terms:ir.ui.view,arch_db:rope_contacts.res_partner_view_form_address
+msgid "Street 2..."
+msgstr "町名番地2…"
+
+#. module: rope_contacts
+#: model_terms:ir.ui.view,arch_db:rope_contacts.res_partner_view_form_address
+msgid "Street..."
+msgstr "町名番地…"
+
+#. module: rope_contacts
+#: model_terms:ir.ui.view,arch_db:rope_contacts.res_partner_view_form_address
+msgid "ZIP"
+msgstr "郵便番号"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:base.view_partner_simple_form
+msgid "e.g. Brandom Freeman"
+msgstr "株式会社●●"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:base.view_partner_simple_form
+msgid "Company Name..."
+msgstr "会社名"
+
+#. module: rope_contacts
+#: model:ir.model.fields,field_description:rope_contacts.field_res_partner__person_in_charge
+#: model:ir.model.fields,field_description:rope_contacts.field_res_users__person_in_charge
+msgid "Person In Charge"
+msgstr "担当者名"
+
+#. module: rope_contacts
+#: model:ir.model.fields,field_description:rope_contacts.field_res_partner__payment_term
+#: model:ir.model.fields,field_description:rope_contacts.field_res_users__payment_term
+msgid "Payment Term"
+msgstr "支払い締日"
+
+#. module: rope_contacts
+#: model:res.groups,name:rope_contacts.payment_term_administrator
+msgid "Show Payment Term Infor"
+msgstr "支払い期限情報表示"

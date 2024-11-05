@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="companion_sync_log_tree" model="ir.ui.view">
+            <field name="name">companion.sync.log.view.tree</field>
+            <field name="model">companion.sync.log</field>
+            <field name="arch" type="xml">
+                <tree string="Contract Types" editable="bottom" create="0" delete="0" edit="0">
+                    <field name="create_date"/>
+                    <field name="statement"/>
+                    <field name="params"/>
+                    <field name="multiparams"/>
+                    <field name="status"/>
+                    <field name="error"/>
+                    <field name="user_id" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="companion_sync_log_act_window">
+            <field name="name">Companion Sync Log</field>
+            <field name="res_model">companion.sync.log</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+    </data>
+</odoo>

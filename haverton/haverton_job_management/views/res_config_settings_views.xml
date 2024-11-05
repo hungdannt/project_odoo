@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_job_management" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.job.management</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="haverton_base_fastapi.res_config_settings_view_form_base_fastapi" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/app[@name='haverton_base']/block[@name='haverton_user_management']" position="after">
+                <block title="Job Management" name="haverton_job_management">
+                    <setting string="Fields On The Detail Screens" help="Config hide/show fields on detail screens for mobile"  id="mobile_job_detail_screen_settings">
+                        <button class="oe_highlight" string="Config Job Detail Screen" name="action_show_job_detail_fields" type="object" />
+                        <p style="margin: 10px;" />
+                        <button class="oe_highlight" string="Config Defect Detail Screen" name="action_show_defect_detail_fields" type="object" />
+                        <p style="margin: 10px;" />
+                        <button class="oe_highlight" string="Config Activity Detail Screen" name="action_show_activity_detail_fields" type="object" />
+                        <p style="margin: 10px;" />
+                        <button class="oe_highlight" string="Config Variation Detail Screen" name="action_show_variation_detail_fields" type="object" />
+                    </setting>
+                    <setting string="Limit Years In Todo" help="Set the number of years to limit the data from the current time back to display on the todo screen"
+                        id="haverton_job_management_limit_years_in_todo">
+                        <field name="limit_years_in_todo" />
+                    </setting>
+                </block>
+                <block title="Notification Management" name="haverton_notification_management">
+                    <setting string="Reminder Days Before Task Start" help="This feature allows you to customize when you receive a reminder notification by entering the number of days before a task's start date" id="days_until_task_start_reminder">
+                        <field name="days_until_task_start_reminder"/>
+                    </setting>
+                </block>
+            </xpath>
+            <xpath expr="//form/app[@name='haverton_base']/block[@name='haverton_filter_management']" position="inside">
+                <setting string="Dashboard Filter Items" help="Config hide/show items of category filter on dashboard screens for mobile"
+                    id="haverton_filter_management_settings_dashboard_filter_item">
+                    <button class="oe_highlight" string="Config Activities Filter Items"
+                        name="action_show_dashboard_activity_filter" context="{'screen_type': 'dashboard_activities'}" type="object" />
+                </setting>
+                <setting string="Todo Filter Categories" help="Config hide/show category filter on todo screens for mobile"
+                    id="haverton_filter_management_settings_todo_filter_category">
+                    <button class="oe_highlight" string="Config Activities Filter Categories"
+                        name="action_show_config_todo_filter_category" context="{'screen_type': 'todo_activities'}" type="object" />
+                    <p style="margin: 10px;" />
+                    <button class="oe_highlight" string="Config Defects Filter Categories"
+                        name="action_show_config_todo_filter_category" context="{'screen_type': 'todo_defects'}" type="object" />
+                    <p style="margin: 10px;" />
+                    <button class="oe_highlight" string="Config Variations Filter Categories"
+                        name="action_show_config_todo_filter_category" context="{'screen_type': 'todo_variations'}" type="object" />
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

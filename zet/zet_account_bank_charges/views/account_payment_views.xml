@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_account_payment_form_inherit" model="ir.ui.view">
+        <field name="name">account.payment.form.inherit</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_bank_id" position="after">
+                <field name="bank_charges"></field>
+            </field>
+
+            <xpath expr="//button[@name='button_open_journal_entry']" position="after">
+                <button name="button_open_bank_charge"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-dollar"
+                        invisible="bank_charges == 0"
+                        groups="account.group_account_user,account.group_account_readonly">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">Bank Charge</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

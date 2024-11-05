@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_res_partner_form_inherit_zet" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.zet</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="after">
+                    <page string="Contact Security" name="page_contact_security">
+                        <group>
+                            <field name="user_security_ids" invisible="1"></field>
+                            <field name="security_ids" widget="many2many_tags" domain="[('id', 'child_of', user_security_ids)]" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+    
+</odoo>

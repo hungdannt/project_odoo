@@ -1,0 +1,136 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* zet_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-30 03:01+0000\n"
+"PO-Revision-Date: 2024-05-30 03:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__active
+msgid "Active"
+msgstr "啟用"
+
+#. module: zet_purchase
+#: model_terms:ir.ui.view,arch_db:zet_purchase.res_partner_security_view_search
+msgid "Archived"
+msgstr "已歸檔"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__child_ids
+msgid "Child Departments"
+msgstr "子部門"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__color
+msgid "Color"
+msgstr "顏色"
+
+#. module: zet_purchase
+#: model:ir.model,name:zet_purchase.model_res_partner
+msgid "Contact"
+msgstr "聯絡人"
+
+#. module: zet_purchase
+#: model:ir.actions.act_window,name:zet_purchase.action_partner_security
+#: model:ir.ui.menu,name:zet_purchase.menu_partner_security
+#: model_terms:ir.ui.view,arch_db:zet_purchase.view_partner_security_form
+#: model_terms:ir.ui.view,arch_db:zet_purchase.view_partner_security_list
+#: model_terms:ir.ui.view,arch_db:zet_purchase.view_res_partner_form_inherit_zet
+#: model_terms:ir.ui.view,arch_db:zet_purchase.view_res_users_form_inherit_zet
+msgid "Contact Security"
+msgstr "聯絡人安全"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__create_uid
+msgid "Created by"
+msgstr "創建者"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__create_date
+msgid "Created on"
+msgstr "創建於"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__display_name
+msgid "Display Name"
+msgstr "顯示名稱"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__id
+msgid "ID"
+msgstr "編號"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__write_uid
+msgid "Last Updated by"
+msgstr "最後更新者"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__write_date
+msgid "Last Updated on"
+msgstr "最後更新於"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__parent_id
+msgid "Parent Category"
+msgstr "父類別"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__parent_path
+msgid "Parent Path"
+msgstr "父路徑"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__partner_ids
+msgid "Partners"
+msgstr "合作夥伴"
+#. module: zet_purchase
+#: model_terms:ir.ui.view,arch_db:zet_purchase.res_partner_security_view_search
+msgid "Search Partner Security"
+msgstr "搜尋夥伴安全"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner__security_ids
+#: model:ir.model.fields,field_description:zet_purchase.field_res_users__security_ids
+msgid "Security"
+msgstr "安全"
+
+#. module: zet_purchase
+#: model:ir.model.fields,field_description:zet_purchase.field_res_partner_security__name
+msgid "Tag Name"
+msgstr "標籤名稱"
+
+#. module: zet_purchase
+#: model:ir.model.fields,help:zet_purchase.field_res_partner_security__active
+msgid "The active field allows you to hide the category without removing it."
+msgstr "啟用字段允許您隱藏類別而不將其刪除。"
+
+#. module: zet_purchase
+#: model:ir.model,name:zet_purchase.model_res_users
+msgid "User"
+msgstr "使用者"
+
+#. module: zet_purchase
+#: model:res.groups,name:zet_purchase.group_purchase_user_all_documents
+msgid "User: All Documents"
+msgstr "使用者：所有文件"
+
+#. module: zet_purchase
+#: model:res.groups,name:zet_purchase.group_purchase_user_only
+msgid "User: Own document only"
+msgstr "使用者：僅限自己的文件"
+
+#. module: zet_purchase
+#: model:ir.model,name:zet_purchase.model_res_partner_security
+msgid "res.partner.security"
+msgstr "合作夥伴安全"

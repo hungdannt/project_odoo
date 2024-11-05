@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_form_service_provider" model="ir.ui.view">
+        <field name="name">res.partner.view.form.service.provider</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='contact_addresses']/field[@name='child_ids']/form/sheet/field[@name='parent_id']" position="after">
+                <field name="haverton_contact_type" invisible="1"/>
+            </xpath>
+            <xpath expr="//notebook/page[@name='contact_addresses']/field[@name='child_ids']/form/sheet/group[1]/group[2]" position="inside">
+                <field name="is_primary"/>
+            </xpath>
+            <xpath expr="//notebook/page[@name='contact_addresses']/field[@name='child_ids']" position="attributes">
+                <attribute name="context">{'default_parent_id': id, 'default_street': street, 'default_street2':
+                    street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip,
+                    'default_country_id': country_id, 'default_lang': lang, 'default_user_id': user_id, 'default_type':
+                    'other', 'default_haverton_contact_type':'client'}
+                </attribute>
+            </xpath>
+            <xpath expr="//form/sheet/group[1]/group[1]" position="inside">
+                <field name="preferred_name"/>
+                <field name="entity_code"/>
+                <field name="service_type_ids" widget="many2many_tags"/>
+                <field name="compliance_id"/>
+                <field name="work_category_ids" widget="many2many_tags"/>
+                <field name="address_id"></field>
+            </xpath>
+            <xpath expr="//form/sheet/group[1]/group[2]" position="inside">
+                <field name="abn" string="ABN"/>
+                <field name="url" string="URL" widget="url"/>
+                <field name="wr_preference_id"/>
+                <field name="region_ids" widget="many2many_tags"/>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[@name='contact_addresses']/field[@name='child_ids']//div[@class='oe_kanban_details']" position="inside">
+                <div t-if="record.personal_email and record.personal_email.raw_value"><field name="personal_email" widget="email"/></div>
+                <div t-if="record.personal_phone and record.personal_phone.raw_value">Personal Phone: <field name="personal_phone"/></div>
+                <div t-if="record.personal_mobile and record.personal_mobile.raw_value">Personal Mobile: <field name="personal_mobile"/></div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_address_inherit_view_search" model="ir.ui.view">
+        <field name="name">res.partner.view.search.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='type_company']" position="after">
+                <filter string="Service Provider" name="haverton_service_provider" domain="[('haverton_contact_type','=', 'service_provider')]"/>
+                <filter string="Person" name="haverton_person" domain="[('haverton_contact_type','=', 'person')]"/>
+                <filter string="Client" name="haverton_client" domain="[('haverton_contact_type','=', 'client')]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="contacts.action_contacts" model="ir.actions.act_window">
+        <field name="context">{'default_is_company': True, 'search_default_haverton_service_provider': 1, 'default_haverton_contact_type': 'service_provider'}</field>
+    </record>
+</odoo>

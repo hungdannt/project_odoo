@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="template_report_reschedule_activity">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div style="font-family: Calibri, sans-serif">
+                        <div style="text-align: center">
+                            <img t-if="doc.company_id.logo_image" t-att-src="image_data_uri(doc.company_id.logo_image.datas)" style="max-width: 650px; max-height: 150px;"/>
+                        </div>
+                        
+                        <h1 style="text-align: center;">
+                            <span style="color:red; text-align: center;">Rescheduled</span> Work Release
+                        </h1>
+                        
+                        
+                        <table align="center" style="width: 80%; border-collapse: collapse; border: none;" border="1">
+                            <tr>
+                                <td style="padding: 0 10px 0 10px"><b>Attention: </b> <t t-out="', '.join(doc.service_provider_id.child_ids.filtered(lambda x: x.is_primary == True).mapped('name'))"></t><b> </b></td>
+                                <td style="padding: 0 10px 0 10px"><b>Date: </b> <t t-if="doc.booked_start_date" t-out="doc.get_current_date(doc.booked_start_date)"></t></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 10px 0 10px"><b>Company: </b> <t t-out="doc.service_provider_id.name"></t></td>
+                                <td style="padding: 0 10px 0 10px"><b>From: </b> <t t-out="request.env.user.name"></t></td>
+                            </tr>
+                        </table>
+                        <hr/>
+                        <p>This is an updated Work Release for the following Jobs / Activities</p>
+
+                        <table border="1" style="width: 100%; border-collapse: collapse; border: none;">
+                            <tr>
+                                <td style="padding: 0 10px 0 10px">Contract No</td>
+                                <td style="padding: 0 10px 0 10px">Address</td>
+                                <td style="padding: 0 10px 0 10px">Description</td>
+                                <td style="padding: 0 10px 0 10px">Defect Detail</td>
+                                <td style="padding: 0 10px 0 10px">Defect Location   </td>
+                                <td style="padding: 0 10px 0 10px">Booked</td>
+                                <td style="padding: 0 10px 0 10px">Forecasted Completion   </td>
+                                <td style="padding: 0 10px 0 10px">Contact Name</td>
+                                <td style="padding: 0 10px 0 10px">Contact Info   </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 10px 0 10px"><t t-out="doc.project_id.contract_no"/></td>
+                                <td style="padding: 0 10px 0 10px"><t t-out="doc.project_id.address"/></td>
+                                <td style="padding: 0 10px 0 10px"><t t-out="doc.description"/></td>
+                                <td style="padding: 0 10px 0 10px"><t t-out="doc.defect_details"/> </td>
+                                <td style="padding: 0 10px 0 10px"><t t-out="', '.join([i.get('name') for i in doc.location_ids.read(['name'])])"/>   </td>
+                                <td style="padding: 0 10px 0 10px"><t t-if="doc.booked_start_date" t-out="doc.get_current_date(doc.booked_start_date)"/></td>
+                                <td style="padding: 0 10px 0 10px"><t t-if="doc.date_deadline" t-out="doc.get_current_date(doc.date_deadline)"/></td>
+                                <td style="padding: 0 10px 0 10px"><t t-out="request.env.user.name"/></td>
+                                <td style="padding: 0 10px 0 10px"><t t-out="request.env.user.email"/>   </td>
+                            </tr>
+                        </table>
+
+                        <br/>
+                        <p>Note:</p>
+                    </div>
+                </t>
+            </t>
+    </template>
+
+
+    <record id="action_report_reschedule_activity" model="ir.actions.report">
+        <field name="name">Report Reschedule Activity</field>
+        <field name="model">project.task</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">haverton_job_management.template_report_reschedule_activity</field>
+        <field name="report_file">haverton_job_management.template_report_reschedule_activity</field>
+        <field name="binding_model_id" ref="model_project_task"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_create_defect" model="ir.actions.report">
+        <field name="name">Report Create Defect</field>
+        <field name="model">project.task</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">haverton_job_management.template_report_email_create_defect</field>
+        <field name="report_file">haverton_job_management.template_report_email_create_defect</field>
+        <field name="print_report_name">'%s (Defect Work Release)' % (object.project_id.contract_no)</field>
+        <field name="binding_model_id" ref="model_project_task"/>
+        <field name="binding_type">report</field>
+    </record>
+    
+    <template id="template_report_email_create_defect">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div style="font-family: Calibri, sans-serif; font-size: 22px"> 
+                        <div style="text-align: center">
+                            <img t-if="doc.company_id.logo_image" t-att-src="image_data_uri(doc.company_id.logo_image.datas)" style="max-width: 650px; max-height: 150px;"/>
+                        </div>
+
+                        <h1 align="center" style="text-align: center; font-size: 40px;">
+                            <b>Return to Site Notice</b> 
+                        </h1>
+
+                        <div align="center" style="margin: 0 auto; max-width: 800px">
+                            <table cellspacing="0" cellpadding="0" style="width: 100%; border-collapse: collapse; border: none;">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                            <b>Attention:</b> <t t-out="', '.join(doc.service_provider_id.child_ids.filtered(lambda x: x.is_primary == True).mapped('name'))"/>
+                                        </td>
+                                        <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                            <b>Date:</b> <t t-out="doc.get_current_date()"/>
+                                        </td>
+                                    </tr>
+                                    <tr> 
+                                        <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                            <b>Company:</b> <t t-out="doc.service_provider_id.name"></t>
+                                        </td>
+                                        <td style="width: 50%; height: 22px; border: 1px solid windowtext; padding: 0 10px 0 10px">
+                                            <b>From:</b> <t t-out="user.name"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div style="border: none; border-bottom: solid windowtext 1px; padding: 0cm 0cm 1px 0; margin-bottom: 10px">
+                            <p style="border: none; padding: 0cm">
+                                <span style="font-size: 16px"></span>
+                            </p>
+                        </div>
+
+                        <div>
+                            <p><b>Job No: <t t-out="doc.project_id.contract_no"/></b></p>
+                            <p><b>Site Address: <t t-out="doc.project_id.address"/></b></p>
+                        </div>
+                        <div style="font-size: 18px; margin-top: 30px">
+                            <p><b>Defect: </b> <t t-out="doc.name"/></p>
+                            <p><b>Location: </b> <t t-out="', '.join(doc.location_ids.mapped('name'))"/></p>
+                            <p><b>Detailed Description:</b> <t t-out="doc.defect_details"/></p>
+                            <p><b>Course of Action: </b> <t t-out="doc.defect_action"/></p>
+                            <p><b>Notes:</b></p>
+                            <p>Please complete as soon as possible </p>
+                            <p><b>Images relating to this defect:</b></p>
+
+                            <t t-if="doc.images_section" t-foreach="doc.images_section" t-as="section">
+                                <div style="margin-bottom: 20px; page-break-before: always">
+                                    <p><t t-out="section.description"/></p>
+                                    <div style="display:flex; align-items:center">
+                                        <t t-foreach="section.attach_images" t-as="image">
+                                            <img t-att-src="image_data_uri(image.datas)" style="margin-right: 10px; width: 290px"/>
+                                        </t>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+    </template>
+
+</odoo>

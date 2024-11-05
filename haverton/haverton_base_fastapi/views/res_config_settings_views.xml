@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_base_fastapi" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.base.fastapi</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="haverton_base.res_config_settings_view_form_haverton" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/app[@name='haverton_base']" position="inside">
+                <block title="User Management" name="haverton_user_management">
+                    <setting string="Fields On The Detail Screens" help="Config hide/show fields on profile screen for mobile" id="mobile_profile_screen_settings">
+                        <button class="oe_highlight" string="Config Profile Screen" name="action_show_profile_fields" type="object" />
+                    </setting>
+                </block>
+                <block title="Filter Management" name="haverton_filter_management">
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

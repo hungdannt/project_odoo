@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="haverton_survey_user_input_view_search_inherit" model="ir.ui.view">
+        <field name="name">haverton.survey.user.input.view.search.inherit</field>
+        <field name="model">survey.user_input</field>
+        <field name="inherit_id" ref="survey.survey_user_input_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='survey_id']" position="after">
+                <field name="parent_survey_id"/>
+            </xpath>
+            <xpath expr="//filter[@name='group_by_survey']" position="after">
+                <filter name="group_by_parent_survey" string="Survey" domain="[]" context="{'group_by': 'parent_survey_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="survey.action_survey_user_input">
+        <field name="context">{'search_default_group_by_parent_survey': 1}</field>
+    </record>
+
+    <record id="haverton_survey_user_input_inherit_view_form" model="ir.ui.view">
+        <field name="name">haverton.survey.user_input.inherit.view.form</field>
+        <field name="model">survey.user_input</field>
+        <field name="inherit_id" ref="survey.survey_user_input_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='page_answers']" position="after">
+                <page string="Defects" name="page_defects">
+                    <field name="defect_ids" mode="tree" readonly="0" no_label="1">
+                        <tree create="0" edit="0">
+                            <field name="sequence"/>
+                            <field name="name"/>
+                            <field name="project_id" string="Contract No."/>
+                            <field name="forecasted_start_date"/>
+                            <field name="date_deadline" string="Forecasted Completion"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.view.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//div[1]" position="before">
+                <div class="alert alert-warning text-center o_form_header alert-dismissible" invisible='not show_waring_convert_rate' role="status">
+                    <field name="show_waring_convert_rate" invisible="1"></field>
+                    <button type="button" name="close" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <div>
+                        <strong>
+                            There are differences between the exchange rates, so please double-check the exchange rates in the remarks section!
+                        </strong>
+                    </div>
+                </div>
+                <div class="alert alert-danger text-start o_form_header alert-dismissible" invisible='not show_waring_exchange_rate' role="status">
+                    <field name="show_waring_exchange_rate" invisible="1"></field>
+                    <button type="button" name="close" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <div>
+                        <field name="text_waring_exchange_rate"/>
+                    </div>
+                </div>
+            </xpath>
+            <field name="payment_reference" position="before">
+                <field name="vessel_name"/>
+                <field name="port"/>
+                <field name="date_of_arrival"/>
+                <field name="date_of_departure"/>
+            </field>
+            <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='name']" position="after">
+                <field name="voucher_reference"/>
+                <field name="is_sub_section" column_invisible="True"></field>
+            </xpath>
+            <control position="replace">
+                <control>
+                    <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                    <create name="add_section_control" string="Add a sub-section" context="{'default_display_type': 'line_section', 'default_is_sub_section': True}"/>
+                    <create name="add_line_control" string="Add a line"/>
+                    <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                </control>
+            </control>
+
+            <group id="header_right_group" position="inside">
+                <field name="foreign_currency_id" readonly="False"></field>
+                <field name="hide_exchange_price" invisible="1"></field>
+            </group>
+
+            <field name="ref" position="after">
+                <field name="move_type" invisible="1"></field>
+                <field name="classification_type_id" readonly="state == 'posted'"/>
+                <field name="invoice_ref_date" invisible="move_type != 'in_invoice'" />
+                <field name="invoice_ref" invisible="move_type != 'in_invoice'"></field>
+                <field name="vsl_completion_date" invisible="move_type != 'out_invoice'"></field>
+                <field name="fund_collection_days" invisible="move_type != 'out_invoice'" />
+                <field name="bank_transfers_date" invisible="move_type != 'in_invoice'"></field>
+                <field name="remarks" invisible="move_type != 'in_invoice'"></field>
+            </field>
+
+            <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='price_unit']" position="after">
+                <field name="fixed_price" column_invisible="True" widget="monetary" options="{'currency_field': 'currency_id'}"></field>
+                <field name="foreign_currency_id" column_invisible="True"></field>
+                <field name="foreign_price" column_invisible='parent.hide_exchange_price'></field>
+                <field name="conversion_rate" column_invisible='parent.hide_exchange_price'></field>
+            </xpath>
+
+            <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='price_subtotal']" position="after">
+                <field name="foreign_price_subtotal" column_invisible='parent.hide_exchange_price' optional="show"></field>
+            </xpath>
+
+            <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='price_total']" position="after">
+                <field name="foreign_price_total" column_invisible='parent.hide_exchange_price' optional="hide"></field>
+            </xpath>
+
+             <field name="tax_totals" position="after">
+                <field name="foreign_currency_id" invisible="1"></field>
+                
+            </field>
+
+            <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='price_subtotal']" position="after">
+                <field name="job_number_ids" widget='many2many_tags' column_invisible="parent.move_type != 'in_invoice'" />
+            </xpath>
+             <xpath expr="//field[@name='invoice_line_ids']//tree" position="inside">
+                <button class="d-flex justify-content-end w-100" name="action_get_attachment_view" type="object" icon="fa-paperclip"/>
+                <field name="attachment_ids" widget="many2many_tag"  column_invisible="True"/>
+                <field name="total_file_size" column_invisible="True"></field>
+            </xpath>
+
+            <xpath expr="//tree/field[@name='price_subtotal']" position="attributes">
+                <attribute name="string">Amount</attribute>
+            </xpath>
+
+            <xpath expr="//tree/field[@name='name']" position="attributes">
+                <attribute name="string">Description</attribute>
+            </xpath>
+
+            <xpath expr="//button[@name='action_open_business_doc']" position="before">
+                <button name="action_convert_to_template" string="Create template" type="object" icon="fa-clone" class="btn-primary"/>
+                <button name="action_analyze" string="Analyze" type="object" icon="fa-bar-chart" class="btn-primary"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="income_report_view_tree" model="ir.ui.view">
+            <field name="name">income.report.tree</field>
+            <field name="model">account.move</field>
+            <field name="arch" type="xml">
+                <tree js_class="account_dashboard_list">
+                    <field name="name" string="INV NO" />
+                    <field name="partner_id" string="Customer" />
+                    <field name="vessel_name" optional="hide"/>
+                    <field name="vsl_completion_date" optional="hide"/>
+                    <field name="inv_amount" string="INV AMT" optional="hide"/>  
+                    <field name="invoice_date" string="Invoice Date" />
+                    <field name="currency_id" column_invisible="1"/> 
+                    <field name="credit_amount" string="Credit Amount" widget="monetary" options="{'currency_field': 'currency_id'}" optional="hide"/>
+                    <field name="reversal_move_id" widget="many2many_tags" string="Credit Note No." />
+                    <field name="net_amount" string="Net Amount" widget="monetary" options="{'currency_field': 'currency_id'}" optional="hide" />
+                    <field name="down_payment_amount" string="DownPayment RCV'D" /> 
+                    <field name="bank_charges_dp" string="Bank Charges DP" />  
+                    <field name="down_payment_date" string="DownPayment RCV'D Date" optional="hide"/> 
+                    <field name="fund_collection_days" optional="hide"/>
+                    <field name="settlement_amount" string="Settlement" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                    <field name="bank_charges_settlement" string="Bank Charges Settlement" />  
+                    <field name="settlement_date" string="Settlement Date" />  
+                    <field name="balance_amount" string="Balance" />  
+                    <field name="exchange_rate" string="Exchange Rate" />  
+                </tree>
+            </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_income_report">
+        <field name="name">Income Report</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="income_report_view_tree"/>
+        <field name="domain">[('move_type', '=', 'out_invoice'), ('is_downpayment', '=', False)]</field>
+        <field name="context">{'get_summary_in_xlsx': True, 'default_move_type': 'out_invoice', 'default_is_downpayment': False}</field>
+    </record>
+
+    <menuitem name="Income Report" parent="account.menu_finance_reports" sequence="1" id="menu_action_income_report" action="action_income_report"/>
+
+    <record id="cost_report_view_tree" model="ir.ui.view">
+            <field name="name">cost.report.tree</field>
+            <field name="model">account.move</field>
+            <field name="arch" type="xml">
+                <tree js_class="account_dashboard_list">
+                    <field name="invoice_ref_date" string="Invoice Date" optional="hide" />
+                    <field name="classification_type_id" optional="hide"/>
+                    <field name="partner_id" string="Supplier" optional="hide"/>
+                    <field name="invoice_ref" optional="hide" />
+                    <field name="name" string="Vendor Bill" />
+                    <field name="vessel_name" optional="hide"/>
+                    <field name="job_number_text" string="Job Number" optional="hide" />
+                    <field name="currency_id" column_invisible="1"/> 
+                    <field name="amount_total" string="INV AMT" />  
+                    <field name="credit_amount" string="Credit Amount" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                    <field name="reversal_move_id" widget="many2many_tags" string="Credit Note No." />
+                    <field name="net_amount" string="Net Amount" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                    <field name="paid_amount" string="Paid" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                    <field name="paid_date" string="Paid Date" optional="hide"/>
+                    <field name="paid_by" string="Paid By" optional="hide"/>
+                    <field name="bank_transfers_date" string="Bank Transfers Date" optional="hide"/>
+                    <field name="remarks" string="Remarks" optional="hide"/>
+                </tree>
+            </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_cost_report">
+        <field name="name">Cost Report</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="cost_report_view_tree"/>
+        <field name="domain">[('move_type', '=', 'in_invoice')]</field>
+        <field name="context">{'get_summary_in_xlsx': True, 'cost_report': True, 'default_move_type': 'in_invoice'}</field>
+    </record>
+
+    <record id="action_attachment" model="ir.actions.act_window">
+        <field name="name">Attachments</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="search_view_id" ref="zet_account_accountant.view_attachment_search_inherit"/>
+        <field name="domain">[('account_move_line_ids', '!=', False)]</field>
+    </record>
+    
+    <menuitem action="action_attachment" id="menu_action_attachment" sequence="30"  parent="account.menu_finance_receivables"/>
+
+    <menuitem name="Cost Report" parent="account.menu_finance_reports" sequence="1" id="menu_action_cost_report" action="action_cost_report"/>
+
+</odoo>

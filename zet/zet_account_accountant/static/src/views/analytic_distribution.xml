@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="analytic.AnalyticDistributionPopup" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('popupButtons')]" position="before">
+            <div class="d-flex  mt-2 me-auto">
+                <label style="padding-right: 8px;">Select Plans:</label>
+                <div >
+                    <span t-foreach="selectPlans" t-as="plan" t-key="plan.id"
+                            t-attf-class="o_tag position-relative d-inline-flex align-items-center user-select-none mw-100 o_badge badge rounded-pill lh-1 o_tag_color_#{plan.color}">
+                            <t t-out="plan.name"/>
+                        <a class="o_delete d-flex align-items-center opacity-100-hover ps-1 opacity-75"
+                           title="Delete"
+                           aria-label="Delete"
+                           tabindex="-1"
+                           t-on-click.stop="() => this.deleteSelectPlan(plan)"
+                        >
+                            <i class="oi oi-close align-text-top"/>
+                        </a>
+                    </span>
+                </div>
+                <div class="o-autocomplete dropdown">
+                    <input type="text" class="o-autocomplete--input o_input" list="selectPlans"  ref="inpSelectPlan" t-on-change="(ev) => this.onChangeInpSelectPlan(ev)"/>
+                    <datalist id="selectPlans">
+                        <option t-att-value="plan.name" t-foreach="selectPlanInput" t-as="plan" t-key="plan.id"
+                                t-on-click.stop="() => this.onSelectPlans(plan)"/>
+                    </datalist>
+                </div>
+
+            </div>
+        </xpath>
+        <xpath expr="//tr[hasclass('border-bottom')]//th[1]" position="attributes">
+            <attribute name="t-foreach">selectPlans</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('popover-header')]//div[1]" position="attributes">
+            <attribute name="class" add="align-items-center" separator=" "/>
+        </xpath>
+    </t>
+</templates>

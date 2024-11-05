@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="haverton_wr_preference_use_global_pre" model="haverton.wr.preference">
+        <field name="name">Use Global Preference</field>
+    </record>
+    <record id="haverton_wr_preference_email_wr" model="haverton.wr.preference">
+        <field name="name">Email Work Release</field>
+    </record>
+    <record id="haverton_wr_preference_email_linked_wr" model="haverton.wr.preference">
+        <field name="name">Email linked Work Release</field>
+    </record>
+    <record id="haverton_wr_preference_sms_wr" model="haverton.wr.preference">
+        <field name="name">SMS Work Release</field>
+    </record>
+    <record id="haverton_wr_preference_sms_linked_wr" model="haverton.wr.preference">
+        <field name="name">SMS Linked Worked Release</field>
+    </record>
+    <record id="haverton_wr_preference_sms_email_er" model="haverton.wr.preference">
+        <field name="name">SMS &amp; Email Work Release</field>
+    </record>
+    <record id="haverton_wr_preference_sms_email_linked_wr" model="haverton.wr.preference">
+        <field name="name">SMS &amp; Email Linked Worked Release</field>
+    </record>
+</odoo>

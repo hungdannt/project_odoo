@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="haverton_inspection_layout_standard">
+        <div t-attf-class="header o_company_#{company.id}_layout" style="height:70px;">
+            <table style="width: 100%; border: 0; border-style: hidden;">
+                <tr style="border: 0;">
+                    <td style="width: 25%; border: 0;">
+                        <img t-if="company.report_logo" t-att-src="image_data_uri(company.report_logo)" style="max-height: 118px;" alt="Logo"/>
+                    </td>
+                    <td style="width: 75%; border: 0; vertical-align: top;">
+                        <div style="width: 100%;">
+                                <div t-if="doc.submit_datetime" style="text-align: right;">
+                                    Date Submitted: <span t-out="doc.convert_datetime_format(doc.submit_datetime)"/>
+                                </div>
+                                <div t-if="doc.user_id" style="text-align: right; padding-top: 10px;">
+                                    Submitted By: <span t-if="doc.user_id" t-field="doc.user_id.login"/>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div style="font-weight: bold; font-size: 25px; color: #008dd7; padding-bottom:20px">
+                <span t-out="doc.survey_id.title"/>
+            </div>
+        </div>
+
+        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout {{  'o_report_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}"
+             t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+             t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-out="0"/>
+        </div>
+
+
+        <div t-attf-class="footer" style="text-align: right">
+            <div>
+                Page
+                <span class="page"/>
+                of
+                <span class="topage"/>
+            </div>
+        </div>
+    </template>
+
+    <template id="haverton_inspection_layout">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+
+        <t t-call="haverton_inspection_management.haverton_inspection_layout_standard">
+            <t t-out="0"/>
+        </t>
+    </template>
+
+    <template id="report_inspection">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="haverton_inspection_management.haverton_inspection_layout">
+                    <t t-set="doc" t-value="doc.with_context(lang=doc.user_id.lang)"/>
+                    <t t-set="answer_datas" t-value="doc.prepare_haverton_data()"/>
+                    <table style="width:100%">
+                        <tbody style="border: none;">
+                            <t t-if="answer_datas">
+                            <t t-foreach="answer_datas.get('sections', [])" t-as="section">
+                                <tr style="border: none;">
+                                    <td colspan="2" style="border: none; width:20%;height:60px;">
+                                        <div style="font-weight: bold; font-size: 25px; color: #008dd7; padding-top:20px;white-space: nowrap;">
+                                            <span t-out="section.get('title', False)"/>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <t t-foreach="section.get('questions', [])" t-as="question">
+                                <t t-if="question.get('visible', True)">
+                                    <t t-set="answers" t-value="question.get('answers', False)"/>
+                                    <t t-set="answered_location" t-value="answers.get('location', False) if answers else False"/>
+                                    <t t-if="question.get('haverton_question_type') == 'signature' and answers and answers.get('value_datetime')">
+                                        <tr style="border-collapse: collapse; border: 1px solid #dfdfdf;">
+                                            <td style="font-weight: bold;border-collapse: collapse; border: 1px solid #dfdfdf;background-color: #f5f5f5;">
+                                                <div style="min-height:30px;padding:7px;">
+                                                    Date/Time
+                                                </div>
+                                            </td>
+                                            <td style="border-collapse: collapse; border: 1px solid #dfdfdf;vertical-align: middle;width:70%;">
+                                                <div style="padding:7px;">
+                                                    <t t-out="answers.get('value_datetime').strftime('%d-%m-%Y')"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-if="question.get('haverton_question_type') == 'signature' and answers and answers.get('user_id')">
+                                        <tr style="border-collapse: collapse; border: 1px solid #dfdfdf;">
+                                            <td style="font-weight: bold;border-collapse: collapse; border: 1px solid #dfdfdf;background-color: #f5f5f5;">
+                                                <div style="min-height:30px;padding:7px;">
+                                                    <t t-out="question.get('label_for_user_id', '')"/>
+                                                </div>
+                                            </td>
+                                            <td style="border-collapse: collapse; border: 1px solid #dfdfdf;vertical-align: middle;width:70%;">
+                                                <div style="padding:7px;">
+                                                    <t t-out="answers.get('user_id').get('name', '')"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr style="border-collapse: collapse; border: 1px solid #dfdfdf;">
+                                        <td style="font-weight: bold;border-collapse: collapse; border: 1px solid #dfdfdf;background-color: #f5f5f5;">
+                                            <div style="min-height:30px; padding:7px;">
+                                                <t t-out="question.get('title', False)"/>
+                                            </div>
+                                        </td>
+                                        <td style="border-collapse: collapse; border: 1px solid #dfdfdf;vertical-align: middle;width:70%; height: 100%;">
+                                            <t t-if="question.get('haverton_question_type') in ['yes_no_question', 'simple_choice', 'multiple_choice'] and answers and answers.get('selected_options', False)">
+                                                <t t-foreach="answers.get('selected_options', []) if answers else False"
+                                                   t-as="select">
+                                                    <div style="padding:7px;">
+                                                        <t t-out="select.get('value')"/>
+                                                        <br/>
+                                                    </div>
+                                                </t>
+                                            </t>
+                                            <t t-elif="question.get('haverton_question_type') == 'multiple_image' and answers and answers.get('attachment_ids', False)">
+                                                <t t-set="images" t-value="answers.get('attachment_ids', [])"/>
+                                                <t t-foreach="images"
+                                                    t-as="image">
+                                                    <div t-att-style="'float:right;' if image_index %2 else 'float: left;'" class="image-column" t-att-class=" 'col-6 p-1' if len(images) &gt; 1 else 'col-12'" t-att-index="image_index">
+                                                        <img t-attf-src="{{image.get('local_url', False)}}"
+                                                            style="display: inline-block;width: 100%;padding:1px;"/>
+                                                    </div>
+                                                </t>
+                                            </t>
+                                            <t t-elif="question.get('haverton_question_type') == 'multiple_video' and answers and answers.get('attachment_ids', False)">
+                                                <t t-set="videos" t-value="answers.get('attachment_ids', [])"/>
+                                                <t t-foreach="videos"
+                                                    t-as="video">
+                                                    <div style="padding:7px;">
+                                                        <a t-attf-href="{{video.get('local_url', False)}}">
+                                                            <t t-esc="video.get('name', False)"/>
+                                                        </a>
+                                                    </div>
+                                                </t>
+                                            </t>
+                                            <t t-elif="question.get('haverton_question_type') == 'date' and answers and answers.get('value_date', False)">
+                                                <div style="padding:7px;">
+                                                    <t t-out="answers.get('value_date', False).strftime('%d-%m-%Y')"/>
+                                                </div>
+                                            </t>
+                                            <t t-elif="question.get('haverton_question_type') == 'datetime' and answers and answers.get('value_datetime', False)">
+                                                <div style="padding:7px;">
+                                                    <t t-out="answers.get('value_datetime', False).strftime('%d-%m-%Y %I:%M %p')"/>
+                                                </div>
+                                            </t>
+                                            <t t-elif="question.get('haverton_question_type') == 'text_box' and answers and answers.get('value_text_box', False)">
+                                                <div style="padding:7px;">
+                                                    <t t-out="answers.get('value_text_box', False)"/>
+                                                </div>
+                                            </t>
+                                            <t t-elif="question.get('haverton_question_type') == 'char_box' and answers and answers.get('value_char_box', False)">
+                                                <div style="padding:7px;">
+                                                    <t t-out="answers.get('value_char_box', False)"/>
+                                                </div>
+                                            </t>
+                                            <t t-elif="question.get('haverton_question_type') == 'static_text' and answers and answers.get('value_text_box', False)">
+                                                <div style="padding:7px;">
+                                                    <t t-out="answers.get('value_text_box', False)"/>
+                                                </div>
+                                            </t>
+                                            <t t-elif="question.get('haverton_question_type') == 'acknowledgment'">
+                                                <div style="padding:7px;">
+                                                    <t t-out="answers.get('value_text_box', False)"/> :
+                                                    <t t-if="answers.get('is_clicked', False)">
+                                                        <t t-out="question.get('text_after_click', False)"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-out="question.get('text_before_click', False)"/>
+                                                    </t>
+                                                </div>
+                                            </t>
+                                            <t t-elif="question.get('haverton_question_type') == 'numerical_box' and answers and answers.get('value_numerical_box', False)">
+                                                <div style="padding:7px;">
+                                                    <t t-out="answers.get('value_numerical_box', False)"/>
+                                                </div>
+                                            </t>
+                                            <t t-elif="question.get('haverton_question_type') == 'location' and answered_location">
+                                                <div class="image-column">
+                                                    <t t-if="question.get('view_in_map', False) and answers and answers.get('attach_map_image', False)">
+                                                        <img t-attf-src="data:image/png;base64,{{ answers.get('attach_map_image').datas }}"
+                                                             style="display: block;width: 100%;padding-bottom:5px;"/>
+                                                    </t>
+                                                    <div style="padding:7px;display:flex">
+                                                        <svg fill="#FF0000" width="25px" height="25px"
+                                                             viewBox="0 0 50 65" version="1.2" baseProfile="tiny"
+                                                             xmlns="http://www.w3.org/2000/svg" overflow="inherit">
+                                                            <path d="M25.015 2.4c-7.8 0-14.121 6.204-14.121 13.854 0 7.652 14.121 32.746 14.121 32.746s14.122-25.094 14.122-32.746c0-7.65-6.325-13.854-14.122-13.854z"/>
+                                                            <script xmlns=""/>
+                                                            <text x="24" y="25" text-anchor="middle" fill="white"
+                                                                  font-size="20" font-weight="bold">1
+                                                            </text>
+                                                        </svg>
+                                                        <t t-out="str(round(answered_location.get('latitude'), 6) if answered_location.get('latitude') else '')"/>,
+                                                        <t t-out="str(round(answered_location.get('longitude'), 6) if answered_location.get('longitude') else '')"/>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                            <t t-set="user_signature"
+                                                t-value="answers.get('user_signature', False) if answers else False"/>
+                                            <t t-if="question.get('haverton_question_type') == 'signature' and user_signature">
+                                                <t t-set="answers_instance"
+                                                    t-value="doc.user_input_line_ids.filtered_domain([('question_id.uuid', '=', question.get('uuid'))])"/>
+                                                <div style="padding-left:7px; max-width:70%">
+                                                    <img t-attf-src="data:image/svg+xml;base64,{{ answers_instance.get_base64_user_signature() }}" t-att-style="answers_instance.get_style_user_signature()"/>
+                                                </div>
+                                            </t>
+
+                                        </td>
+                                    </tr>
+                                    <t t-if="question.get('haverton_question_type') == 'signature' and answers and answers.get('location')">
+                                        <tr style="border-collapse: collapse; border: 1px solid #dfdfdf;">
+                                            <td style="font-weight: bold;border-collapse: collapse; border: 1px solid #dfdfdf;background-color: #f5f5f5;">
+                                                <div style="min-height:30px;padding:7px;">
+                                                    Location
+                                                </div>
+                                            </td>
+                                            <td style="border-collapse: collapse; border: 1px solid #dfdfdf;vertical-align: middle;width:70%;">
+                                                <div style="padding:7px;">
+                                                    <svg fill="#FF0000" width="25px" height="25px"
+                                                            viewBox="0 0 50 65" version="1.2" baseProfile="tiny"
+                                                            xmlns="http://www.w3.org/2000/svg" overflow="inherit">
+                                                        <path d="M25.015 2.4c-7.8 0-14.121 6.204-14.121 13.854 0 7.652 14.121 32.746 14.121 32.746s14.122-25.094 14.122-32.746c0-7.65-6.325-13.854-14.122-13.854z"/>
+                                                        <script xmlns=""/>
+                                                        <text x="24" y="25" text-anchor="middle" fill="white"
+                                                                font-size="20" font-weight="bold">1
+                                                        </text>
+                                                    </svg>
+                                                    <t t-set="latitude" t-value="answers.get('location').get('latitude')"/>
+                                                    <t t-set="longitude" t-value="answers.get('location').get('longitude')"/>
+                                                    <t t-out="str(round(latitude, 6) if latitude else '') + ', ' + str(round(longitude, 6) if longitude else '')"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                                </t>
+                            </t>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div style="page-break-before: always;" t-if="doc.aggregate_location_image">
+                        <div style="font-weight: bold; font-size: 25px; color: #008dd7; padding-top:20px;min">
+                            <span>Form Locations</span>
+                        </div>
+                        <div class="image-column">
+                            <img t-attf-src="data:image/png;base64,{{doc.aggregate_location_image.datas}}"
+                                    style="display: block;width: 100%;padding:1px;"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

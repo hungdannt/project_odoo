@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="jwt_refresh_token_view_tree" model="ir.ui.view">
+            <field name="name">jwt.refresh.token.tree</field>
+            <field name="model">jwt.refresh.token</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" />
+                    <field name="user_login" />
+                    <field name="refresh_token" />
+                    <field name="expire_at" />
+                    <field name="is_expired" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="jwt_refresh_token_action" model="ir.actions.act_window">
+            <field name="name">User Refresh Tokens</field>
+            <field name="res_model">jwt.refresh.token</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

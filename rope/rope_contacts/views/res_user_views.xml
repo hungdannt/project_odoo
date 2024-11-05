@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="base.action_res_users" model="ir.actions.act_window">
+        <field name="context">{'search_default_no_share': 1,'default_lang': 'ja_JP'}</field>
+    </record>
+</odoo>

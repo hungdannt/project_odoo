@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="haverton_survey_user_input_line_view_form" model="ir.ui.view">
+        <field name="name">haverton.survey.user_input.line.view.form</field>
+        <field name="model">survey.user_input.line</field>
+        <field name="inherit_id" ref="survey.survey_user_input_line_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet//field[@name='value_char_box']" position="before">
+                <field name="attachment_ids">
+                    <tree string="Attachments">
+                        <field name="name" />
+                        <field name="local_url" widget="url" />
+                        <field name="type" />
+                        <field name="file_size" />
+                        <field name="create_uid" />
+                        <field name="create_date" />
+                    </tree>
+                </field>
+            </xpath>
+        </field>
+    </record>
+</odoo>

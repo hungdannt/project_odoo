@@ -1,0 +1,736 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* zet_account_accountant
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-30 03:16+0000\n"
+"PO-Revision-Date: 2024-05-30 03:16+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.report_invoice_document
+msgid "31.05"
+msgstr ""
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.report_invoice_document
+msgid "<span>Particulars</span>"
+msgstr "<span>詳情</span>"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.report_invoice_document
+msgid "<span>Quantity</span>"
+msgstr "<span>數量</span>"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.report_invoice_document
+msgid "<span>Voucher Reference</span>"
+msgstr "<span>憑證參考</span>"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.report_invoice_document
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr "<strong class=\"mr16\">小計</strong>"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_move_form
+msgid ""
+"<strong>\n"
+"                            There are differences between the exchange rates, so please double-check the exchange rates in the remarks section!\n"
+"                        </strong>"
+msgstr ""
+"<strong>\n"
+"                          匯率之間有差異，請檢查備註部分的匯率！!\n"
+"                        </strong>"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.report_invoice_document
+msgid "A note, whose content usually applies to the section or product above."
+msgstr "備註，內容通常適用於上面的部分或產品。"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_ir_attachment__account_move_ids
+#: model:ir.model.fields,field_description:zet_account_accountant.field_product_document__account_move_ids
+msgid "Account Move"
+msgstr "會計分錄"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_ir_attachment__account_move_line_ids
+#: model:ir.model.fields,field_description:zet_account_accountant.field_product_document__account_move_line_ids
+msgid "Account Move Line"
+msgstr "會計分錄行"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_move_form
+msgid "Add a line"
+msgstr "新增一行"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_move_form
+msgid "Add a note"
+msgstr "新增註釋"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_move_form
+msgid "Add a section"
+msgstr "新增一個部分"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_move_form
+msgid "Add a sub-section"
+msgstr "添加子部分"
+
+#. module: zet_account_accountant
+#. odoo-python
+#: code:addons/zet_account_accountant/models/account_move.py:0
+#, python-format
+msgid ""
+"Alert: A mismatch has been found between the user-defined exchange rate for "
+"some invoice items (%s) and the system's rate (%s) in 'Accounting > "
+"Configuration > Currencies'. This could lead to an discrepancy between "
+"Invoice and Journal amounts.<br/>Ensure all data is correct. For exchange "
+"rate changes, contact your Accounting Admin or IT team."
+msgstr ""
+"警告：在一些發票項目 (%s) 的用戶定義匯率與系統匯率 (%s) "
+"之間發現了不匹配，這可能導致發票和日記賬金額之間存在差異。<br/>請確保所有數據正確。對於匯率變更，請聯繫您的會計管理員或IT團隊。"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_move_form
+msgid "Amount"
+msgstr "數量"
+
+#. module: zet_account_accountant
+#. odoo-python
+#: code:addons/zet_account_accountant/models/account_move.py:0
+#, python-format
+msgid "Amount (%s)"
+msgstr "金額 (%s)"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__foreign_price_subtotal
+msgid "Amount (Foreign)"
+msgstr "金額（國外）"
+
+#. module: zet_account_accountant
+#. odoo-python
+#: code:addons/zet_account_accountant/models/account_move.py:0
+#: code:addons/zet_account_accountant/models/purchase_order.py:0
+#, python-format
+msgid "Analytic Account"
+msgstr "分析帳戶"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "分析項目"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.purchase_order_view_form_zet
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_move_form
+msgid "Analyze"
+msgstr "分析"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_ir_attachment
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__attachment_ids
+msgid "Attachment"
+msgstr "附件"
+
+#. module: zet_account_accountant
+#: model:ir.actions.act_window,name:zet_account_accountant.action_attachment
+#: model:ir.ui.menu,name:zet_account_accountant.menu_action_attachment
+msgid "Attachments"
+msgstr "附件"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.report_invoice_document
+msgid "Bacon Burger"
+msgstr "培根漢堡"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "Balance"
+msgstr "餘額"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__balance_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__balance_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__balance_amount
+msgid "Balance Amount"
+msgstr "餘額金額"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "Bank Charges DP"
+msgstr "銀行費用 DP"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__bank_charges_dp
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__bank_charges_dp
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__bank_charges_dp
+msgid "Bank Charges Dp"
+msgstr "銀行費用 Dp"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__bank_charges_settlement
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__bank_charges_settlement
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__bank_charges_settlement
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "Bank Charges Settlement"
+msgstr "銀行費用結算"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__bank_transfers_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__bank_transfers_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__bank_transfers_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_purchase_order__bank_transfers_date
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+msgid "Bank Transfers Date"
+msgstr "銀行轉帳日期"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_move_form
+msgid "Close"
+msgstr "關閉"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__conversion_rate
+msgid "Conversion Rate"
+msgstr "匯率"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,help:zet_account_accountant.field_account_move_line__conversion_rate
+msgid "Conversion rate between Main currency & Foreign Currency"
+msgstr "主要貨幣與外幣之間的兌換率"
+
+#. module: zet_account_accountant
+#: model:ir.actions.act_window,name:zet_account_accountant.action_configure_type
+#: model:ir.ui.menu,name:zet_account_accountant.menu_configure_type
+msgid "Cost Classification Type"
+msgstr "成本分類類型"
+
+#. module: zet_account_accountant
+#: model:ir.actions.act_window,name:zet_account_accountant.action_cost_report
+#: model:ir.ui.menu,name:zet_account_accountant.menu_action_cost_report
+msgid "Cost Report"
+msgstr "成本報告"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_move_form
+msgid "Create template"
+msgstr "建立範本"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_cost_classification_type__create_uid
+msgid "Created by"
+msgstr "創建者"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_cost_classification_type__create_date
+msgid "Created on"
+msgstr "創建於"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__credit_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__credit_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__credit_amount
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "Credit Amount"
+msgstr "貸方金額"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "Credit Note No."
+msgstr "貸項通知單號"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_analytic_line__customer_id
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_attachment_search_inherit
+msgid "Customer"
+msgstr "客戶"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__date_of_arrival
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__date_of_arrival
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__date_of_arrival
+msgid "Date Of Arrival"
+msgstr "到達日期"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__date_of_departure
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__date_of_departure
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__date_of_departure
+msgid "Date Of Departure"
+msgstr "出發日期"
+
+#. module: zet_account_accountant
+#. odoo-javascript
+#: code:addons/zet_account_accountant/static/src/views/analytic_distribution.xml:0
+#: code:addons/zet_account_accountant/static/src/views/analytic_distribution.xml:0
+#, python-format
+msgid "Delete"
+msgstr "刪除"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_move_form
+msgid "Description"
+msgstr "描述"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_cost_classification_type__display_name
+msgid "Display Name"
+msgstr "顯示名稱"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__down_payment_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__down_payment_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__down_payment_amount
+msgid "Down Payment Amount"
+msgstr "預付款金額"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__down_payment_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__down_payment_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__down_payment_date
+msgid "Down Payment Date"
+msgstr "預付款日期"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "DownPayment RCV'D"
+msgstr "已收到預付款"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "DownPayment RCV'D Date"
+msgstr "已收到預付款日期"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__exchange_rate
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__exchange_rate
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__exchange_rate
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "Exchange Rate"
+msgstr "匯率"
+
+#. module: zet_account_accountant
+#. odoo-javascript
+#: code:addons/zet_account_accountant/static/src/views/account_dashboard.xml:0
+#, python-format
+msgid "Expense AMT"
+msgstr "費用金額"
+
+#. module: zet_account_accountant
+#. odoo-python
+#: code:addons/zet_account_accountant/models/account_move.py:0
+#, python-format
+msgid "Expense Amount"
+msgstr "費用金額"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__foreign_currency_id
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__foreign_currency_id
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__foreign_currency_id
+msgid "Foreign Currency"
+msgstr "外幣"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__foreign_price
+msgid "Foreign Price"
+msgstr "外幣價格"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__foreign_price_total
+msgid "Foreign Tax incl."
+msgstr "含稅外幣"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__fund_collection_days
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__fund_collection_days
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__fund_collection_days
+msgid "Fund Collection Days"
+msgstr "資金收款天數"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__hide_exchange_price
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__hide_exchange_price
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__hide_exchange_price
+msgid "Hide Exchange Price"
+msgstr "隱藏匯率價格"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_cost_classification_type__id
+msgid "ID"
+msgstr ""
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "INV AMT"
+msgstr "發票金額"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "INV NO"
+msgstr "發票號碼"
+
+#. module: zet_account_accountant
+#: model:ir.actions.act_window,name:zet_account_accountant.action_income_report
+#: model:ir.ui.menu,name:zet_account_accountant.menu_action_income_report
+msgid "Income Report"
+msgstr "收入報告"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.view_attachment_search_inherit
+msgid "Invoice"
+msgstr "發票"
+
+#. module: zet_account_accountant
+#. odoo-python
+#: code:addons/zet_account_accountant/models/account_move.py:0
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__inv_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__inv_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__inv_amount
+#, python-format
+msgid "Invoice Amount"
+msgstr "發票金額"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "Invoice Date"
+msgstr "發票日期"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__invoice_ref_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__invoice_ref_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__invoice_ref_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_purchase_order__invoice_ref_date
+msgid "Invoice Reference Date"
+msgstr "發票參考日期"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__invoice_ref
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__invoice_ref
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__invoice_ref
+#: model:ir.model.fields,field_description:zet_account_accountant.field_purchase_order__invoice_ref
+msgid "Invoice Reference Number"
+msgstr "發票參考號碼"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__is_downpayment
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__is_downpayment
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__is_downpayment
+msgid "Is Downpayment"
+msgstr "是預付款"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__is_sub_section
+msgid "Is Sub Section"
+msgstr "是子部分"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__job_number_ids
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__job_number_text
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__job_number_ids
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__job_number_text
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__job_number_ids
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__job_number_ids
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__job_number_text
+#: model:ir.model.fields,field_description:zet_account_accountant.field_purchase_order_line__job_number_ids
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+msgid "Job Number"
+msgstr "工作號碼"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_account_move
+msgid "Journal Entry"
+msgstr "日記賬記項"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_account_move_line
+msgid "Journal Item"
+msgstr "日記賬項目"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_cost_classification_type__write_uid
+msgid "Last Updated by"
+msgstr "最後更新者"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_cost_classification_type__write_date
+msgid "Last Updated on"
+msgstr "最後更新日期"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_cost_classification_type__name
+msgid "Name"
+msgstr "名稱"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__net_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__net_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__net_amount
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "Net Amount"
+msgstr "淨金額"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__number_attachment
+msgid "Number Attachment"
+msgstr "附件數量"
+
+#. module: zet_account_accountant
+#. odoo-javascript
+#. odoo-python
+#: code:addons/zet_account_accountant/models/account_move.py:0
+#: code:addons/zet_account_accountant/static/src/views/account_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+#, python-format
+msgid "Paid"
+msgstr "已支付"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__paid_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__paid_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__paid_amount
+msgid "Paid Amount"
+msgstr "支付金額"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__paid_by
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__paid_by
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__paid_by
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment_register__paid_by
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+msgid "Paid By"
+msgstr "付款人"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__paid_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__paid_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__paid_date
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+msgid "Paid Date"
+msgstr "支付日期"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_account_payment
+msgid "Payments"
+msgstr "付款"
+
+#. module: zet_account_accountant
+#. odoo-python
+#: code:addons/zet_account_accountant/models/account_move.py:0
+#: code:addons/zet_account_accountant/models/purchase_order.py:0
+#, python-format
+msgid "Please add valid analytic distribition in lines."
+msgstr "請在行中加入有效的分析分佈"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__port
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__port
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__port
+msgid "Port"
+msgstr "港口"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__fixed_price
+msgid "Price Unit (HKD)"
+msgstr "單價（港元）"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,help:zet_account_accountant.field_account_move_line__foreign_price
+msgid "Price of products in Foreign currency."
+msgstr "如果是多幣種條目，則以可選的其他貨幣表示的金額。"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,help:zet_account_accountant.field_account_move_line__fixed_price
+#: model:ir.model.fields,help:zet_account_accountant.field_account_move_line__price_unit
+msgid "Price of products in Main currency"
+msgstr "以主要貨幣計的產品價格"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_purchase_order
+msgid "Purchase Order"
+msgstr "採購訂單"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "採購訂單項目"
+
+#. module: zet_account_accountant
+#. odoo-python
+#: code:addons/zet_account_accountant/models/account_move.py:0
+#, python-format
+msgid "Quotation Template"
+msgstr "報價範本"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_account_payment_register
+msgid "Register Payment"
+msgstr "登記付款"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__remarks
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__remarks
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__remarks
+#: model:ir.model.fields,field_description:zet_account_accountant.field_purchase_order__remarks
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+msgid "Remarks"
+msgstr "備註"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_ir_actions_report
+msgid "Report Action"
+msgstr "報表動作"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "銷售預付款應收憑單"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_sale_order
+msgid "Sales Order"
+msgstr "銷售訂單"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "銷售訂單明細"
+
+#. module: zet_account_accountant
+#. odoo-javascript
+#: code:addons/zet_account_accountant/static/src/views/analytic_distribution.xml:0
+#, python-format
+msgid "Select Plans:"
+msgstr "選擇計劃："
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "Settlement"
+msgstr "結算"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__settlement_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__settlement_amount
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__settlement_amount
+msgid "Settlement Amount"
+msgstr "結算金額"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__settlement_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__settlement_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__settlement_date
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.income_report_view_tree
+msgid "Settlement Date"
+msgstr "結算日期"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__show_waring_convert_rate
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__show_waring_convert_rate
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__show_waring_convert_rate
+msgid "Show Waring Convert Rate"
+msgstr "顯示警告換算匯率"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__show_waring_exchange_rate
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__show_waring_exchange_rate
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__show_waring_exchange_rate
+msgid "Show Waring Exchange Rate"
+msgstr "顯示警告匯率"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+msgid "Supplier"
+msgstr "供應商"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__text_waring_exchange_rate
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__text_waring_exchange_rate
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__text_waring_exchange_rate
+msgid "Text Waring Exchange Rate"
+msgstr "文本警告匯率"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,help:zet_account_accountant.field_account_move_line__foreign_currency_id
+msgid "The optional other currency if it is a multi-currency entry."
+msgstr "如果是多幣種條目，則可選的其他貨幣。"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__total_file_size
+msgid "Total File Size"
+msgstr "文件總大小"
+
+#. module: zet_account_accountant
+#. odoo-python
+#: code:addons/zet_account_accountant/models/account_move.py:0
+#, python-format
+msgid "Total amount in %s"
+msgstr "總金額在 %s"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__classification_type_id
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__classification_type_id
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__classification_type_id
+#: model:ir.model.fields,field_description:zet_account_accountant.field_purchase_order__classification_type_id
+msgid "Type"
+msgstr "類型"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__price_unit
+msgid "Unit Price"
+msgstr "單價"
+
+#. module: zet_account_accountant
+#. odoo-javascript
+#. odoo-python
+#: code:addons/zet_account_accountant/models/account_move.py:0
+#: code:addons/zet_account_accountant/static/src/views/account_dashboard.xml:0
+#, python-format
+msgid "Unpaid"
+msgstr "未支付"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__vsl_completion_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__vsl_completion_date
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__vsl_completion_date
+msgid "VSL Completion Date"
+msgstr "VSL 完成日期"
+
+#. module: zet_account_accountant
+#: model_terms:ir.ui.view,arch_db:zet_account_accountant.cost_report_view_tree
+msgid "Vendor Bill"
+msgstr "供應商賬單"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_bank_statement_line__vessel_name
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move__vessel_name
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_payment__vessel_name
+#: model:ir.model.fields,field_description:zet_account_accountant.field_purchase_order__vessel_name
+msgid "Vessel Name"
+msgstr "船名"
+
+#. module: zet_account_accountant
+#: model:ir.model.fields,field_description:zet_account_accountant.field_account_move_line__voucher_reference
+msgid "Voucher Reference"
+msgstr "凭单参考"
+
+#. module: zet_account_accountant
+#: model:ir.model,name:zet_account_accountant.model_cost_classification_type
+msgid "cost.classification.type"
+msgstr "成本分類類型"

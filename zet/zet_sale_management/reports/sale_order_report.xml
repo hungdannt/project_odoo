@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document" >
+        <xpath expr="//table[1]" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+
+        <xpath expr="//t[@t-set='forced_vat']" position="after">
+            <t t-set="vessel_name" t-value="doc.vessel_name"/>
+            <t t-set="port" t-value="doc.port"/>
+            <t t-set="date_of_arrival" t-value="doc.date_of_arrival"/>
+            <t t-set="date_of_departure" t-value="doc.date_of_departure"/>
+            
+        </xpath>
+
+        <xpath expr="//table[1]" position="after">
+            <t t-set='data' t-value="doc.get_old_value(True)"/>
+            <table t-att-data-order-id="doc.id" t-att-data-token="doc.access_token" class="table table-sm o_main_table table-borderless mt-4" id="sales_order_table">
+                        <thead>
+                            <tr style="border-bottom: 1px solid black">
+                                <th style="white-space: nowrap; width:40%   " name="th_description" class="text-start"><span>Particulars</span></th>
+                                <th style="white-space: nowrap" name="th_voucher_reference" class="text-end"><span>Voucher Reference</span></th>
+                                <th style="white-space: nowrap" name="th_foreign_subtotal" t-if="not data.get('hide_exchange_price')" class="text-end"><span><t t-out="data.get('lable_foreign_amount')"/></span></th>
+                                <th style="white-space: nowrap" name="th_main_subtotal" class="text-end"><span><t t-out="data.get('lable_amount')"/></span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody" t-if="not history">
+
+                            <t t-set="current_subtotal" t-value="0"/>
+                            <t t-set="lines_to_report" t-value="doc._get_order_lines_to_report()"/>
+
+                            <t t-foreach="lines_to_report" t-as="line">
+
+                                <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"/>
+
+                                <tr t-att-class="'bg-200 fw-bold o_line_section' if line.display_type == 'line_section' else 'fst-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                    <t t-if="not line.display_type">
+                                        <td id="product_name">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td name="td_voucher_reference" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                            <span class="text-nowrap" t-field="line.voucher_reference"></span>
+                                        </td>
+
+                                       <td name="td_subtotal" t-if="not data.get('hide_exchange_price')" class="text-end o_price_total">
+                                            <span class="text-nowrap" t-if="line.foreign_price_total" t-field="line.foreign_price_total"></span>
+                                        </td>
+                                        <td t-if="not line.is_downpayment" class="text-end" id="subtotal">
+                                            <span class="oe_order_line_price_subtotal" t-field="line.price_subtotal"/>
+                                        </td>
+                                    </t>
+                                    <t t-if="line.display_type == 'line_section'">
+                                        <td colspan="99" t-att-class="'text-decoration-underline' if not line['is_sub_section'] else 'bg-white fw-normal'">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <t t-set="current_section" t-value="line"/>
+                                        <t t-if="not line.is_sub_section" t-set="current_subtotal" t-value="0"/>
+                                    </t>
+                                    <t t-if="line.display_type == 'line_note'">
+                                        <td colspan="99">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                    </t>
+                                </tr>
+                                <tr t-if="current_section and (line_last or (lines_to_report[line_index+1].display_type == 'line_section' and not lines_to_report[line_index+1].is_sub_section and not line.is_downpayment))"
+                                    class="is-subtotal text-end sub_section">
+                                    <td colspan="99">
+                                        <strong class="mr16">Subtotal</strong>
+                                        <span t-out="current_subtotal"
+                                            t-options='{"widget": "monetary", "display_currency": doc.currency_id}'
+                                        />
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+        </xpath>
+    </template>
+</odoo>

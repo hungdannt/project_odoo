@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_analytic_account_view_tree" model="ir.ui.view">
+            <field name="name">account.analytic.account.view.tree</field>
+            <field name="model">account.analytic.account</field>
+            <field name="arch" type="xml">
+                <tree string="Select Analytic Accounts" create="0">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="plan_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="select_analytic_wizard_view_form" model="ir.ui.view">
+            <field name="name">select.analytic.wizard.view.form</field>
+            <field name="model">select.analytic.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="analytic_account_ids" context="{'tree_view_ref': 'zet_sale_management.account_analytic_account_view_tree'}">
+                    </field>
+                    <footer>
+                        <button string="Confirm" type="object" name="action_confirm" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+
+        </record>
+    </data>
+</odoo>

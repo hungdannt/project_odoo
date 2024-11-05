@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="zet_report.Many2ManyDragDropPrint"  t-inherit="zet_sale_management.Many2ManyDragDrop" t-inherit-mode="primary">
+        <t t-call="Many2ManyBinaryField.attachment_preview" position="replace">
+            <t t-call="zet_report.Many2ManyBinaryField.attachment_preview"/>
+        </t>
+        <t t-else="" t-call="Many2ManyBinaryField.attachment_preview" position="replace">
+            <t t-else="" t-call="zet_report.Many2ManyBinaryField.attachment_preview"/>
+        </t>
+    </t>
+    
+    <t t-name="zet_report.Many2ManyBinaryField.attachment_preview" t-inherit="web.Many2ManyBinaryField.attachment_preview" t-inherit-mode="primary">
+        <xpath expr="//div[@class='o_attachment_uploaded']//i" position="replace">
+            <input t-if="(props.readonly and (file.isPdf or file.isImage))" type="checkbox" style="height: 24px;width: 24px;" t-att-checked="file.is_printed" t-on-click.stop="() => this.onChangeSelectPrint(file)"/>
+        </xpath>
+    </t>
+
+</templates>

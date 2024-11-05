@@ -1,0 +1,7 @@
+<templates>
+    <t t-name="zet_account_accountant.accountListView" t-inherit="web.ListRenderer" t-inherit-mode="primary">
+        <xpath expr="//div[hasclass('o_list_renderer')]" position="before">
+            <AccountDashBoard domain='props.list.domain' context='props.list.evalContext'/>
+        </xpath>
+    </t>
+</templates>

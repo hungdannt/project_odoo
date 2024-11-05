@@ -1,0 +1,26 @@
+<odoo>
+  <record id="sale_order_inherit" model="ir.ui.view">
+    <field name="name">sale.order.inherit</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='payment_term_id']" position="replace">
+        <field name="is_required_user" invisible="1"/>
+        <field name="calendar" position="replace" attrs="{'invisible': [('is_required_user', '=', False)]}"/>
+        <field name="payment_term_id" position="replace" attrs="{'invisible': [('is_required_user', '=', True)]}"/>
+	<field name="custom_create_date" />
+      </xpath>
+    </field>
+  </record>
+
+  <record id="view_quotation_tree_inherit" model="ir.ui.view">
+    <field name="name">sale.order.tree.inherit</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_quotation_tree"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='create_date']" position="replace">
+        <field name="custom_create_date" string="Creation Date" widget="date" optional="show"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

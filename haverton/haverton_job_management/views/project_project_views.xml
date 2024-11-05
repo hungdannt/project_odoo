@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="project_kanban_view_group_stage_inherit" model="ir.ui.view">
+            <field name="name">project.project.kanban.group.stage</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.project_kanban_view_group_stage"/>
+            <field name="arch" type="xml">
+                <field name="color" position="after">
+                    <field name="address"/>
+                    <field name="client_name"/>
+                </field>
+                <xpath expr="//span[hasclass('o_text_overflow')]" position="after">
+                    <field name="address"/>
+                    <br/>
+                    <field name="client_name"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="edit_project_inherit" model="ir.ui.view">
+            <field name="name">project.project.form.inherit</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="priority">24</field>
+            <field name="arch" type="xml">
+                <field name="name" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+
+                <field name="is_favorite" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+
+                <xpath expr="//sheet/group" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//sheet/group" position="after">
+                    <group>
+                        <group string="Job">
+                            <field name="contract_no"/>
+                            <field name="address" string="Display Address"/>
+                            <field name="address_id"></field>
+                            <field name="client_name"/>
+                            <field name="overdue"/>
+                            <field name="contract_start_on" string="Contract Date" widget="daterange" options='{"end_date_field": "contract_end_on"}' required="contract_start_on or contract_end_on" />
+                            <field name="contract_end_on" invisible="1"/>
+                            <field name="date" invisible="1"/>
+                           
+                        </group>
+                        <group string="Job details">
+                            <field name="contract_house_design"/>
+                            <field name="stage_id"/>
+                            <field name="region_id"/>
+                            <field name="location_ids" widget="many2many_tags"/>
+                            <field name="contract_value_ex_gst"/>
+                            <field name="contract_value_inc_gst"/>
+                            <field name="contract_details"/>
+                        </group>
+                    </group>
+                </xpath>
+               
+            </field>
+        </record>
+
+        <record id="view_project_inherit" model="ir.ui.view">
+            <field name="name">project.project.tree.inherit</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project"/>
+            <field name="priority">24</field>
+            <field name="arch" type="xml">
+                <field name="display_name" position="attributes">
+                    <attribute name="column_invisible">1</attribute>
+                </field>
+                <field name="partner_id" position="attributes">
+                    <attribute name="column_invisible">1</attribute>
+                </field>
+                <field name="user_id" position="attributes">
+                    <attribute name="column_invisible">1</attribute>
+                </field>
+
+                <field name="tag_ids" position="attributes">
+                    <attribute name="column_invisible">1</attribute>
+                </field>
+
+                <field name="date_start" position="attributes">
+                    <attribute name="string">Contract Date</attribute>
+                </field>
+                <field name="display_name" position="after">
+                    <field name="contract_no"/>
+                     <field name="address"/>
+                    <field name="client_name"/>
+                    <field name="overdue"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

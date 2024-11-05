@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="zet_account_accountant.accountDashboard">
+        <div style="padding: 32px" class="zet_summary_report">
+            <table class="table" style="border: none; width:auto;margin:auto">
+            <thead>
+                <tr style="border-bottom: solid;">
+                    <th class="text-nowrap" scope="col"></th>
+                    <t t-foreach="state.dataDasgBoard.currency" t-as="currency" t-key='currency_index'>
+                        <th class="text-nowrap" scope="col"><t t-out="currency"/></th>
+                    </t>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <th class="text-nowrap lable" scope="row"><t t-out="state.dataDasgBoard.data.expenseAtm['name']">Expense AMT</t></th>
+                        <t t-foreach="state.dataDasgBoard.data.expenseAtm['data']" t-as="expenseAtm" t-key='expenseAtm_index'>
+                            <th class="text-nowrap" scope="col"><t t-out="expenseAtm"/></th>
+                        </t>
+                        
+                    </tr>
+                    <tr>
+                        <th class="text-nowrap lable" scope="col"><t t-out="state.dataDasgBoard.data.paid['name']">Paid</t></th>
+                        <t t-foreach="state.dataDasgBoard.data.paid['data']" t-as="paid" t-key='paid_index'>
+                            <th class="text-nowrap" scope="col"><t t-out="paid"/></th>
+                        </t>
+                    </tr>
+                    <tr>
+                        <th class="text-nowrap lable" scope="col"><t t-out="state.dataDasgBoard.data.unpaid['name']">Unpaid</t></th>
+                        <t t-foreach="state.dataDasgBoard.data.unpaid['data']" t-as="unpaid" t-key='unpaid_index'>
+                            <th class="text-nowrap" scope="col"><t t-out="unpaid"/></th>
+                        </t>
+                    </tr>
+            
+            </tbody>
+            </table>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-inherit="mail.AttachmentCard" owl="1" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o_AttachmentCard_details')]" position="attributes">
+            <attribute name="class">o_AttachmentCard_details d-flex justify-content-center o_AttachmentCard_image</attribute>
+            <attribute name="t-on-click">attachmentCard.onClickImage</attribute>
+            <attribute name="t-att-class">{'o-attachment-viewable': attachmentCard.attachment.isViewable}</attribute>
+        </xpath>
+    </t>
+</templates>

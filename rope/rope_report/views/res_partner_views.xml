@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_ebay" model="ir.ui.view">
+        <field name="name">res.partner.ebay</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="stamp" widget="image" options='{"size": [60, 60]}' attrs="{'invisible': [('is_company', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

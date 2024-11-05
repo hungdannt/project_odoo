@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_service_provider" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.service.provider</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="haverton_base_fastapi.res_config_settings_view_form_base_fastapi" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/app[@name='haverton_base']/block[@name='haverton_user_management']" position="after">
+                <block title="Service Provider Management" name="haverton_service_provider">
+                    <setting string="Fields On The Detail Screens" help="Config hide/show fields on service provider screen for mobile" id="mobile_job_detail_screen_settings">
+                        <button class="oe_highlight" string="Config Service Provider Detail Screen" name="action_show_service_provider_detail_fields" type="object" />
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

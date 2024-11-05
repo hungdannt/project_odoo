@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="amb_1" model="account.move.bank">
+            <field name="name">Mitsubishi UFJ Bank Nippori Branch Regular Account</field>
+            <field name="code">0072403</field>
+        </record>
+
+        <record id="amb_2" model="account.move.bank">
+            <field name="name">GMO Aozora Net Bank, Inc. Kleine Co., Ltd. Regular</field>
+            <field name="code">1208772</field>
+        </record>
+
+        <record id="amb_3" model="account.move.bank">
+            <field name="name">GMO Aozora Net Bank, Inc. Kleine Logistics Department Regular</field>
+            <field name="code">1215483</field>
+        </record>
+
+        <record id="amb_4" model="account.move.bank">
+            <field name="name">GMO Aozora Net Bank, Inc. Kleine First Sales Department Regular</field>
+            <field name="code">1234524</field>
+        </record>
+
+        <record id="amb_5" model="account.move.bank">
+            <field name="name">GMO Aozora Net Bank, Inc. Kleine Second Sales Department Regular</field>
+            <field name="code">1234535</field>
+        </record>
+
+        <record id="amb_6" model="account.move.bank">
+            <field name="name">GMO Aozora Net Bank, Inc. Kleine Third Sales Department Regular</field>
+            <field name="code">1241745</field>
+        </record>
+
+        <record id="amb_7" model="account.move.bank">
+            <field name="name">GMO Aozora Net Bank, Inc. Kleine Fourth Sales Department Regular</field>
+            <field name="code">1520476</field>
+        </record>
+    </data>
+</odoo>

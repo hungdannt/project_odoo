@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.havertonhomes.haverton",
+      "sha256_cert_fingerprints": [
+        "CA:7E:4D:C0:1D:8A:9F:8F:7C:92:70:11:B4:61:25:A5:FE:A9:C7:8F:B8:59:C2:D9:F6:51:62:33:13:17:DA:D3"
+      ]
+    }
+  }
+]

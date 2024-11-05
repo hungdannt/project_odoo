@@ -1,0 +1,65 @@
+.o_Message {
+    background-color: $white;
+    transition: background-color .5s ease-out;
+
+    .o_Message_partnerImStatusIcon {
+        color: $white;
+    }
+
+    &.o-not-discussion {
+        background-color: gray('100');
+
+        &.o_Message_active {
+            background-color: mix(gray('100'), gray('200'));
+        }
+
+        .o_Message_partnerImStatusIcon {
+            color: gray('100'); // same color as background of parent
+        }
+
+        &.o-selected {
+            border-bottom: 1px solid darken(gray('400'), 5%);
+        }
+    }
+
+    &.o-selected {
+        background-color: gray('400');
+
+        .o_Message_partnerImStatusIcon {
+            color: gray('400');
+        }
+    }
+
+    &.o-has-message-selection:not(.o-selected) {
+        opacity: 0.5;
+    }
+
+    &.o-highlighted {
+        background-color: rgba($o-brand-primary, .1);
+    }
+
+    &.o_Message_active {
+        background-color: gray('100');
+    }
+    &.o-notification {
+        display: none !important;
+    }
+    &.o_MessageList_separatorLabelDate {
+        display: none !important;
+    }
+}
+
+.o_MessageList_separatorLabel {
+    background-color: $white;
+    display: none;
+}
+
+.o_MessageList_separatorLine {
+    border-color: $border-color;
+    display: none;
+}
+
+.o-not-discussion {
+    background-color: gray('100');
+    display: none;
+}

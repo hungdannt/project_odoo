@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale_order_template_form" model="ir.ui.view">
+        <field name="name">sale.order.template.form</field>
+        <field name="model">sale.order.template</field>
+        <field name="inherit_id" ref="sale_management.sale_order_template_view_form"/>
+        <field name="arch" type="xml">
+            <field name="journal_id" position="before">
+                <field name="partner_id"/>
+            </field>
+            <xpath expr="//group[@name='so_confirmation']" position="inside">
+                <field name="set_as_default"/>
+            </xpath>
+
+             <xpath expr="//field[@name='sale_order_template_line_ids']//tree//field[@name='product_id']" position="after">
+                <field name="is_sub_section" column_invisible="True"/>
+            </xpath>
+            <control position="replace">
+                <control>
+                    <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                    <create name="add_section_control" string="Add a sub-section" context="{'default_display_type': 'line_section', 'default_is_sub_section': True}"/>
+                    <create name="add_product_control" string="Add a product"/>
+                    <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                </control>
+            </control>
+        </field>
+    </record>
+
+    <record id="sale_order_template_view_tree_inherit" model="ir.ui.view">
+        <field name="name">sale.order.template.tree</field>
+        <field name="model">sale.order.template</field>
+        <field name="inherit_id" ref="sale_management.sale_order_template_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="partner_id"></field>
+                <field name="set_as_default"></field>
+            </field>
+        </field>
+    </record>
+
+    <record id="sale_order_template_view_search_inherit" model="ir.ui.view">
+        <field name="name">sale.order.template.search</field>
+        <field name="model">sale.order.template</field>
+        <field name="inherit_id" ref="sale_management.sale_order_template_view_search"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="partner_id"></field>
+            </field>
+        </field>
+    </record>
+
+</odoo>

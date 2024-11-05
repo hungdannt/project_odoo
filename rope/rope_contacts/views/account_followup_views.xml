@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account_followup.action_view_list_customer_statements" model="ir.actions.act_window">
+        <field name="context">{'search_default_filter_in_need_of_action': 1, 'search_default_customer': 1, 'res_partner_search_mode': 'customer', 'default_lang': 'ja_JP'}</field>
+    </record>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_haverton_sync_companion" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.haverton.sync.companion</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="haverton_base.res_config_settings_view_form_haverton" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/app[@name='haverton_base']" position="inside">
+                <block title="Companion Database" name="haverton" help="Configure database connection information of Companion">
+                    <setting string="Companion Database" id="mobile_setting_companion_db">
+                        <div class="row">
+                            <label string="DB Host" for="companion_db_host" class="col-lg-4 o_light_label"/>
+                            <field name="companion_db_host"/>
+                        </div>
+                        <div class="row">
+                            <label string="DB Post" for="companion_db_port" class="col-lg-4 o_light_label"/>
+                            <field name="companion_db_port"/>
+                        </div>
+                        <div class="row">
+                            <label string="Database Name" for="companion_db_database" class="col-lg-4 o_light_label"/>
+                            <field name="companion_db_database"/>
+                        </div>
+                        <div class="row">
+                            <label string="DB Username" for="companion_db_username" class="col-lg-4 o_light_label"/>
+                            <field name="companion_db_username"/>
+                        </div>
+                        <div class="row">
+                            <label string="DB Password" for="companion_db_password" class="col-lg-4 o_light_label"/>
+                            <field name="companion_db_password" password="True"/>
+                        </div>
+                    </setting>
+                    <setting string="Sync Data From Companion" help="Start sync data from Companion to Odoo">
+                        <button name="action_sync_companion_data" type="object" string="Sync Data" class="oe_highlight"/>
+                        <span style="margin: 0 10px"/>
+                        <button name="action_test_companion_connection" type="object" string="Test Connection" class="oe_highlight"/>
+                    </setting>
+                    <setting string="Sync Data To Companion Log" help="Show history and status of SQL executes from Odoo to Companion">
+                        <button name="%(haverton_sync_companion_data.companion_sync_log_act_window)d" type="action" string="Sync Data To Companion Log" class="oe_highlight"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

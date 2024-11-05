@@ -1,0 +1,1025 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* zet_sale_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-24 17:16+0000\n"
+"PO-Revision-Date: 2024-07-24 17:16+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "<i class=\"fa fa-fw fa-check\"/> Authorized"
+msgstr "<i class=\"fa fa-fw fa-check\"/> 已授權"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "<i class=\"fa fa-fw fa-check\"/> Paid"
+msgstr "<i class=\"fa fa-fw fa-check\"/> 已付款"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "<i class=\"fa fa-fw fa-clock-o\"/> Waiting Payment"
+msgstr "<i class=\"fa fa-fw fa-clock-o\"/> 等待付款"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid ""
+"<i class=\"fa fa-map-marker fa-fw\" role=\"img\" aria-label=\"Address\" "
+"title=\"Address\"/>"
+msgstr "<i class=\"fa fa-map-marker fa-fw\" role=\"img\" aria-label=\"地址\" title=\"地址\"/>"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.portal_my_orders_history
+msgid ""
+"<span class=\"d-none d-md-inline\">Version #</span>\n"
+"                            <span class=\"d-block d-md-none\">Ref.</span>"
+msgstr ""
+"<span class=\"d-none d-md-inline\">版本號</span>\n"
+"                            <span class=\"d-block d-md-none\">參考</span>"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.portal_my_home_menu_sale_history
+msgid "<span>History</span>"
+msgstr "<span>历史</span>"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.res_config_settings_inherit_limit
+msgid "<span>MB</span>"
+msgstr ""
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "<span>Particulars</span>"
+msgstr "詳情"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "<span>Quantity</span>"
+msgstr "<span>數量</span>"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "<span>Voucher Reference</span>"
+msgstr "<span>憑證參考</span>"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr "<strong class=\"mr16\">小計</strong>"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid ""
+"<strong>\n"
+"                            There are differences between the exchange rates, so please double-check the exchange rates in the remarks section!\n"
+"                        </strong>"
+msgstr ""
+"<strong>\n"
+"                           匯率之間有差異，請檢查備註部分的匯率！\n"
+"                        </strong>"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_template_form
+msgid "Add a note"
+msgstr "新增備註"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_template_form
+msgid "Add a product"
+msgstr "新增產品"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_template_form
+msgid "Add a section"
+msgstr "新增部門"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_template_form
+msgid "Add a sub-section"
+msgstr "添加子部分"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/controllers/portal.py:0
+#, python-format
+msgid "All"
+msgstr "全部"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "Amount"
+msgstr "金額"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/models/sale_order.py:0
+#, python-format
+msgid "Amount (%s)"
+msgstr "金額 (%s)"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__foreign_price_subtotal
+msgid "Amount (Foreign)"
+msgstr "金額（國外）"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/models/sale_order.py:0
+#, python-format
+msgid "Analytic Account"
+msgstr "分析帳戶"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_select_analytic_wizard__analytic_account_ids
+msgid "Analytic Accounts"
+msgstr ""
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/wizard/select_analytic_wizard.py:0
+#, python-format
+msgid "Analytic Item"
+msgstr "分析項目"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "Analyze"
+msgstr "分析"
+
+#. module: zet_sale_management
+#. odoo-javascript
+#: code:addons/zet_sale_management/static/src/views/fields/many2many_drag_drop/many2many_drag_drop.js:0
+#, python-format
+msgid ""
+"Are you sure you want to delete this attachment? This action cannot be "
+"undone."
+msgstr "您確定要刪除此附件嗎？此操作無法撤銷。"
+
+#. module: zet_sale_management
+#. odoo-javascript
+#: code:addons/zet_sale_management/static/src/views/fields/many2many_drag_drop/many2many_drag_drop.xml:0
+#, python-format
+msgid "Attach"
+msgstr "附加"
+
+#. module: zet_sale_management
+#. odoo-javascript
+#: code:addons/zet_sale_management/static/src/views/fields/many2many_drag_drop/many2many_drag_drop.xml:0
+#, python-format
+msgid "Attach files"
+msgstr "附加文件"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_ir_attachment
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__attachment_ids
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_attach_file__attachment_ids
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.upload_files_wizard_view_form
+msgid "Attachment"
+msgstr "附件"
+
+#. module: zet_sale_management
+#: model:ir.actions.act_window,name:zet_sale_management.action_attachment
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_files_wizard__attachment_ids
+#: model:ir.ui.menu,name:zet_sale_management.menu_action_attachment
+msgid "Attachments"
+msgstr "附件"
+
+#. module: zet_sale_management
+#: model:res.groups,comment:zet_sale_management.group_sale_team_document
+msgid ""
+"Can  view document (PDA/FDA) that:\n"
+"                - he is the Sales person \n"
+"                - he is in the Sales team\n"
+"                and all other documents that Sales person = blank"
+msgstr ""
+"可以查看文件（PDA/FDA），其中：\n"
+"                - 他是銷售人員\n"
+"                - 他在銷售團隊中\n"
+"                以及所有其他銷售人員為空的文件"
+
+#. module: zet_sale_management
+#: model:ir.model.fields.selection,name:zet_sale_management.selection__sale_order__state__cancel
+msgid "Cancelled"
+msgstr "已取消"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_res_config_settings__capacity_limit
+msgid "Capacity Limit"
+msgstr "容量限制"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "Catalog"
+msgstr "目錄"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "Change Main Currency"
+msgstr "更改主要貨幣"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "Close"
+msgstr "關閉"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_res_config_settings
+msgid "Config Settings"
+msgstr "配置設定"
+
+#. module: zet_sale_management
+#: model:ir.model.fields.selection,name:zet_sale_management.selection__sale_order__state__sale
+msgid "Confirmed"
+msgstr "已確認"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_res_partner
+msgid "Contact"
+msgstr "聯絡人"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_foreign_amount__conversion_rate
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist__conversion_rate
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist_item__conversion_rate
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__conversion_rate
+msgid "Conversion Rate"
+msgstr "匯率"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,help:zet_sale_management.field_foreign_amount__conversion_rate
+#: model:ir.model.fields,help:zet_sale_management.field_product_pricelist_item__conversion_rate
+#: model:ir.model.fields,help:zet_sale_management.field_sale_order_line__conversion_rate
+msgid "Conversion rate between Main currency & Foreign Currency"
+msgstr "主要貨幣與外幣之間的兌換率"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__count_fda
+msgid "Count Fda"
+msgstr "統計 FDA"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__count_history
+msgid "Count History"
+msgstr "歷史統計"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "Create FDA"
+msgstr "建立 FDA"
+
+#. module: zet_sale_management
+#: model_terms:ir.actions.act_window,help:zet_sale_management.action_orders_fda
+#: model_terms:ir.actions.act_window,help:zet_sale_management.action_orders_pda
+msgid "Create a new quotation, the first step of a new sale!"
+msgstr "建立新報價，是新銷售的第一步！"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "Create template"
+msgstr "建立範本"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_note__create_uid
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__create_uid
+#: model:ir.model.fields,field_description:zet_sale_management.field_select_analytic_wizard__create_uid
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_files_wizard__create_uid
+msgid "Created by"
+msgstr "建立者"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_note__create_date
+#: model:ir.model.fields,field_description:zet_sale_management.field_select_analytic_wizard__create_date
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_files_wizard__create_date
+msgid "Created on"
+msgstr "创建于"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist__customer_ids
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_template__partner_id
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.view_attachment_search_inherit
+msgid "Customer"
+msgstr "客戶"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__customs_declaration_ref
+msgid "Customs Declaration Ref"
+msgstr "海关报关参考号"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_job_book_view
+msgid "Date"
+msgstr "日期"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__date_of_arrival
+msgid "Date Of Arrival"
+msgstr "入住日期"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Date Of Arrival:"
+msgstr "入住日期"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__date_of_departure
+msgid "Date Of Departure"
+msgstr "出发日期"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Date Of Departure:"
+msgstr "出发日期"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Date:"
+msgstr "日期："
+
+#. module: zet_sale_management
+#: model:ir.model.fields,help:zet_sale_management.field_sale_order__pricelist_id
+msgid "Determine the Main currency of PDA/FDA"
+msgstr "確定PDA/FDA的主要貨幣"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_note__display_name
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__display_name
+#: model:ir.model.fields,field_description:zet_sale_management.field_select_analytic_wizard__display_name
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_files_wizard__display_name
+msgid "Display Name"
+msgstr "顯示名稱"
+
+#. module: zet_sale_management
+#: model:ir.model.fields.selection,name:zet_sale_management.selection__sale_order__state__sent
+msgid "Document Sent"
+msgstr "文件已發送"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Documents"
+msgstr "文件"
+
+#. module: zet_sale_management
+#: model:ir.model.fields.selection,name:zet_sale_management.selection__sale_order__state__draft
+msgid "Draft"
+msgstr "草稿"
+
+#. module: zet_sale_management
+#. odoo-javascript
+#: code:addons/zet_sale_management/static/src/views/fields/many2many_drag_drop/many2many_drag_drop.xml:0
+#, python-format
+msgid "Drag & drop to Upload"
+msgstr "拖放以上傳"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__create_date
+msgid "Edit Time"
+msgstr "创建于"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.portal_my_orders_history
+msgid "Edit time"
+msgstr "編輯時間"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__user_edit
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.portal_my_orders_history
+msgid "Editor"
+msgstr "用户编辑"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__rate
+msgid "F(x) - Main currency"
+msgstr "F(x) 主要貨幣"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__conversion_rate
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "F(x) rate"
+msgstr "匯率"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/controllers/portal.py:0
+#: code:addons/zet_sale_management/models/sale_order.py:0
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__fda
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.view_order_product_search
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.view_sales_order_filter
+#, python-format
+msgid "FDA"
+msgstr "最終支付帳戶"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.view_attachment_search_inherit
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.view_sales_order_filter
+msgid "FDA/PDA Active"
+msgstr "FDA/PDA 活躍"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.view_attachment_search_inherit
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.view_sales_order_filter
+msgid "FDA/PDA Cancel"
+msgstr "FDA/PDA 取消"
+
+#. module: zet_sale_management
+#: model:ir.actions.act_window,name:zet_sale_management.action_orders_fda
+msgid "Final Disbursement Account"
+msgstr "最終支付帳戶"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_foreign_amount__fixed_price
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist_item__fixed_price
+msgid "Fixed Price"
+msgstr "固定價格"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.portal_my_home_sale
+msgid "Follow, view or pay your orders"
+msgstr "關注、查看或支付您的訂單"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_foreign_amount
+msgid "Foreign Amount"
+msgstr "外幣金額"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_foreign_amount__foreign_currency_id
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist__foreign_currency_id
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist_item__foreign_currency_id
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__foreign_currency_id
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__tmp_foreign_currency_id
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__foreign_currency_id
+msgid "Foreign Currency"
+msgstr "外幣"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_foreign_amount__foreign_price
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist_item__foreign_price
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__foreign_price
+msgid "Foreign Price"
+msgstr "外幣價格"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__foreign_price_total
+msgid "Foreign Tax incl."
+msgstr "外幣稅額（含稅）"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_res_config_settings__has_limit
+msgid "Has Limit"
+msgstr "有限制"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist__hide_exchange_price
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__hide_exchange_price
+msgid "Hide Exchange Price"
+msgstr "隱藏匯率價格"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/models/sale_order.py:0
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.portal_my_home_menu_sale_history
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+#, python-format
+msgid "History"
+msgstr "历史"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_sale_order_history
+msgid "History Sale Order"
+msgstr "歷史銷售訂單"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_note__id
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__id
+#: model:ir.model.fields,field_description:zet_sale_management.field_select_analytic_wizard__id
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_files_wizard__id
+msgid "ID"
+msgstr "編號"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,help:zet_sale_management.field_sale_order__tmp_foreign_currency_id
+msgid ""
+"Input a foreign currency if user wants to select a new currency which is "
+"different from foreign currency of Pricelist"
+msgstr "如果是多種貨幣的輸入，則為可選的其他貨幣。"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,help:zet_sale_management.field_sale_order__main_currency_id
+msgid ""
+"Input a main currency if user wants to select a new currency which is "
+"different from currency of Pricelist"
+msgstr "如果使用者想選擇與價目表貨幣不同的新貨幣，請輸入主要貨幣"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__is_fda
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_report__is_fda
+msgid "Is Fda"
+msgstr "是否FDA"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__is_sub_section
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_template_line__is_sub_section
+msgid "Is Sub Section"
+msgstr "是否子部分"
+
+#. module: zet_sale_management
+#: model:ir.actions.act_window,name:zet_sale_management.action_job_book
+#: model:ir.ui.menu,name:zet_sale_management.menu_job_book
+msgid "Job Book"
+msgstr "工作记录"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_job_book_view
+msgid "Job Number"
+msgstr "工作编号"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Last Invoices"
+msgstr "最新發票"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_note__write_uid
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__write_uid
+#: model:ir.model.fields,field_description:zet_sale_management.field_select_analytic_wizard__write_uid
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_files_wizard__write_uid
+msgid "Last Updated by"
+msgstr "最後更新者"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_note__write_date
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__write_date
+#: model:ir.model.fields,field_description:zet_sale_management.field_select_analytic_wizard__write_date
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_files_wizard__write_date
+msgid "Last Updated on"
+msgstr "最後更新於"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.res_config_settings_inherit_limit
+msgid "Limited quantity and capacity."
+msgstr "數量和容量有限。"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__main_currency_id
+msgid "Main Currency"
+msgstr "主要貨幣"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_note__name
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__name
+msgid "Name"
+msgstr "名稱"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/models/sale_order.py:0
+#: code:addons/zet_sale_management/models/sale_order.py:0
+#: code:addons/zet_sale_management/models/sale_order.py:0
+#, python-format
+msgid "New"
+msgstr "新建"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Note is plain text. This ensures a clickable link"
+msgstr "備註是純文本。這確保了可點擊的鏈接"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__number_attachment
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_attach_file__number_attachment
+msgid "Number Attachment"
+msgstr "附件號"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_res_config_settings__number_of_lines_limit
+msgid "Number of Lines Limit"
+msgstr "行數限制"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__old_value
+msgid "Old Value"
+msgstr "舊值"
+
+#. module: zet_sale_management
+#: model_terms:ir.actions.act_window,help:zet_sale_management.action_orders_fda
+#: model_terms:ir.actions.act_window,help:zet_sale_management.action_orders_pda
+msgid ""
+"Once the quotation is confirmed, it becomes a sales order.<br> You will be "
+"able to create an invoice and collect the payment."
+msgstr "報價確認後，它將變成銷售訂單。<br> 您將能夠創建發票並收取付款。"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_foreign_amount__onchange_fixed_price_or_conversion_rate
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist_item__onchange_fixed_price_or_conversion_rate
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__onchange_fixed_price_or_conversion_rate
+msgid "Onchange Fixed Price Or Conversion Rate"
+msgstr "當固定價格或換算率變更時"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_foreign_amount__onchange_foreign_price
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist_item__onchange_foreign_price
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__onchange_foreign_price
+msgid "Onchange Foreign Price"
+msgstr "當外幣價格變更時"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_res_partner__price_list_ids
+#: model:ir.model.fields,field_description:zet_sale_management.field_res_users__price_list_ids
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__price_list_ids
+msgid "Optional Price List"
+msgstr "可選價目表"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__order_id
+msgid "Order"
+msgstr "命令"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__order_history_ids
+msgid "Order History"
+msgstr "訂單歷史"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_ir_attachment__order_line_ids
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_document__order_line_ids
+msgid "Order Line"
+msgstr "訂單行"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "Other Info"
+msgstr "其他信息"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_job_book_view
+msgid "Others"
+msgstr "其他"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/controllers/portal.py:0
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__pda
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.view_order_product_search
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.view_sales_order_filter
+#, python-format
+msgid "PDA"
+msgstr "最終支付帳戶"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.view_attachment_search_inherit
+msgid "PDA/FDA number"
+msgstr "最終支付帳戶/最終付款帳戶編號"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Payment terms"
+msgstr "付款條款"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/wizard/select_analytic_wizard.py:0
+#, python-format
+msgid "Please choose analytic account"
+msgstr "請選擇分析帳戶"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/models/sale_order.py:0
+#, python-format
+msgid "Please set analytic account"
+msgstr "請設定解析帳戶"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__port
+msgid "Port"
+msgstr "港口"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Port:"
+msgstr "港口"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "Postal Reference Others"
+msgstr "其他郵政參考"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__postal_reference_others
+msgid "Postal Reference: Others"
+msgstr "邮政参考号：其他"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__postal_reference_sent_out_invoice
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "Postal Reference: Sent out Invoice"
+msgstr "邮政参考号：已寄出发票"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_history_view_tree
+msgid "Preview"
+msgstr "预览"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,help:zet_sale_management.field_foreign_amount__foreign_price
+#: model:ir.model.fields,help:zet_sale_management.field_product_pricelist_item__foreign_price
+#: model:ir.model.fields,help:zet_sale_management.field_sale_order_line__foreign_price
+msgid "Price of products in Foreign currency."
+msgstr "如果是多種貨幣的輸入，則以可選的其他貨幣表示的金額。"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,help:zet_sale_management.field_sale_order_line__fixed_price
+#: model:ir.model.fields,help:zet_sale_management.field_sale_order_line__price_unit
+msgid "Price of products in Main currency"
+msgstr "以主要貨幣計的產品價格"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_product_pricelist
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__pricelist_id
+msgid "Pricelist"
+msgstr "價格表"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_product_pricelist_item
+msgid "Pricelist Rule"
+msgstr "價格表規則"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__principal
+msgid "Principal"
+msgstr "校長"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_note__product_ids
+msgid "Product"
+msgstr "產品"
+
+#. module: zet_sale_management
+#: model:ir.actions.act_window,name:zet_sale_management.action_product_note
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_product__product_note
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__product_note
+#: model:ir.ui.menu,name:zet_sale_management.menu_product_note
+msgid "Product Note"
+msgstr "產品備註"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist_item__product_template_ids
+msgid "Product Template"
+msgstr "產品模板"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_product_product
+msgid "Product Variant"
+msgstr "產品款式"
+
+#. module: zet_sale_management
+#: model:ir.actions.act_window,name:zet_sale_management.action_orders_pda
+msgid "Proforma Disbursement Account"
+msgstr "形式發放賬戶"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__purpose_of_call
+msgid "Purpose Of Call"
+msgstr "通话目的"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/models/sale_order.py:0
+#: model:ir.model,name:zet_sale_management.model_sale_order_template
+#, python-format
+msgid "Quotation Template"
+msgstr "報價單範本"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_sale_order_template_line
+msgid "Quotation Template Line"
+msgstr "報價單範本項目"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_files_wizard__res_id
+msgid "Res"
+msgstr "對象 ID"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_files_wizard__res_model
+msgid "Res Model"
+msgstr "對象模型"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_ir_attachment__sale_order_ids
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_document__sale_order_ids
+msgid "Sale Order"
+msgstr "銷售訂單"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_sale_report
+msgid "Sales Analysis Report"
+msgstr "銷售分析報告"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_sale_order
+msgid "Sales Order"
+msgstr "銷售訂單"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "銷售訂單明細"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_template__team_id
+msgid "Sales Team"
+msgstr "銷售團隊"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_template__user_id
+msgid "Salesperson"
+msgstr "銷售人員"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.account_analytic_account_view_tree
+msgid "Select Analytic Accounts"
+msgstr "選擇分析帳戶"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_job_book_view
+msgid "Sent Out Invoice"
+msgstr "寄出发票"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_product_pricelist_item__sequence
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__tmp_sequence
+msgid "Sequence"
+msgstr "序列"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_template__set_as_default
+msgid "Set As Default"
+msgstr "設為默認"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__show_waring_convert_rate
+msgid "Show Waring Convert Rate"
+msgstr "顯示警告轉換率"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__signature
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Signature"
+msgstr "簽名"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__state
+msgid "Status"
+msgstr "狀態"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_account_tax
+msgid "Tax"
+msgstr "稅金"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Terms &amp; Conditions"
+msgstr "條款和條件"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Terms &amp; Conditions:"
+msgstr "條款和條件："
+
+#. module: zet_sale_management
+#: model:ir.model.fields,help:zet_sale_management.field_foreign_amount__foreign_currency_id
+#: model:ir.model.fields,help:zet_sale_management.field_product_pricelist__foreign_currency_id
+#: model:ir.model.fields,help:zet_sale_management.field_product_pricelist_item__foreign_currency_id
+#: model:ir.model.fields,help:zet_sale_management.field_sale_order__foreign_currency_id
+#: model:ir.model.fields,help:zet_sale_management.field_sale_order_line__foreign_currency_id
+msgid "The optional other currency if it is a multi-currency entry."
+msgstr "如果是多種貨幣的輸入，則為可選的其他貨幣。"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.portal_my_orders_history
+msgid "There are currently no orders for your account."
+msgstr "目前您的帳戶中沒有訂單。"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.portal_my_orders_history
+msgid "There is currently no order history for this sale."
+msgstr "目前此銷售中沒有訂單歷史記錄。"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/models/upload_attach_file.py:0
+#, python-format
+msgid ""
+"Too many files have been selected. Please choose no more than %s files."
+msgstr "已選擇太多文件。請選擇不多於 %s 個文件。"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__total_file_size
+#: model:ir.model.fields,field_description:zet_sale_management.field_upload_attach_file__total_file_size
+msgid "Total File Size"
+msgstr "文件總大小"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__total_file_size_in_line
+msgid "Total File Size In Line"
+msgstr "行中的文件總大小"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__fixed_price
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__price_unit
+msgid "Unit Price"
+msgstr "單價"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.product_pricelist_view
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid "Update Conversion Rate"
+msgstr "更新換算率"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_form_history
+msgid ""
+"Update New Unit price equal Current Unit Price * F(x) Rate - Main currency"
+msgstr "更新新單位價格等於當前單位價格乘以 F(x) 比率 - 主要貨幣"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_upload_attach_file
+msgid "Upload Attach File"
+msgstr "上传附件"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/models/upload_attach_file.py:0
+#, python-format
+msgid "Upload File"
+msgstr "上傳文件"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_upload_files_wizard
+msgid "Upload Files Wizard"
+msgstr "上传文件向导"
+
+#. module: zet_sale_management
+#: model:res.groups,name:zet_sale_management.group_sale_team_document
+msgid "User: Team document"
+msgstr "使用者：團隊文件"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_history__version_number
+msgid "Version Number"
+msgstr "版本号"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order__vessel_name
+msgid "Vessel Name"
+msgstr "船名"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.sale_order_portal_content
+msgid "Vessel Name:"
+msgstr "船名"
+
+#. module: zet_sale_management
+#: model:ir.model.fields,field_description:zet_sale_management.field_sale_order_line__voucher_reference
+msgid "Voucher Reference"
+msgstr "憑證參考"
+
+#. module: zet_sale_management
+#: model_terms:ir.ui.view,arch_db:zet_sale_management.portal_my_orders_history
+msgid "Your Orders"
+msgstr "您的訂單"
+
+#. module: zet_sale_management
+#. odoo-python
+#: code:addons/zet_sale_management/models/upload_attach_file.py:0
+#, python-format
+msgid ""
+"Your file is too large. Please try to make it smaller or split it into "
+"smaller files to proceed with the processing."
+msgstr "您的文件太大。請嘗試使其變小或將其拆分成較小的文件以繼續處理。"
+
+#. module: zet_sale_management
+#: model:ir.model,name:zet_sale_management.model_product_note
+msgid "product.note"
+msgstr "產品備註"

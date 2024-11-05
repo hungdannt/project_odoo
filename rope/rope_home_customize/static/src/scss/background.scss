@@ -1,0 +1,36 @@
+//css background ui
+.o_home_menu_background {
+    background: url(/rope_home_customize/static/img/background_ui.png);
+    background-repeat: round;
+}
+.o_home_menu{
+    .o_home_menu_scrollable{
+        .o_apps{
+            .o_app{
+                width:33%;
+                margin-bottom:70px;
+            }
+        }
+    }
+}
+.o_home_menu {
+    .o_home_menu_scrollable {
+        .o_apps {
+            .o_app {
+                .o_app_icon{
+                    margin: auto;
+                    max-width: 100px;
+                    overflow: hidden;
+                    position: relative;
+                    width: 80%;
+                    background-size: contain;
+                }
+            }
+        }
+    }
+}
+@media (min-width: 768px){
+    .o_home_menu.o_search_hidden .o_home_menu_scrollable > div:first-child{
+         margin-top: 163px;
+    }
+}

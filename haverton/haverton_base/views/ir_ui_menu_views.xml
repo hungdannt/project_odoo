@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ir_ui_menu_view_form" model="ir.ui.view">
+            <field name="name">ir.ui.menu.view.form.inherit.base</field>
+            <field name="model">ir.ui.menu</field>
+            <field name="inherit_id" ref="base.edit_menu_access"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group[1]/group[1]/field[@name='sequence']" position="after">
+                    <field name="mobile_visibility" groups="base.group_system"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.menu" id="firebase_push_notification.menu_firebase_push_notification">
+            <field name="active">False</field>
+        </record>
+
+        <record model="ir.ui.menu" id="account.menu_finance">
+            <field name="active">False</field>
+        </record>
+
+        <record model="ir.ui.menu" id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root">
+            <field name="active">False</field>
+        </record>
+        <record model="ir.ui.menu" id="project_todo.menu_todo_todos">
+            <field name="active">False</field>
+        </record>
+
+        <record model="ir.ui.menu" id="project.menu_main_pm">
+            <field name="name">Jobs</field>
+        </record>
+
+        <record id="base.menu_apps" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_no_one')])]"/>
+        </record>
+
+        <record id="base_fastapi.menu_fastapi_root" model="ir.ui.menu">
+            <field name="parent_id" ref="base.menu_custom"/>
+        </record>
+
+    </data>
+</odoo>

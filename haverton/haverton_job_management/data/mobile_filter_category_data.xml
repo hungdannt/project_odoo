@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Dashboard Activity Filters -->
+        <record id="mfc_dashboard_activities_status" model="mobile.filter.category">
+            <field name="name">Status</field>
+            <field name="code">status</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">dashboard_activities</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+        <record id="mfc_dashboard_activities_time_period" model="mobile.filter.category">
+            <field name="name">Time Period</field>
+            <field name="code">time_period</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">dashboard_activities</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+
+        <!-- Todo Activity Filters -->
+        <record id="mfc_todo_activities_status" model="mobile.filter.category">
+            <field name="name">Status</field>
+            <field name="code">status</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">todo_activities</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+        <record id="mfc_todo_activities_users" model="mobile.filter.category">
+            <field name="name">Users</field>
+            <field name="code">users</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">todo_activities</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_admin')])]" />
+        </record>
+        <record id="mfc_todo_activities_contract_no" model="mobile.filter.category">
+            <field name="name">Contract No</field>
+            <field name="code">contract_no</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">todo_activities</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+
+        <!-- Todo Defect Filters -->
+        <record id="mfc_todo_defects_status" model="mobile.filter.category">
+            <field name="name">Status</field>
+            <field name="code">status</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">todo_defects</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+        <record id="mfc_todo_defects_users" model="mobile.filter.category">
+            <field name="name">Users</field>
+            <field name="code">users</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">todo_defects</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_admin')])]" />
+        </record>
+        <record id="mfc_todo_defects_defect_type" model="mobile.filter.category">
+            <field name="name">Defect Type</field>
+            <field name="code">defect_type</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">todo_defects</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+        <record id="mfc_todo_defects_contract_no" model="mobile.filter.category">
+            <field name="name">Contract No</field>
+            <field name="code">contract_no</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">todo_defects</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+
+        <!-- Todo Variation Filters -->
+        <record id="mfc_todo_variations_users" model="mobile.filter.category">
+            <field name="name">Users</field>
+            <field name="code">users</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">todo_variations</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_admin')])]" />
+        </record>
+        <record id="mfc_todo_variations_contract_no" model="mobile.filter.category">
+            <field name="name">Contract No</field>
+            <field name="code">contract_no</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">todo_variations</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+        <record id="mfc_todo_variations_start_date" model="mobile.filter.category">
+            <field name="name">Start Date</field>
+            <field name="code">start_date</field>
+            <field name="show_on_mobile">1</field>
+            <field name="screen_type">todo_variations</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+    </data>
+</odoo>

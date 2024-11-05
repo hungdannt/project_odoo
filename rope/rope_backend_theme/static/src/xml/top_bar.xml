@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="web.NavBar" t-inherit-mode="extension"
+       owl="1">
+        <xpath expr="//t[@t-call='web.NavBar.AppsMenu']" position="replace">
+            <t t-call="web.NavBar.AppsMenu">
+                <t t-set="apps" t-value="menuService.getApps()"/>
+            </t>
+            <MenuItem
+                   t-if="currentApp"
+                   href="getMenuItemHref(currentApp)"
+                   payload="currentApp"
+                   t-esc="currentApp.name"
+                   class="o_menu_brand"
+                   t-ref="menuBrand"/>
+        </xpath>
+    </t>
+    <t t-inherit="web_enterprise.EnterpriseNavBar" t-inherit-mode="extension" owl="1">
+        <xpath expr="//nav" position="after">
+            <div class="o_open_sidebar_mobile">
+                <i class="o_open_sidebar_mobile__icon fa fa-bars" title="Open Sidebar"></i>
+            </div>
+            <span class="o_action_manager_padding_top">
+            </span>
+            <div class="sidebar_backdrop">
+            </div>
+            <div class="sidebar">
+                <div class="sidebar__close_sidebar_mobile">
+                    <img src="rope_backend_theme/static/src/img/icon_close.svg" alt="Close Sidebar" class="sidebar__close_sidebar_mobile__icon"/>
+                </div>
+
+                <div class="sidebar__header">
+                    <div class="sidebar__header__company">
+                        <p>R-EXPO</p>
+                    </div>
+                    <div class="sidebar__header__menu-name">
+                        <MenuItem
+                          t-if="currentApp"
+                          href="getMenuItemHref(currentApp)"
+                          payload="currentApp"
+                          t-esc="currentApp.name"
+                          class="o_menu_brand"
+                          t-ref="menuBrand"
+                        />
+                    </div>
+                    <div class="sidebar__header__menu">
+                        <a style="cursor: pointer;">
+                            <div class="sidebar__text">
+                                <div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <div style="padding: 3px 0 0 0;">
+                                    <p style="font-weight:100;font-size:19px;padding: 2px 0 0 0;">MENU</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar__content">
+                    <div class="sidebar__content__padding">
+                    </div>
+                    <div class="sidebar__content__home" t-on-click.prevent="hm.toggle()">
+                        <div class="sidebar__content__home__title">
+                            <div>
+                                <img src="rope_backend_theme/static/src/img/icon_home.svg"/>
+                                <span class="sidebar__collapse sidebar__collapse--nav-text">
+                                   HOME
+                                </span>
+                            </div>
+                            <i id="right" class="fa fa-angle-right sidebar__collapse"></i>
+                        </div>
+                        <hr class="sidebar__collapse" width="100%" align="center" color="white" style="margin-top:8px !important;background-color:white"/>
+                    </div>
+                    <div class="sidebar__content__menu-item">
+                        <t t-foreach="currentAppSections" t-as="subMenu">
+                            <t t-call="rope_backend_theme.BurgerSection">
+                                <t t-set="section" t-value="subMenu"/>
+                                <t t-set="menu_children" t-value="1"/>
+                            </t>
+                        </t>
+                    </div>
+
+                    <t t-if="env.debug">
+                        <div class="sidebar__content__debug">
+                            <div class="o_debug_manager_custom" t-on-click="toggleListItemDebug">
+                                <div class="o_debug_manager_custom__title">
+                                    <div class="o_debug_manager_custom__iconBox">
+                                        <i class="fa fa-bug"/>
+                                        <a class="button sidebar__collapse">Debug</a>
+                                    </div>
+                                    <i style="font-size:18px;" class="o_debug_manager_custom__right-icon fa fa-angle-right"/>
+                                    <i style="font-size:18px;" class="o_debug_manager_custom__right-icon fa fa-angle-down d-none"/>
+                                </div>
+                                <hr width="100%" align="center" color="white" style="margin:12px 0 6px 0 !important; background-color:white"/>
+                                <ul class="o_debug_manager_custom__item d-none"></ul>
+                            </div>
+                        </div>
+                    </t>
+
+                    <div class="sidebar__content__company">
+                        <t t-foreach="systrayItems" t-as="item" t-key="item.key">
+                            <NotUpdatable>
+                                <ErrorHandler onError="error => handleItemError(error, item)">
+                                    <t t-component="item.Component" t-props="item.props" />
+                                </ErrorHandler>
+                            </NotUpdatable>
+                        </t>
+                    </div>
+                    <div class="sidebar__content__MessagingMenu">
+                        <t t-foreach="systrayItems" t-as="item" t-key="item.key">
+                            <NotUpdatable>
+                                <ErrorHandler onError="error => handleItemError(error, item)">
+                                    <t t-component="item.Component" t-props="item.props" />
+                                </ErrorHandler>
+                            </NotUpdatable>
+                        </t>
+                    </div>
+                    <div class="sidebar__content__activity">
+                        <t t-foreach="systrayItems" t-as="item" t-key="item.key">
+                            <NotUpdatable>
+                                <ErrorHandler onError="error => handleItemError(error, item)">
+                                    <t t-component="item.Component" t-props="item.props" />
+                                </ErrorHandler>
+                            </NotUpdatable>
+                        </t>
+                    </div>
+
+                </div>
+
+                <div class="sidebar__footer">
+                    <div class="sidebar__footer__user">
+                        <div>
+                            <img class="rounded-circle o_user_avatar" t-att-src="source" alt="User"/>
+                            <p class="sidebar__collapse"><t t-esc="user.name"/></p>
+                        </div>
+                        <i style="font-size:18px;" class="fa fa-angle-right sidebar__collapse item-right"></i>
+                    </div>
+                    <div>
+                        <hr class="sidebar__collapse" width="100%" align="center" color="white" style="margin-top:12px !important;background-color:white"/>
+                    </div>
+                    <div class="sidebar__footer__menu-user">
+                        <div class="o_menu_systray" role="menu">
+                            <t t-foreach="systrayItems" t-as="item" t-key="item.key">
+                                <NotUpdatable>
+                                    <ErrorHandler onError="error => handleItemError(error, item)">
+                                        <t t-component="item.Component" t-props="item.props" />
+                                    </ErrorHandler>
+                                </NotUpdatable>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="sidebar__footer__icon-logout d-none">
+                        <a href="/web/session/logout" data-menu="logout">
+                            <img src="rope_backend_theme/static/src/img/signout_icon.svg"/>
+                        </a>
+                    </div>
+                    <a href="/web/session/logout" data-menu="logout">
+                        <div class="sidebar__footer__logout sidebar__collapse">
+                            <p>LOGOUT</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <span class="o_action_manager_padding_left">
+            </span>
+            <span class="o_action_manager_padding_right">
+            </span>
+            <span class="o_action_manager_padding_bottom">
+            </span>
+        </xpath>
+    </t>
+
+    <t t-name="rope_backend_theme.BurgerSection" owl="1">
+        <ul class="sub_menu" t-if="section.childrenTree" t-key="section.id" t-att-data-menu-xmlid="section.xmlid">
+            <t t-if="section.actionID">
+                <a class="open_menu_item" style="cursor: pointer;">
+                    <div class="open_menu_item__section menu_item" t-attf-action-id="{{section.id}}">
+                        <div class="menu_item" t-attf-action-id="{{section.id}}">
+                            <p t-esc="section.name" class="menu_item" t-attf-action-id="{{section.id}}" />
+                        </div>
+                        <t t-if="menu_children==1">
+                            <i class="right_submenu fa fa-angle-right"></i>
+                        </t>
+                    </div>
+                    <t t-if="menu_children==1">
+                        <hr width="100%" align="center" color="white" style="margin-top:11px !important;"/>
+                    </t>
+                    <t t-else="">
+                        <hr class="dotted-hr"/>
+                    </t>
+                </a>
+            </t>
+            <t t-else="">
+                <a class="open_menu_item" style="cursor: pointer;">
+                    <div class="open_menu_item__section">
+                        <div>
+                            <p t-esc="section.name"/>
+                        </div>
+                        <t t-if="menu_children==1">
+                            <i class="right_submenu fa fa-angle-right"></i>
+                        </t>
+                    </div>
+                    <t t-if="menu_children==1">
+                        <hr width="100%" align="center" color="white" style="margin-top:11px !important;"/>
+                    </t>
+                    <t t-else="">
+                        <hr class="dotted-hr"/>
+                    </t>
+                </a>
+            </t>
+            <t t-set="menu_children" t-value="2"/>
+            <div t-if="section.childrenTree.length" class="list_sub_menu d-none">
+                <t t-foreach="section.childrenTree" t-as="subSection">
+                    <t t-call="rope_backend_theme.BurgerSection">
+                        <t t-set="section" t-value="subSection" />
+                    </t>
+                </t>
+            </div>
+        </ul>
+    </t>
+
+    <t t-inherit="web.UserMenu" t-inherit-mode="extension" owl="1">
+        <xpath expr="//Dropdown" position="replace">
+            <ul class="o_user_menu">
+                <t t-foreach="getElements()" t-as="element" t-key="element_index">
+                    <t t-if="!element.hide">
+                        <li>
+                            <a t-if="element.type == 'item'"
+                                t-esc="element.description"
+                                t-on-click="elementMenuClick(element)"/>
+                            <hr class="dotted-hr"/>
+                        </li>
+                    </t>
+                </t>
+            </ul>
+        </xpath>
+    </t>
+
+    <t t-inherit="web.SwitchCompanyMenu" t-inherit-mode="extension" owl="1">
+        <xpath expr="//Dropdown" position="replace">
+            <div class="o_switch_company_menu">
+                <div class="o_switch_company_menu__title">
+                    <span>
+                        <t t-esc="currentCompany.name"/>
+                    </span>
+                    <i style="font-size:18px;" class="fa fa-angle-right sidebar__collapse item-right-company"></i>
+                </div>
+                <hr class="sidebar__collapse" width="100%" align="center" color="white" style="margin:12px 0 6px 0 !important; background-color:white"/>
+                <t t-if="Object.values(companyService.availableCompanies).length > 6">
+                    <ul class="o_switch_company_menu__list">
+                        <t t-foreach="Object.values(companyService.availableCompanies).sort((c1, c2) => c1.sequence - c2.sequence)" t-as="company">
+                            <li style="padding: 9px 26px 0 0;">
+                                <t t-call="web.SwitchCompanyItem">
+                                    <t t-set="company" t-value="company" />
+                                </t>
+                                <hr/>
+                            </li>
+                        </t>
+                    </ul>
+                </t>
+                <t t-else="">
+                    <ul class="o_switch_company_menu__list" style="margin: 37px 0;">
+                        <t t-foreach="Object.values(companyService.availableCompanies).sort((c1, c2) => c1.sequence - c2.sequence)" t-as="company">
+                            <li style="padding: 9px 0 0 0;">
+                                <t t-call="web.SwitchCompanyItem">
+                                    <t t-set="company" t-value="company" />
+                                </t>
+                                <hr/>
+                            </li>
+                        </t>
+                    </ul>
+                </t>
+                <hr class="o_switch_company_menu__footer" width="100%" align="center" color="white" style="margin:16px 0 6px 0 !important; background-color:white"/>
+            </div>
+        </xpath>
+    </t>
+
+    <t t-inherit="mail.MessagingMenu" t-inherit-mode="extension">
+        <xpath expr="//div" position="replace">
+            <div class="o_MessagingMenu">
+                <div class="o_MessagingMenu__title">
+                    <div class="o_MessagingMenu__iconBox">
+                        <div class="o_MessagingMenu__icon">
+                            <img src="/rope_backend_theme/static/src/img/icon_plan.svg"/>
+                            <span t-if="messagingMenu.counter &lt; 100" class="o_MessagingMenu__counter o_notification_counter badge badge-pill">
+                                <t t-esc="messagingMenu.counter"/>
+                            </span>
+                            <span t-if="messagingMenu.counter &gt;= 100" class="o_MessagingMenu__counter o_notification_counter badge badge-pill o_counter-100">
+                                <t t-esc="messagingMenu.counter"/>
+                            </span>
+                        </div>
+                        <a class="button sidebar__collapse">Message</a>
+                    </div>
+                    <i class="o_MessagingMenu__i fa fa-angle-right sidebar__collapse"></i>
+                </div>
+                <hr width="100%" align="center" color="white" style="margin-top:11px !important;" class="sidebar__collapse"/>
+
+                <t t-if="!messaging.isInitialized">
+                    <div><span><i class="o_MessagingMenu_dropdownLoadingIcon fa fa-circle-o-notch fa-spin"/>Please wait...</span></div>
+                </t>
+                <t t-else="">
+                    <div class="o_MessagingMenu__list d-none o-desktop btn btn-link sidebar__collapse"
+                         t-att-class="{ 'o-active': messagingMenu.activeTabId === tabId, }"
+                         t-on-click="_onClickDesktopTabButton" type="button" role="tab" t-att-data-tab-id="tabId">
+                        <t t-foreach="['all', 'chat', 'channel']" t-as="tabId" t-key="tabId">
+                            <div class="o_MessagingMenu__tabBox">
+                                <div class="o_MessagingMenu__tabBox_content" t-attf-class="o_MessagingMenu__tabBox_content--{{tabId}}">
+                                    <span t-if="tabId === 'all'" class="o_MessagingMenu__span">All</span>
+                                    <span t-if="tabId === 'chat'" class="o_MessagingMenu__span">Chat</span>
+                                    <span t-if="tabId === 'channel'" class="o_MessagingMenu__span">Channel</span>
+                                    <i t-attf-class="o_MessagingMenu__i_active--{{tabId}}" class="o_MessagingMenu__i_active fa fa-angle-right"></i>
+                                </div>
+                                <div><hr class="dotted-hr"/></div>
+                                <div class="notificationList" t-attf-class="notificationList--{{tabId}} d-none">
+                                    <NotificationList class="o_MessagingMenu__notificationList" filter="tabId"/>
+                                </div>
+                            </div>
+                        </t>
+                        <div class="o_MessagingMenu__ButtonNewMessageBox">
+                            <div class="buttonNewMessageBox" t-on-click="_onClickNewMessage">
+                                <t t-call="mail.MessagingMenu.newMessageButton"/>
+                                <i class="buttonNewMessageBox__i fa fa-angle-right"></i>
+                            </div>
+                            <div><hr class="dotted-hr"/></div>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </xpath>
+    </t>
+
+    <t t-inherit="web.SwitchCompanyItem" t-inherit-mode="extension" owl="1">
+        <xpath expr="//DropdownItem" position="replace">
+            <DropdownItem class="p-0 bg-white">
+                <t t-set="isCompanySelected" t-value="selectedCompanies.includes(company.id)"/>
+                <t t-set="isCurrent" t-value="company.id === companyService.currentCompany.id"/>
+                <div class="d-flex" data-menu="company" t-att-data-company-id="company.id">
+                    <div
+                        role="menuitemcheckbox"
+                        t-att-aria-checked="isCompanySelected ? 'true' : 'false'"
+                        t-att-aria-label="company.name"
+                        t-att-title="(isCompanySelected ? 'Hide ' : 'Show ') + company.name + ' content.'"
+                        tabindex="0"
+                        class="border-right toggle_company o_py"
+                        t-attf-class="{{isCurrent ? 'border-primary' : ''}}"
+                        t-on-click.stop="toggleCompany(company.id)">
+                        <i class="fa fa-fw py-2" t-att-class="isCompanySelected ? 'fa-check-square text-primary' : 'fa-square-o'"/>
+                    </div>
+
+                    <div
+                        role="button"
+                        t-att-aria-pressed="isCurrent ? 'true' : 'false'"
+                        t-att-aria-label="'Switch to ' + company.name "
+                        t-att-title="'Switch to ' + company.name "
+                        class="d-flex flex-grow-1 align-items-center py-0 log_into pl-2 o_py"
+                        t-att-class="isCurrent ? 'alert-primary ml-1 mr-2 text-company' : 'btn btn-light font-weight-normal border-0 text-company'"
+                        t-on-click="logIntoCompany(company.id)">
+                        <span
+                            class='company_label pr-3'
+                            t-att-class="isCurrent ? 'text-900 font-weight-bold' : 'ml-1'">
+                            <t t-esc="company.name" />
+                        </span>
+                    </div>
+                </div>
+            </DropdownItem>
+        </xpath>
+    </t>
+
+    <t t-inherit="mail.systray.ActivityMenu" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_mail_systray_item')]" position="replace">
+            <div class="o_mail_systray_item">
+                <div class="o_mail_systray_item__title">
+                    <div class="o_mail_systray_item__title__name">
+                        <div><img src="rope_backend_theme/static/src/img/activity_icon.png"/> <span class="o_notification_counter badge badge-pill"/></div>
+                        <p class="sidebar__collapse">Action</p>
+                    </div>
+                    <i class="fa fa-angle-right sidebar__collapse item-right-activity"></i>
+                </div>
+                <hr class="o_mail_systray_item__hr sidebar__collapse" width="100%" align="center" color="white"/>
+                <div class="o_mail_systray_dropdown_items"/>
+            </div>
+        </xpath>
+    </t>
+
+    <t t-inherit="mail.systray.ActivityMenu.Previews" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-foreach='activities']" position="replace">
+            <t t-foreach="activities" t-as="activity">
+                <div class="o_mail_preview o_systray_activity" t-att-data-res_model="activity.model" t-att-data-model_name="activity.name" t-att-data-domain="activity.domain" data-filter='my'>
+                    <div t-if="activity.icon" class="o_mail_preview_image o_mail_preview_app">
+                        <img t-att-src="activity.icon" alt="Activity"/>
+                    </div>
+                    <div class="o_preview_info">
+                        <div class="o_preview_title">
+                            <span class="o_preview_name">
+                                <t t-esc="activity.name"/>
+                            </span>
+                        </div>
+                        <div t-if="activity and activity.type == 'activity'">
+                            <button t-if="activity.overdue_count" type="button" class="btn btn-link o_activity_filter_button mr16" style="font-size:18px;" t-att-data-res_model="activity.model" t-att-data-model_name="activity.name" data-filter='overdue'><t t-esc="activity.overdue_count"/> Late </button>
+                            <p t-if="!activity.overdue_count" class="o_no_activity mr16">0 Late </p>
+                            <button t-if="activity.today_count" type="button" class="btn btn-link o_activity_filter_button mr16"  style="font-size:18px;" t-att-data-res_model="activity.model" t-att-data-model_name="activity.name" data-filter='today'> <t t-esc="activity.today_count"/> Today </button>
+                            <p t-if="!activity.today_count" class="o_no_activity mr16">0 Today </p>
+                            <button t-if="activity.planned_count" type="button" class="btn btn-link o_activity_filter_button"  style="font-size:18px;" t-att-data-res_model="activity.model" t-att-data-model_name="activity.name" data-filter='upcoming_all'> <t t-esc="activity.planned_count"/> Future </button>
+                            <div t-if="!activity.planned_count" class="o_no_activity">0 Future</div>
+                        </div>
+                    </div>
+                </div>
+                <hr></hr>
+            </t>
+        </xpath>
+    </t>
+
+    <t t-inherit="mail.NotificationList" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div" position="replace">
+            <div class="o_NotificationList" t-att-class="{'o-empty': notifications.length === 0,'o_collapse--none': notifications.length &lt;= 4}">
+            <t t-if="notifications.length === 0">
+                <div class="o_NotificationList_noConversation" style="display: flex; flex-direction: column;">
+                    <div class="o_NotificationList__title"><p>No conversation yet...</p></div>
+                    <div class="o_NotificationList__hr" style="width: 100%;"><hr class="dotted-hr"/></div>
+                </div>
+            </t>
+            <t t-else="">
+                <t t-foreach="notifications" t-as="notification" t-key="notification.uniqueId">
+                    <t t-if="notification.type === 'thread' and notification.thread">
+                        <ThreadPreview
+                            class="o_NotificationList_preview"
+                            t-att-class="{ 'o-mobile': messaging.device.isMobile }"
+                            threadLocalId="notification.thread.localId"
+                        />
+                        <div class="o_NotificationList__hr" style="width: 100%;"><hr class="dotted-hr"/></div>
+                    </t>
+                    <t t-if="notification.type === 'thread_needaction' and notification.thread">
+                        <ThreadNeedactionPreview
+                            class="o_NotificationList_preview"
+                            t-att-class="{ 'o-mobile': messaging.device.isMobile }"
+                            threadLocalId="notification.thread.localId"
+                        />
+                        <div class="o_NotificationList__hr" style="width: 100%;"><hr class="dotted-hr"/></div>
+                    </t>
+                    <t t-if="notification.notificationGroup">
+                        <NotificationGroup
+                            class="o_NotificationList_group"
+                            notificationGroupLocalId="notification.notificationGroup.localId"
+                        />
+                        <div class="o_NotificationList_group__hr" style="width: 100%;"><hr class="dotted-hr"/></div>
+                    </t>
+                    <t t-if="notification.type === 'odoobotRequest'">
+                        <NotificationRequest
+                            class="o_NotificationList_notificationRequest"
+                            t-att-class="{ 'o-mobile': messaging.device.isMobile }"
+                        />
+                        <div class="o_NotificationList_notificationRequest__hr" style="width: 100%;"><hr class="dotted-hr"/></div>
+                    </t>
+                    <t t-if="!notification_last">
+                        <div class="o_NotificationList_separator"/>
+                    </t>
+                </t>
+            </t>
+        </div>
+        </xpath>
+    </t>
+
+    <t t-inherit="mail.ThreadPreview" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div" position="replace">
+            <div class="o_ThreadPreview w-100" t-att-class="{ 'o-muted': thread and thread.localMessageUnreadCounter === 0 }" t-on-click="_onClick" t-att-data-thread-local-id="thread ? thread.localId : undefined"
+                 style="display: flex; flex-direction: row; align-items: start;">
+                <t t-if="thread">
+                    <div class="o_ThreadPreview__box" style="width: 100%;">
+                    <div class="o_ThreadPreview__sidebar">
+                        <div class="o_ThreadPreview_imageContainer o_ThreadPreview_sidebarItem">
+                            <img class="o_ThreadPreview_image rounded-circle" t-att-src="image()" alt="Thread Image"/>
+                            <t t-if="thread.correspondent and thread.correspondent.im_status">
+                                <PartnerImStatusIcon
+                                    class="o_ThreadPreview_partnerImStatusIcon"
+                                    t-att-class="{
+                                        'o-mobile': messaging.device.isMobile,
+                                        'o-muted': thread.localMessageUnreadCounter === 0,
+                                    }"
+                                    partnerLocalId="thread.correspondent.localId"
+                                />
+                            </t>
+                        </div>
+                    </div>
+                    <div class="o_ThreadPreview__content o_content_left_20">
+                        <div class="o_ThreadPreview_header align-items-baseline">
+                            <span class="o_ThreadPreview__name text-truncate" t-att-class="{ 'o-mobile': messaging.device.isMobile, 'o-muted': thread.localMessageUnreadCounter === 0 }">
+                                <t t-esc="thread.displayName"/>
+                            </span>
+                            <t t-if="thread.localMessageUnreadCounter > 0">
+                                <span class="o_ThreadPreview_counter" t-att-class="{ 'o-muted': thread.localMessageUnreadCounter === 0 }">
+                                    <a class="o_NotificationGroup_counter__a">(</a>
+                                    <t t-esc="thread.localMessageUnreadCounter"/>
+                                    <a class="o_NotificationGroup_counter__a">)</a>
+                                </span>
+                            </t>
+                            <t t-if="thread.rtcSessions.length > 0">
+                                <span class="o_ThreadPreview_callIndicator fa fa-volume-up mx-2" t-att-class="{ 'o-isCalling': thread.rtc }"/>
+                            </t>
+                            <span class="o-autogrow"/>
+                            <t t-if="thread.lastMessage and thread.lastMessage.date">
+                                <span class="o_ThreadPreview__date color-white">
+                                    <t t-esc="thread.lastMessage.date.fromNow()"/>
+                                </span>
+                            </t>
+                        </div>
+                        <div class="o_ThreadPreview_core">
+                            <span class="o_ThreadPreview__coreItem o_ThreadPreview_inlineText text-truncate" t-att-class="{ 'o-empty': inlineLastMessageBody.length === 0 }">
+                                <t t-if="thread.lastMessage and thread.lastMessage.author">
+                                    <MessageAuthorPrefix
+                                        messageLocalId="thread.lastMessage.localId"
+                                        threadLocalId="thread.localId"
+                                    />
+                                </t>
+                                <t t-esc="inlineLastMessageBody"/>
+                            </span>
+                            <span class="o-autogrow"/>
+                            <t t-if="thread.localMessageUnreadCounter > 0">
+                                <span class="o_ThreadPreview_coreItem o_ThreadPreview__markAsRead fa fa-check" title="Mark as Read" t-on-click="_onClickMarkAsRead" t-ref="markAsRead"/>
+                            </t>
+                        </div>
+                    </div>
+                    </div>
+                </t>
+            </div>
+        </xpath>
+    </t>
+
+    <t t-inherit="mail.ThreadNeedactionPreview" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div" position="replace">
+            <div class="o_ThreadNeedactionPreview w-100" t-on-click="_onClick" t-att-data-thread-local-id="thread ? thread.localId : undefined">
+            <t t-if="thread">
+                <div class="o_ThreadNeedactionPreview__box" >
+                    <div class="o_ThreadNeedactionPreview__sidebar">
+                        <div class="o_ThreadNeedactionPreview_imageContainer o_ThreadNeedactionPreview_sidebarItem">
+                            <img class="o_ThreadNeedactionPreview_image" t-att-src="image()" alt="Thread Image"/>
+                            <t t-if="thread.correspondent and thread.correspondent.im_status">
+                                <PartnerImStatusIcon
+                                    class="o_ThreadNeedactionPreview_partnerImStatusIcon"
+                                    t-att-class="{
+                                        'o-mobile': messaging.device.isMobile,
+                                    }"
+                                    partnerLocalId="thread.correspondent.localId"
+                                />
+                            </t>
+                        </div>
+                    </div>
+                    <div class="o_ThreadNeedactionPreview__content o_content_left_20">
+                        <div class="o_ThreadNeedactionPreview_header">
+                            <span class="o_ThreadNeedactionPreview__name text-truncate" t-att-class="{ 'o-mobile': messaging.device.isMobile }">
+                                <t t-esc="thread.displayName"/>
+                            </span>
+                            <span class="o_ThreadNeedactionPreview_counter">
+                                <a class="o_NotificationGroup_counter__a">(</a>
+                                <t t-esc="thread.needactionMessagesAsOriginThread.length"/>
+                                <a class="o_NotificationGroup_counter__a">)</a>
+                            </span>
+                            <span class="o-autogrow"/>
+                            <t t-if="thread.lastNeedactionMessageAsOriginThread and thread.lastNeedactionMessageAsOriginThread.date">
+                                <span class="o_ThreadNeedactionPreview__date color-white">
+                                    <t t-esc="thread.lastNeedactionMessageAsOriginThread.date.fromNow()"/>
+                                </span>
+                            </t>
+                        </div>
+                        <div class="o_ThreadNeedactionPreview_core">
+                            <span class="o_ThreadNeedactionPreview__coreItem o_ThreadNeedactionPreview_inlineText text-truncate" t-att-class="{ 'o-empty': inlineLastNeedactionMessageAsOriginThreadBody.length === 0 }">
+                                <t t-if="thread.lastNeedactionMessageAsOriginThread and thread.lastNeedactionMessageAsOriginThread.author">
+                                    <MessageAuthorPrefix
+                                        messageLocalId="thread.lastNeedactionMessageAsOriginThread.localId"
+                                        threadLocalId="thread.localId"
+                                    />
+                                </t>
+                                <t t-esc="inlineLastNeedactionMessageAsOriginThreadBody"/>
+                            </span>
+                            <span class="o-autogrow"/>
+                            <span class="o_ThreadNeedactionPreview_coreItem o_ThreadNeedactionPreview__markAsRead fa fa-check" title="Mark as Read" t-on-click="_onClickMarkAsRead" t-ref="markAsRead"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+        </xpath>
+    </t>
+
+    <t t-inherit="mail.NotificationGroup" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div" position="replace">
+            <div class="o_NotificationGroup w-100" t-on-click="_onClick">
+            <t t-if="group">
+                <div class="o_NotificationGroup__box" style="width: inherit;">
+                    <div class="o_NotificationGroup__sidebar">
+                        <div class="o_NotificationGroup_imageContainer o_NotificationGroup_sidebarItem">
+                            <img class="o_NotificationGroup_image rounded-circle" t-att-src="image()" alt="Message delivery failure image"/>
+                        </div>
+                    </div>
+                    <div class="o_NotificationGroup__content o_content_left_20">
+                        <div class="o_NotificationGroup_header">
+                            <span class="o_NotificationGroup__name text-truncate">
+                                <t t-esc="group.res_model_name"/>
+                            </span>
+                            <span class="o_NotificationGroup_counter">
+                                <a class="o_NotificationGroup_counter__a">(</a>
+                                <t t-esc="group.notifications.length"/>
+                                <a class="o_NotificationGroup_counter__a">)</a>
+                            </span>
+                            <span class="o-autogrow"/>
+                            <t t-if="group.date">
+                                <span class="o_NotificationGroup__date color-white">
+                                    <t t-esc="group.date.fromNow()"/>
+                                </span>
+                            </t>
+                        </div>
+                        <div class="o_NotificationGroup_core">
+                            <span class="o_NotificationGroup__coreItem o_NotificationGroup_inlineText text-truncate">
+                                <t t-if="group.notification_type === 'email'">
+                                    An error occurred when sending an email.
+                                </t>
+                            </span>
+                            <span class="o-autogrow"/>
+                            <span class="o_NotificationGroup_coreItem o_NotificationGroup__markAsRead fa fa-check" title="Discard message delivery failures" t-on-click="_onClickMarkAsRead" t-ref="markAsRead"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+        </xpath>
+    </t>
+
+    <t t-inherit="mail.NotificationRequest" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div" position="replace">
+            <div class="o_NotificationRequest w-100" t-on-click="_onClick" style="display: flex; flex-direction: column; align-items: start;">
+            <t t-if="messaging">
+                <div class="o_NotificationRequest__box">
+                    <div class="o_NotificationRequest__sidebar">
+                        <div class="o_NotificationRequest_imageContainer o_NotificationRequest_sidebarItem">
+                            <img class="o_NotificationRequest_image rounded-circle" t-att-src="messaging.partnerRoot.avatarUrl" alt="Avatar of OdooBot"/>
+                            <PartnerImStatusIcon
+                                class="o_NotificationRequest_partnerImStatusIcon"
+                                t-att-class="{ 'o-mobile': messaging.device.isMobile }"
+                                partnerLocalId="messaging.partnerRoot.localId"
+                            />
+                        </div>
+                    </div>
+                    <div class="o_NotificationRequest__content o_content_left_20">
+                        <div class="o_NotificationRequest_header">
+                            <span class="o_NotificationRequest_name text-truncate" t-att-class="{ 'o-mobile': messaging.device.isMobile }">
+                                <t t-esc="getHeaderText()"/>
+                            </span>
+                        </div>
+                        <div class="o_NotificationRequest_core">
+                            <span class="o_NotificationRequest__coreItem o_NotificationRequest_inlineText text-truncate">
+                                Enable desktop notifications to chat.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+        </xpath>
+    </t>
+
+    <t t-inherit="mail.MessagingMenu.newMessageButton" t-inherit-mode="extension" owl="1">
+        <xpath expr="//button[hasclass('o_MessagingMenu_newMessageButton')]" position="replace">
+            <button class="o_MessagingMenu_newMessageButton btn"
+                t-att-class="{
+                    'btn-link': !messaging.device.isMobile}"
+                    t-on-click="_onClickNewMessage" type="button" style="font-size:18px;">
+                New message
+            </button>
+        </xpath>
+    </t>
+
+</templates>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_haverton" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.haverton</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Mobile Settings" string="Mobile Settings" name="haverton_base"
+                    groups="haverton_base.haverton_base_group_admin"
+                    logo="/haverton_base/static/img/mobile_icon.png">
+                    <block title="Development" name="haverton_development">
+                        <setting string="Api Debug" id="mobile_setting_debug"
+                            help="Enable Debug Mode for FastAPI">
+                            <field name="api_debug" />
+                        </setting>
+                    </block>
+                    <block title="Company Settings" name="haverton">
+                        <setting string="Mobile Logo" id="mobile_setting_logo"
+                            help="Upload the logo">
+                            <field name="logo_image" domain="[('public', '=', True)]" readonly="0" />
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

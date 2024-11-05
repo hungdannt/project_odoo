@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Dashboard Filter Status -->
+        <record id="mobile_filter_item_dashboard_status_pending" model="mobile.filter">
+            <field name="code">pending</field>
+            <field name="name">Pending</field>
+            <field name="mobile_filter_category_id" ref="mfc_dashboard_activities_status" />
+            <field name="show_on_mobile">1</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+
+        <record id="mobile_filter_item_dashboard_status_due_activities" model="mobile.filter">
+            <field name="code">due_activities</field>
+            <field name="name">Due Activities</field>
+            <field name="mobile_filter_category_id" ref="mfc_dashboard_activities_status" />
+            <field name="show_on_mobile">1</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+
+        <record id="mobile_filter_item_dashboard_status_overdue" model="mobile.filter">
+            <field name="code">overdue</field>
+            <field name="name">Overdue</field>
+            <field name="mobile_filter_category_id" ref="mfc_dashboard_activities_status" />
+            <field name="show_on_mobile">1</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+
+        <!-- Dashboard Filter Time Period -->
+        <record id="mobile_filter_item_dashboard_time_period_today" model="mobile.filter">
+            <field name="code">today</field>
+            <field name="name">Today</field>
+            <field name="mobile_filter_category_id" ref="mfc_dashboard_activities_time_period" />
+            <field name="show_on_mobile">1</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+
+        <record id="mobile_filter_item_dashboard_time_period_this_week" model="mobile.filter">
+            <field name="code">this_week</field>
+            <field name="name">This Week</field>
+            <field name="mobile_filter_category_id" ref="mfc_dashboard_activities_time_period" />
+            <field name="show_on_mobile">1</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+
+        <record id="mobile_filter_item_dashboard_time_period_next_week" model="mobile.filter">
+            <field name="code">next_week</field>
+            <field name="name">Next Week</field>
+            <field name="mobile_filter_category_id" ref="mfc_dashboard_activities_time_period" />
+            <field name="show_on_mobile">1</field>
+            <field name="group_ids" eval="[(6, 0, [ref('haverton_base.haverton_base_group_site_supervisor')])]" />
+        </record>
+    </data>
+</odoo>

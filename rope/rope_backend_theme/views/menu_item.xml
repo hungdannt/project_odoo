@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="sale.sale_menu_root" model="ir.ui.menu">
+        <field name="web_icon">rope_backend_theme,static/src/img/icon_sale.png</field>
+    </record>
+
+    <record id="crm.crm_menu_root" model="ir.ui.menu">
+        <field name="web_icon">rope_backend_theme,static/src/img/icon_crm.png</field>
+    </record>
+
+    <record id="mail.menu_root_discuss" model="ir.ui.menu">
+        <field name="web_icon">rope_backend_theme,static/src/img/icon_discuss.png</field>
+    </record>
+
+    <record id="contacts.menu_contacts" model="ir.ui.menu">
+        <field name="web_icon">rope_backend_theme,static/src/img/icon_contacts.png</field>
+    </record>
+
+    <record id="account_accountant.menu_accounting" model="ir.ui.menu">
+        <field name="web_icon">rope_backend_theme,static/src/img/icon_accounting.png</field>
+    </record>
+
+    <record id="calendar.mail_menu_calendar" model="ir.ui.menu">
+        <field name="web_icon">rope_backend_theme,static/src/img/icon_calendar.png</field>
+    </record>
+
+    <menuitem name="Settings"
+          id="base.menu_administration"
+          web_icon="rope_backend_theme,static/src/img/icon_settings.png"
+          sequence="550"
+          groups="base.group_erp_manager"/>
+    <menuitem name="Apps"
+          id="base.menu_management"
+          web_icon="rope_backend_theme,static/src/img/icon_app.png"
+          sequence="500"
+          groups="base.group_system"/>
+
+</odoo>

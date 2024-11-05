@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- Main menu -->
+        <record id="haverton_menu_root" model="ir.ui.menu">
+            <field name="name">Haverton</field>
+            <field name="sequence" eval="1" />
+            <field name="groups_id" eval="[(4, ref('haverton_base_group_site_supervisor'))]" />
+            <field name="active" eval="False"/>
+        </record>
+        <!-- Sub-menus -->
+        <record id="havarton_base_menu_home" model="ir.ui.menu">
+            <field name="name">Dashboard</field>
+            <field name="parent_id" ref="haverton_menu_root" />
+            <!-- TODO: change action -->
+            <field name="action" ref="base_fastapi.fastapi_endpoint_act_window" />
+            <field name="mobile_visibility">1</field>
+            <field name="haverton_menu_key">haverton_menu_home</field>
+            <field name="groups_id" eval="[(4, ref('haverton_base_group_site_supervisor'))]" />
+            <field name="sequence" eval="10" />
+        </record>
+
+        <record id="havarton_base_menu_todo" model="ir.ui.menu">
+            <field name="name">Todo</field>
+            <field name="parent_id" ref="haverton_menu_root" />
+            <!-- TODO: change action -->
+            <field name="action" ref="base_fastapi.fastapi_endpoint_act_window" />
+            <field name="mobile_visibility">1</field>
+            <field name="haverton_menu_key">haverton_menu_todo</field>
+            <field name="groups_id" eval="[(4, ref('haverton_base_group_site_supervisor'))]" />
+            <field name="sequence" eval="20" />
+        </record>
+
+        <record id="havarton_base_menu_jobs" model="ir.ui.menu">
+            <field name="name">Jobs</field>
+            <field name="parent_id" ref="haverton_menu_root" />
+            <!-- TODO: change action -->
+            <field name="action" ref="base_fastapi.fastapi_endpoint_act_window" />
+            <field name="mobile_visibility">1</field>
+            <field name="haverton_menu_key">haverton_menu_jobs</field>
+            <field name="groups_id" eval="[(4, ref('haverton_base_group_site_supervisor'))]" />
+            <field name="sequence" eval="30" />
+        </record>
+
+        <record id="havarton_base_menu_inspection" model="ir.ui.menu">
+            <field name="name">Inspection</field>
+            <field name="parent_id" ref="haverton_menu_root" />
+            <!-- TODO: change action -->
+            <field name="action" ref="base_fastapi.fastapi_endpoint_act_window" />
+            <field name="mobile_visibility">1</field>
+            <field name="haverton_menu_key">haverton_menu_inspection</field>
+            <field name="groups_id" eval="[(4, ref('haverton_base_group_site_supervisor'))]" />
+            <field name="sequence" eval="40" />
+        </record>
+
+        <record id="havarton_base_menu_service_provider" model="ir.ui.menu">
+            <field name="name">Service Provider</field>
+            <field name="parent_id" ref="haverton_menu_root" />
+            <!-- TODO: change action -->
+            <field name="action" ref="base_fastapi.fastapi_endpoint_act_window" />
+            <field name="mobile_visibility">1</field>
+            <field name="haverton_menu_key">haverton_menu_service_provider</field>
+            <field name="groups_id" eval="[(4, ref('haverton_base_group_site_supervisor'))]" />
+            <field name="sequence" eval="50" />
+        </record>
+    </data>
+
+    <data>
+        <menuitem action="jwt_refresh_token_action" id="jwt_refresh_token_menu_action" parent="base.menu_users" groups="base.group_no_one" sequence="10"/>
+    </data>
+</odoo>

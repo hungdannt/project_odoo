@@ -1,0 +1,54 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* zet_mail
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-24 06:38+0000\n"
+"PO-Revision-Date: 2024-05-24 06:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: zet_mail
+#. odoo-javascript
+#: code:addons/zet_mail/static/src/js/composer.js:0
+#, python-format
+msgid "Compose Email"
+msgstr "撰寫電子郵件"
+
+#. module: zet_mail
+#: model:ir.model,name:zet_mail.model_mail_thread
+msgid "Email Thread"
+msgstr "電子郵件主題"
+
+#. module: zet_mail
+#. odoo-javascript
+#: code:addons/zet_mail/static/src/xml/chatter.xml:0
+#, python-format
+msgid "Fetch Email"
+msgstr "獲取電子郵件"
+
+#. module: zet_mail
+#: model:ir.model,name:zet_mail.model_fetchmail_server
+msgid "Incoming Mail Server"
+msgstr "收件伺服器"
+
+#. module: zet_mail
+#. odoo-javascript
+#: code:addons/zet_mail/static/src/js/composer.js:0
+#, python-format
+msgid "Log note"
+msgstr "記錄備註"
+
+#. module: zet_mail
+#. odoo-javascript
+#: code:addons/zet_mail/static/src/xml/chatter.xml:0
+#, python-format
+msgid "Reply All"
+msgstr "全部回覆"

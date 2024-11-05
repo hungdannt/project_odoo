@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="haverton_compliance_non_complied" model="haverton.compliance">
+        <field name="name">Non-complied</field>
+        <field name="font_color">0xFFFF2F24</field>
+        <field name="bgr_color">0xFFF7EDED</field>
+    </record>
+    <record id="haverton_compliance_fully_complied" model="haverton.compliance">
+        <field name="name">Fully complied</field>
+        <field name="font_color">0xFF19984C</field>
+        <field name="bgr_color">0xFFEDF7F1</field>
+    </record>
+    <record id="haverton_compliance_partially_complied" model="haverton.compliance">
+        <field name="name">Partially complied</field>
+        <field name="font_color">0xFFF5D80A</field>
+        <field name="bgr_color">0xFFF8F4EE</field>
+    </record>
+</odoo>

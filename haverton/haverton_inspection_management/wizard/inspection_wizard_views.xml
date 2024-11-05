@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="inspection_wizard_view_form" model="ir.ui.view">
+            <field name="name">inspection.wizard.view.form</field>
+            <field name="model">inspection.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="task_id_domain" invisible="1"/>
+                            <field name="survey_id" invisible="1" options="{'no_create': True}"/>
+                            <field name="project_id" required="1" options="{'no_create': True}"/>
+                            <field name="task_id" required="1" options="{'no_create': True}" domain="task_id_domain"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="create_inspection" string="Save" type="object" class="oe_highlight" data-hotkey="q"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_history_view_tree"  model="ir.ui.view">
+            <field name="name">sale.order.history.tree</field>
+            <field name="model">sale.order.history</field>
+            <field name="arch" type="xml">
+                <tree edit="0" delete="0" create="0">
+                    <field name="version_number"></field>
+                    <field name="order_id"></field>
+                    <field name="user_edit"></field>
+                    <field name="create_date"></field>
+                    <button name="action_preview_history" string="Preview" type="object" class="btn-secondary"/>
+                </tree>
+            </field>
+    </record>
+</odoo>

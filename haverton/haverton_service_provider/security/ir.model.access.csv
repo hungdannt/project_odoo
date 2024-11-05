@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_haverton_service_provider_statutory_requirement_full_access,access.haverton.service.provider.statutory.requirement.full_access,model_haverton_service_provider_statutory_requirement,base.group_user,1,1,1,1

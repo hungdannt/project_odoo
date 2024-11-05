@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ir_model_fields_view_tree_job_detail" model="ir.ui.view">
+            <field name="name">ir.model.fields.tree.job.detail</field>
+            <field name="model">ir.model.fields</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" create="false"
+                    default_order="show_on_mobile_job_detail, field_description">
+                    <field name="field_description" />
+                    <field name="show_on_mobile_job_detail" string="Show On Mobile" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="ir_model_fields_view_tree_defect_detail" model="ir.ui.view">
+            <field name="name">ir.model.fields.tree.defect.detail</field>
+            <field name="model">ir.model.fields</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" create="false"
+                    default_order="show_on_mobile_defect_detail, field_description">
+                    <field name="field_description" />
+                    <field name="show_on_mobile_defect_detail" string="Show On Mobile" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="ir_model_fields_view_tree_activity_detail" model="ir.ui.view">
+            <field name="name">ir.model.fields.tree.activity.detail</field>
+            <field name="model">ir.model.fields</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" create="false"
+                    default_order="show_on_mobile_activity_detail, field_description">
+                    <field name="field_description" />
+                    <field name="show_on_mobile_activity_detail" string="Show On Mobile" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="ir_model_fields_view_tree_variation_detail" model="ir.ui.view">
+            <field name="name">ir.model.fields.tree.variation.detail</field>
+            <field name="model">ir.model.fields</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" create="false"
+                    default_order="show_on_mobile_variation_detail, field_description">
+                    <field name="field_description" />
+                    <field name="show_on_mobile_variation_detail" string="Show On Mobile" />
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>
